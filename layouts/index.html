@@ -5,21 +5,21 @@
   <canvas id="lo-hero-canvas" class="lo-hero__canvas" aria-hidden="true"></canvas>
   <div class="lo-hero__inner">
     <div>
-      <p class="lo-eyebrow lo-hero__eyebrow">Clínica Alemana de Santiago · Universidad de Chile</p>
+      <p class="lo-eyebrow lo-hero__eyebrow">Universidad de Chile · Clínica Alemana de Santiago</p>
       <h1>Neurociencia del <span class="lo-accent">equilibrio</span>, de la clínica a la investigación.</h1>
       <p class="lo-hero__lead">{{ site.Params.description }}</p>
       <div class="lo-cta">
         <a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Conoce al equipo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <a class="lo-btn lo-btn--ghost" href="{{ "recursos/" | relURL }}">Docencia</a>
+        <a class="lo-btn lo-btn--ghost" href="{{ "categorias/clases/" | relURL }}">Recursos Docentes</a>
         <a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/" | relURL }}">Publicaciones</a>
       </div>
     </div>
     <div>
-      {{ if (fileExists "static/images/labonce-logo.png") }}
-      <img class="lo-hero__logo" src="{{ "images/labonce-logo.png" | relURL }}" alt="Lab-ONCE — Laboratorio de Otoneurología Clínica y Neurociencia del Equilibrio">
-      {{ end }}
+      {{ $heroLogo := "images/labonce-logo.png" }}
+      {{ if (fileExists "static/images/labonce-hero.png") }}{{ $heroLogo = "images/labonce-hero.png" }}{{ end }}
+      <img class="lo-hero__logo" src="{{ $heroLogo | relURL }}" alt="Lab-ONCE — Laboratorio de Otoneurología Clínica y Neurociencia del Equilibrio">
     </div>
   </div>
 </section>
@@ -102,31 +102,31 @@
       <p class="lo-section__sub">Clases en video, maniobras y terapias, fisiología y seminarios — material abierto para estudiantes y profesionales.</p>
     </div>
     <div class="lo-grid lo-grid--3">
-      <a class="lo-card" href="{{ "recursos/esenciales/" | relURL }}" style="padding:22px;display:block">
+      <a class="lo-card" href="{{ "tags/esenciales-de-vertigo/" | relURL }}" style="padding:22px;display:block">
         <h3 style="margin:0 0 6px;font-size:1.1rem">Esenciales de Vértigo</h3>
         <p style="color:var(--lo-muted);font-size:.9rem;margin:0">La serie fundamental para pregrado: abordaje sindromático, vértigo agudo, VPPB y más.</p>
       </a>
-      <a class="lo-card" href="{{ "recursos/clases-online/" | relURL }}" style="padding:22px;display:block">
+      <a class="lo-card" href="{{ "tags/clases-on-line/" | relURL }}" style="padding:22px;display:block">
         <h3 style="margin:0 0 6px;font-size:1.1rem">Clases on-line</h3>
         <p style="color:var(--lo-muted);font-size:.9rem;margin:0">El catálogo completo de clases y charlas grabadas desde 2016.</p>
       </a>
-      <a class="lo-card" href="{{ "recursos/maniobras-y-terapias/" | relURL }}" style="padding:22px;display:block">
+      <a class="lo-card" href="{{ "tags/maniobras-y-terapias/" | relURL }}" style="padding:22px;display:block">
         <h3 style="margin:0 0 6px;font-size:1.1rem">Maniobras y terapias</h3>
-        <p style="color:var(--lo-muted);font-size:.9rem;margin:0">Videos instructivos para pacientes y clínicos: Epley, Zuma, Gufoni, rehabilitación vestibular.</p>
+        <p style="color:var(--lo-muted);font-size:.9rem;margin:0">Videos instructivos para pacientes y clínicos: Epley, Zuma, Gufoni, rehabilitación vestibular y VORx2.</p>
       </a>
     </div>
-    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "recursos/" | relURL }}">Ver toda la docencia</a></p>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/clases/" | relURL }}">Ver todos los recursos docentes</a></p>
   </div>
 </section>
 
-<!-- ===================== BLOG RECIENTE ===================== -->
-{{ $posts := where site.RegularPages "Section" "blog" }}
+<!-- ===================== ACTUALIDAD (noticias) ===================== -->
+{{ $posts := where (where site.RegularPages "Section" "blog") "Params.categorias" "intersect" (slice "noticias") }}
 {{ with first 3 $posts.ByDate.Reverse }}
 <section class="lo-section">
   <div class="lo-container">
     <div class="lo-section__head">
       <p class="lo-eyebrow">Actualidad</p>
-      <h2 class="lo-section__title">Últimas entradas</h2>
+      <h2 class="lo-section__title">Últimas noticias</h2>
     </div>
     <div class="lo-grid lo-grid--3">
       {{ range . }}
@@ -139,7 +139,7 @@
       </a>
       {{ end }}
     </div>
-    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "blog/" | relURL }}">Ver el blog</a></p>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/noticias/" | relURL }}">Ver toda la actualidad</a></p>
   </div>
 </section>
 {{ end }}

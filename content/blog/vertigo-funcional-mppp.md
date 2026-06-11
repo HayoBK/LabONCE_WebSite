@@ -1,8 +1,9 @@
 ---
 title: "Vértigo Funcional: Mareo Perceptual Postural Persistente"
 date: 2023-08-07
+categorias: ["clases"]
 image: "https://i.ytimg.com/vi/-VrOzj-Wda8/maxresdefault.jpg"
-tags: ["clase", "PPPD", "vértigo funcional"]
+tags: ["clase", "PPPD", "vértigo funcional", "clases-on-line"]
 ---
 
 Es un honor compartirles la charla que tuve la oportunidad de presentar en el reciente

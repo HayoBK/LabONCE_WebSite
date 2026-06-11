@@ -1,8 +1,7 @@
 # ============================================================
-# LAB ONCE — Navegación principal (arquitectura 2026)
-# El sitio se ordena en 4 áreas: Equipo / Investigación / Docencia / Blog
-# (la "Intranet" y los "Repositorios" del Wix se omiten por decisión de Hayo).
-# Submenús (parent) se renderizan como dropdown en el navbar (header.html).
+# LAB ONCE — Navegación principal (arquitectura 2026 v2)
+# Todo el material vive en el blog con categorías (noticias/clases)
+# y etiquetas de área. El menú prefiltra por taxonomía.
 # ============================================================
 
 main:
@@ -34,30 +33,30 @@ main:
     parent: "Investigación"
     weight: 34
 
-  - name: "Docencia"
-    pageRef: "/recursos"
+  - name: "Recursos Docentes"
+    pageRef: "/categorias/clases"
     weight: 40
   - name: "Esenciales de Vértigo"
-    pageRef: "/recursos/esenciales"
-    parent: "Docencia"
+    pageRef: "/tags/esenciales-de-vertigo"
+    parent: "Recursos Docentes"
     weight: 41
   - name: "Fisiología básica"
-    pageRef: "/recursos/fisiologia-basica"
-    parent: "Docencia"
+    pageRef: "/tags/fisiologia-basica"
+    parent: "Recursos Docentes"
     weight: 42
   - name: "Clases on-line"
-    pageRef: "/recursos/clases-online"
-    parent: "Docencia"
+    pageRef: "/tags/clases-on-line"
+    parent: "Recursos Docentes"
     weight: 43
   - name: "Maniobras y Terapias"
-    pageRef: "/recursos/maniobras-y-terapias"
-    parent: "Docencia"
+    pageRef: "/tags/maniobras-y-terapias"
+    parent: "Recursos Docentes"
     weight: 44
   - name: "Seminarios de alumnos"
-    pageRef: "/recursos/seminarios-alumnos"
-    parent: "Docencia"
+    pageRef: "/tags/seminarios-de-alumnos"
+    parent: "Recursos Docentes"
     weight: 45
 
-  - name: "Blog"
-    pageRef: "/blog"
+  - name: "Actualidad"
+    pageRef: "/categorias/noticias"
     weight: 50

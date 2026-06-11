@@ -1,6 +1,7 @@
 ---
 title: "Curso de Otoneurología Internacional: un enfoque interdisciplinario"
 date: 2025-05-19
+categorias: ["noticias"]
 image: "https://static.wixstatic.com/media/73522c_29d06c2175034dad989254aa9374ca51~mv2.jpeg/v1/fill/w_563,h_1000,al_c,q_85/curso.jpeg"
 tags: ["curso", "noticia", "Clínica Alemana"]
 ---

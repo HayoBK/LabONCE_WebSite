@@ -1,8 +1,9 @@
 ---
 title: "VPPB de difícil manejo"
 date: 2022-05-02
+categorias: ["clases"]
 image: "https://i.ytimg.com/vi/ZLg8TwxjmR8/maxresdefault.jpg"
-tags: ["clase", "VPPB"]
+tags: ["clase", "VPPB", "clases-on-line"]
 ---
 
 ¡Hola! Les comparto nuestra última charla, sobre los casos de vértigo posicional

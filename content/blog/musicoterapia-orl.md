@@ -1,8 +1,9 @@
 ---
 title: "Charla subida: Musicoterapia en ORL"
 date: 2021-11-11
+categorias: ["clases"]
 image: "https://i.ytimg.com/vi/c3SPu-qoPE4/maxresdefault.jpg"
-tags: ["clase", "musicoterapia"]
+tags: ["clase", "musicoterapia", "clases-on-line"]
 ---
 
 Como parte de mi participación en el curso pre-congreso del **Congreso Chileno de ORL 2021**.

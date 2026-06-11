@@ -1,8 +1,9 @@
 ---
 title: "Videos para apoyar la rehabilitación vestibular (VORx2)"
 date: 2024-03-10
+categorias: ["clases"]
 image: "https://i.ytimg.com/vi/qpWq3qQpQA4/sddefault.jpg"
-tags: ["rehabilitación", "video", "VORx2"]
+tags: ["rehabilitación", "video", "VORx2", "maniobras-y-terapias"]
 ---
 
 Compartimos videos de apoyo a la **rehabilitación vestibular**, incluyendo ejercicios

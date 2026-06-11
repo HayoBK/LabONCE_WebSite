@@ -1,13 +1,9 @@
 <header class="lo-nav" id="site-header">
   <div class="lo-nav__inner">
-    <a class="lo-nav__brand" href="{{ site.Home.RelPermalink }}">
-      {{ $logo := "https://static.wixstatic.com/media/73522c_edc6782423a7478dad14a0d54c82e43b~mv2.png/v1/fill/w_120,h_120,al_c,q_85/labonce.png" }}
-      {{ if (fileExists "static/images/labonce-logo.png") }}{{ $logo = "images/labonce-logo.png" | relURL }}{{ end }}
-      <img class="lo-nav__logo" src="{{ $logo }}" alt="Lab-ONCE" onerror="this.style.display='none'">
-      <span class="lo-nav__brandtext">
-        <strong>Lab-<span class="lo-b">ONCE</span></strong>
-        <small>Otoneurología Clínica · Neurociencia del Equilibrio</small>
-      </span>
+    <a class="lo-nav__brand" href="{{ site.Home.RelPermalink }}" title="Lab-ONCE — Inicio">
+      {{ $logo := "images/labonce-logo.png" | relURL }}
+      {{ if (fileExists "static/images/labonce-head.png") }}{{ $logo = "images/labonce-head.png" | relURL }}{{ end }}
+      <img class="lo-nav__logo" src="{{ $logo }}" alt="Lab-ONCE — Inicio">
     </a>
 
     <button class="lo-nav__toggle" id="lo-toggle" aria-label="Abrir menú" aria-expanded="false">

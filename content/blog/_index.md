@@ -1,4 +1,4 @@
 ---
 title: "Blog"
-subtitle: "Noticias, publicaciones, videos y clases de LAB ONCE."
+subtitle: "El archivo completo: noticias, clases, maniobras y seminarios de Lab-ONCE."
 ---

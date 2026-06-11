@@ -15,7 +15,32 @@ Sitio Hugo **autocontenido** que reemplaza el Wix `https://hayobk.wixsite.com/la
    Default **Sonnet**; Opus solo para arquitectura delicada.
 **Política:** cada etapa termina con build verde + commit + push (Hayo lo pidió explícito).
 
-## Estado actual: REDISEÑO 2026 COMPLETO — pendiente build de validación + push
+## ⚡ ACTUALIZACIÓN 2026-06-11 (tarde) — V2: blog unificado + ORCID + ajustes de logo
+Tras publicar el rediseño, Hayo pidió por audio una segunda ronda (ya implementada por el chat,
+PENDIENTE de build + push):
+1. **Landing:** "equilibrio" ahora con degradé de azules (no arcoíris); logo del hero más
+   grande y con fondo transparente (`static/images/labonce-hero.png`); navbar SOLO con la
+   cabeza del logo (`labonce-head.png`, generada recortando el PNG); kicker invertido
+   (U. de Chile primero); botón "Recursos Docentes".
+2. **Blog unificado (cambio estructural):** se ELIMINARON `content/recursos/`,
+   `layouts/recursos/` y los data files de docencia. TODO el material vive ahora en
+   `content/blog/` (71 posts) con taxonomías: `categorias` = noticias | clases, y `tags` de
+   área (esenciales-de-vertigo, fisiologia-basica, clases-on-line, maniobras-y-terapias,
+   seminarios-de-alumnos). Menú: "Recursos Docentes" → /categorias/clases (con dropdown por
+   tag) y "Actualidad" → /categorias/noticias. Plantilla nueva `layouts/_default/term.html`.
+3. **YouTube:** se recolectaron los 30 videos del canal `@VertigoyEquilibrio-HayoBre6046`
+   (vía Chrome). 32 posts tienen video embebido; 38 siguen sin ID (el Wix no los expone) y
+   muestran nota "en migración" — completables por CMS.
+4. **ORCID:** `publicaciones/todas` carga en vivo las publicaciones desde
+   `pub.orcid.org/v3.0/0000-0002-3278-065X/works` (JS client-side, con el listado curado
+   como respaldo si falla). iD verificado contra la ficha del sitio de Neurociencia.
+5. `.pages.yml` actualizado (blog con categorías; colecciones de docencia eliminadas).
+**Riesgos del build v2:** pageRef del menú hacia páginas de taxonomía
+(`/categorias/clases`, `/tags/...`) y el `where ... "Params.categorias" "intersect"` del
+index. Si `pageRef` a taxonomía falla, cambiar esas entradas de menú a `url:` relativas.
+**DNS labonce.cl:** en proceso (Cloudflare + NIC); baseURL se cambia tras el corte.
+
+## Estado anterior: REDISEÑO 2026 COMPLETO — publicado (commit 5d5c925)
 El 2026-06-11 el chat rediseñó todo el sitio en torno al **nuevo logo**
 (`static/images/labonce-logo.png`, copia de "LabONCE v2026.png": fondo blanco, navy,
 línea arcoíris, cerebro multicolor) y portó TODO el contenido restante del Wix.

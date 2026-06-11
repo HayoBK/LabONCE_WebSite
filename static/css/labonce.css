@@ -59,8 +59,8 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-section__title::after{content:"";position:absolute;left:0;bottom:0;width:72px;height:4px;border-radius:4px;background:var(--lo-rainbow)}
 .lo-section__sub{color:var(--lo-muted);font-size:1.02rem;margin:0}
 
-/* Texto con degradado arcoíris (palabra acentuada del hero) */
-.lo-accent{background:var(--lo-rainbow);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Palabra acentuada del hero: degradé de azules (como "ONCE" en el logo) */
+.lo-accent{background:linear-gradient(90deg,#16407F 0%,#1D6FE0 55%,#56BDF2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* ---------- NAVBAR (claro, con filete arcoíris) ---------- */
 .lo-nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
@@ -69,11 +69,7 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-nav__inner{max-width:var(--lo-maxw);margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px}
 .lo-nav__brand{display:flex;align-items:center;gap:12px;color:var(--lo-ink);text-decoration:none}
 .lo-nav__brand:hover{text-decoration:none}
-.lo-nav__logo{width:46px;height:46px;border-radius:8px;object-fit:contain;background:#fff}
-.lo-nav__brandtext{display:flex;flex-direction:column;line-height:1.05}
-.lo-nav__brandtext strong{font-family:var(--lo-font-title);font-weight:700;font-size:1.12rem;letter-spacing:.02em;color:var(--lo-ink)}
-.lo-nav__brandtext strong .lo-b{color:var(--lo-blue)}
-.lo-nav__brandtext small{font-size:.64rem;color:var(--lo-muted);font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.08em}
+.lo-nav__logo{height:56px;width:auto;object-fit:contain}
 .lo-nav__menu{margin-left:auto}
 .lo-nav__menu>ul{list-style:none;display:flex;align-items:center;gap:2px;margin:0;padding:0}
 .lo-nav__menu a{color:var(--lo-text);font-size:.92rem;font-weight:500;padding:9px 13px;border-radius:8px;display:block;transition:background .2s,color .2s}
@@ -99,7 +95,7 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-hero__eyebrow{color:var(--lo-blue)}
 .lo-hero h1{color:var(--lo-ink);font-size:clamp(2rem,5vw,3.3rem);font-weight:700;max-width:18ch;margin:.5rem 0 .6rem}
 .lo-hero__lead{font-size:clamp(1rem,1.6vw,1.16rem);max-width:58ch;color:var(--lo-muted);margin:0 0 26px}
-.lo-hero__logo{width:min(360px,80%);margin:0 auto;filter:drop-shadow(0 22px 40px rgba(22,35,59,.18))}
+.lo-hero__logo{width:min(460px,100%);margin:0 auto;filter:drop-shadow(0 22px 40px rgba(22,35,59,.18))}
 .lo-cta{display:flex;flex-wrap:wrap;gap:12px}
 .lo-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;
   font-family:var(--lo-font-title);font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s}

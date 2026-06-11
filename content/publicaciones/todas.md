@@ -1,9 +1,70 @@
 ---
 title: "Todas las publicaciones"
-subtitle: "Producción científica completa del equipo Lab-ONCE."
+subtitle: "Producción científica del equipo Lab-ONCE, sincronizada con ORCID."
 ---
 
-## Publicaciones en revistas ISI
+## Publicaciones (desde ORCID, actualizado automáticamente)
+
+Listado obtenido en vivo desde el perfil ORCID del Dr. Hayo Breinbauer:
+[orcid.org/0000-0002-3278-065X](https://orcid.org/0000-0002-3278-065X). Si tu navegador
+no puede cargarlo, más abajo está el listado curado completo.
+
+<div id="lo-orcid" style="margin:18px 0 36px">
+  <p id="lo-orcid-status" style="color:var(--lo-muted)">Cargando publicaciones desde ORCID…</p>
+  <ol id="lo-orcid-list" style="display:none"></ol>
+</div>
+
+<script>
+(function(){
+  var ORCID = "0000-0002-3278-065X";
+  var status = document.getElementById("lo-orcid-status");
+  var list = document.getElementById("lo-orcid-list");
+  fetch("https://pub.orcid.org/v3.0/" + ORCID + "/works", {headers:{Accept:"application/json"}})
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(data){
+      var works = (data.group || []).map(function(g){
+        var s = g["work-summary"] && g["work-summary"][0];
+        if(!s) return null;
+        var title = s.title && s.title.title ? s.title.title.value : "(sin título)";
+        var year = s["publication-date"] && s["publication-date"].year ? s["publication-date"].year.value : "";
+        var journal = s["journal-title"] ? s["journal-title"].value : "";
+        var url = "https://orcid.org/" + ORCID;
+        var ids = (s["external-ids"] && s["external-ids"]["external-id"]) || [];
+        for (var i=0;i<ids.length;i++){
+          if (ids[i]["external-id-type"] === "doi" && ids[i]["external-id-value"]) {
+            url = "https://doi.org/" + ids[i]["external-id-value"]; break;
+          }
+          if (ids[i]["external-id-url"] && ids[i]["external-id-url"].value) { url = ids[i]["external-id-url"].value; }
+        }
+        return {title:title, year:year, journal:journal, url:url};
+      }).filter(Boolean);
+      works.sort(function(a,b){ return (b.year||"0").localeCompare(a.year||"0"); });
+      if (!works.length) throw new Error("vacío");
+      works.forEach(function(w){
+        var li = document.createElement("li");
+        li.style.margin = "0 0 10px";
+        var a = document.createElement("a");
+        a.href = w.url; a.target = "_blank"; a.rel = "noopener";
+        a.textContent = w.title;
+        li.appendChild(a);
+        var span = document.createElement("span");
+        span.style.color = "var(--lo-muted)";
+        span.textContent = (w.journal ? " — " + w.journal : "") + (w.year ? " (" + w.year + ")" : "");
+        li.appendChild(span);
+        list.appendChild(li);
+      });
+      status.style.display = "none";
+      list.style.display = "block";
+    })
+    .catch(function(){
+      status.textContent = "No se pudo cargar ORCID en este momento — abajo está el listado curado completo.";
+    });
+})();
+</script>
+
+## Listado curado
+
+### Publicaciones en revistas ISI
 
 1. Martin SS, Medel V, Breinbauer H, Delgado C, Delano PH. Increased basal ganglia volume in older adults with tinnitus. *Sci Rep.* 2025 Nov 21;15(1):41303. doi: 10.1038/s41598-025-25065-6.
 2. Faúndez F, Arévalo-Romero C, Villarroel K, Lavín C, Alarcón K, Vial G, Artus F, Billeke P, Delano PH, Breinbauer HA. Spatial navigation entropy suggests allocentric dysfunction in PPPD. *Front Neurol.* 2025 May 16;16:1599307. doi: 10.3389/fneur.2025.1599307.
@@ -22,7 +83,7 @@ subtitle: "Producción científica completa del equipo Lab-ONCE."
 15. Breinbauer H, Fromm G, Fleck D, Araya L. Tendencia en el estudiante de medicina a ejercer como médico general o especialista. *Rev Med Chile* 2009; 137: 865-872.
 16. Breinbauer H, Vásquez H, Mayanz S, Guerra C, Millán T. Validación en Chile de la escala de sobrecarga del cuidador de Zarit en su versión original y abreviada. *Rev Méd Chile* 2009; 137: 651-659.
 
-## Publicaciones en revistas SciELO
+### Publicaciones en revistas SciELO
 
 1. Alarcón P. K, Arévalo-Romero C, Villarroel K, Lavín C, Faúndez F, Garrido R, Billeke P, Breinbauer K. H. Perfil cognitivo en el Mareo Perceptual Postural Persistente: implicancias sobre su fisiopatología como disfunción cognitiva viso-vestibular superior. *Rev Otorrinolaringol Cir Cabeza Cuello* 2023; 83(4): 346-358. [Ver artículo](https://revistaotorrino-sochiorl.cl/index.php/orl/article/view/497)
 2. Marambio J, Castro S, Garate M, Cortes I, Corradini J, Córdova L, Breinbauer H. Valores referenciales de posturografía basada en Nintendo Wii en población chilena. *Rev Otorrinolaringol Cir Cabeza Cuello* 2021; 81: 27-32.
@@ -48,7 +109,7 @@ subtitle: "Producción científica completa del equipo Lab-ONCE."
 22. Castillo C, Ruz S, Breinbauer H, Muñoz J, Corssen C. Evaluación programa quirúrgico para residentes ORL: de la teoría a la práctica. *Rev Otorrinolaringol Cir Cabeza Cuello* 2008; 68: 229-236.
 23. Castillo C, Corssen C, Breinbauer H, Namoncura C. Evaluación adenoídea mediante nasofaringolaringoscopía: validación del método. *Rev Otorrinolaringol Cir Cabeza Cuello* 2008; 68: 143-148.
 
-## Otras publicaciones
+### Otras publicaciones
 
 1. Breinbauer HA. Evaluación vestibular en 2016. Puesta al día. *Revista Médica Clínica Las Condes* 2016; 27(6): 863-71.
 2. Breinbauer H. Avances en vértigo y trastornos del equilibrio. *Contacto Científico* 2014; 4(3): 114-120.

@@ -2,8 +2,18 @@
 <article class="lo-prose">
   <p class="lo-eyebrow">{{ with .Parent }}{{ .Title }}{{ end }}</p>
   <h1>{{ .Title }}</h1>
+  {{ if eq .Section "blog" }}
+  <p class="lo-section__sub" style="margin:0 0 6px">{{ .Date.Format "02-01-2006" }}</p>
+  <p style="margin:0 0 20px">
+    {{ $cats := .Params.categorias }}
+    {{ if reflect.IsSlice $cats }}{{ range $cats }}{{ with site.GetPage (printf "/categorias/%s" (. | urlize)) }}<a class="lo-chip" href="{{ .RelPermalink }}">{{ if eq .Data.Term "noticias" }}Actualidad{{ else }}Recursos Docentes{{ end }}</a>{{ end }}{{ end }}{{ end }}
+    {{ $tags := .Params.tags }}
+    {{ if reflect.IsSlice $tags }}{{ range $tags }}{{ with site.GetPage (printf "/tags/%s" (. | urlize)) }}<a class="lo-chip" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}{{ end }}
+  </p>
+  {{ else }}
   {{ with .Params.subtitle }}<p class="lo-section__sub" style="font-size:1.1rem">{{ . }}</p>{{ end }}
-  {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}">{{ end }}
+  {{ end }}
+  {{ if and .Params.image (not (in (string .Content) "lo-video")) }}<img src="{{ .Params.image }}" alt="{{ .Title }}">{{ end }}
   {{ .Content }}
 </article>
 {{ end }}

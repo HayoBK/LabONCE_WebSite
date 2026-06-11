@@ -1,0 +1,43 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">{{ if eq .Data.Plural "categorias" }}{{ if eq .Data.Term "noticias" }}Actualidad{{ else }}Docencia{{ end }}{{ else }}Etiqueta{{ end }}</p>
+      <h1 class="lo-section__title">{{ if eq .Data.Term "noticias" }}Actualidad{{ else if eq .Data.Term "clases" }}Recursos Docentes{{ else }}{{ .Title }}{{ end }}</h1>
+      <p class="lo-section__sub">
+        {{ if eq .Data.Term "noticias" }}Noticias y novedades de Lab-ONCE.
+        {{ else if eq .Data.Term "clases" }}Todas nuestras clases, charlas, maniobras y seminarios en video. Usa las etiquetas para filtrar por área.
+        {{ else }}Entradas etiquetadas con «{{ .Title }}».{{ end }}
+      </p>
+      {{ if eq .Data.Term "clases" }}
+      <p style="margin-top:14px">
+        {{ range $slug := slice "esenciales-de-vertigo" "fisiologia-basica" "clases-on-line" "maniobras-y-terapias" "seminarios-de-alumnos" }}
+        {{ with site.GetPage (printf "/tags/%s" $slug) }}<a class="lo-chip" style="margin-bottom:6px" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
+        {{ end }}
+      </p>
+      {{ end }}
+    </div>
+
+    {{ $posts := .Pages.ByDate.Reverse }}
+    {{ with $posts }}
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <a class="lo-post" href="{{ .RelPermalink }}">
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        <div class="lo-post__body">
+          <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
+          <h3 class="lo-post__title">{{ .Title }}</h3>
+          {{ $tags := .Params.tags }}
+          {{ if reflect.IsSlice $tags }}
+          <p style="margin:10px 0 0">{{ range first 3 $tags }}<span class="lo-chip">{{ . }}</span>{{ end }}</p>
+          {{ end }}
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="lo-section__sub">Aún no hay entradas en esta categoría.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

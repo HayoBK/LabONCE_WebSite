@@ -59,68 +59,9 @@ content:
       - { name: estado,        label: "Estado (ej. Activo)", type: string }
       - { name: link,          label: "Enlace (opcional)", type: string }
 
-  # ── Docencia: catálogos de clases y videos ────────────────────────────────
-  - name: clases_online
-    label: "Docencia · Clases on-line"
-    type: file
-    path: data/clases_online.yaml
-    list: true
-    fields:
-      - { name: titulo,      label: "Título", type: string }
-      - { name: etiqueta,    label: "Etiqueta (año · duración · contexto)", type: string }
-      - { name: descripcion, label: "Descripción", type: text }
-      - { name: video,       label: "Video (ID de YouTube)", type: string }
-      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
-
-  - name: maniobras
-    label: "Docencia · Maniobras y terapias"
-    type: file
-    path: data/maniobras.yaml
-    list: true
-    fields:
-      - { name: titulo,      label: "Título", type: string }
-      - { name: etiqueta,    label: "Etiqueta", type: string }
-      - { name: descripcion, label: "Descripción", type: text }
-      - { name: video,       label: "Video (ID de YouTube)", type: string }
-
-  - name: esenciales
-    label: "Docencia · Esenciales de Vértigo"
-    type: file
-    path: data/esenciales.yaml
-    list: true
-    fields:
-      - { name: titulo,      label: "Título", type: string }
-      - { name: etiqueta,    label: "Etiqueta", type: string }
-      - { name: descripcion, label: "Descripción", type: text }
-      - { name: video,       label: "Video (ID de YouTube)", type: string }
-      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
-
-  - name: fisiologia
-    label: "Docencia · Fisiología básica"
-    type: file
-    path: data/fisiologia.yaml
-    list: true
-    fields:
-      - { name: titulo,      label: "Título", type: string }
-      - { name: etiqueta,    label: "Etiqueta", type: string }
-      - { name: descripcion, label: "Descripción", type: text }
-      - { name: video,       label: "Video (ID de YouTube)", type: string }
-      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
-
-  - name: seminarios
-    label: "Docencia · Seminarios de alumnos"
-    type: file
-    path: data/seminarios.yaml
-    list: true
-    fields:
-      - { name: titulo,      label: "Título", type: string }
-      - { name: etiqueta,    label: "Etiqueta (autor / contexto)", type: string }
-      - { name: descripcion, label: "Descripción", type: text }
-      - { name: video,       label: "Video (ID de YouTube)", type: string }
-
-  # ── Blog / Actualidad ─────────────────────────────────────────────────────
+  # ── Blog unificado (noticias + clases/recursos docentes) ─────────────────
   - name: blog
-    label: Blog
+    label: "Blog (noticias y clases)"
     type: collection
     path: content/blog
     filename: "{primary}.md"
@@ -129,9 +70,17 @@ content:
     fields:
       - { name: title, label: "Título", type: string }
       - { name: date,  label: "Fecha", type: date }
-      - { name: image, label: "Imagen de portada", type: string }
-      - { name: tags,  label: "Etiquetas", type: string, list: true }
-      - { name: body,  label: "Contenido", type: rich-text }
+      - { name: image, label: "Imagen de portada (con video YouTube: https://i.ytimg.com/vi/<ID>/hqdefault.jpg)", type: string }
+      - name: categorias
+        label: "Categoría (noticias o clases)"
+        type: select
+        list: true
+        options:
+          values:
+            - { value: noticias, label: "Noticias (Actualidad)" }
+            - { value: clases,   label: "Clases / Recursos docentes" }
+      - { name: tags,  label: "Etiquetas (ej: esenciales-de-vertigo, fisiologia-basica, clases-on-line, maniobras-y-terapias, seminarios-de-alumnos)", type: string, list: true }
+      - { name: body,  label: "Contenido (para video: <div class=\"lo-video\"><iframe src=\"https://www.youtube.com/embed/<ID>\" allowfullscreen></iframe></div>)", type: rich-text }
 
   # ── Parámetros del sitio (marca, contacto, afiliaciones) ──────────────────
   - name: params
