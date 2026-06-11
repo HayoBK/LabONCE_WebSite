@@ -1,0 +1,69 @@
+# ============================================================
+# LAB ONCE — Integrantes (editable por Pages CMS)
+# 'bio' es una LISTA (las plantillas toleran también string si el CMS la aplana).
+# 'foto': por ahora apuntan al CDN de Wix. TODO: descargar a static/images/ y
+#         reemplazar por "images/<archivo>" (ver CONTINUACION-LABONCE.md).
+# ============================================================
+
+- nombre: "Hayo Breinbauer"
+  rol: "Director LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_1d53c2390d114005953829c01953d298~mv2.png/v1/fill/w_400,h_400,al_c,q_85/hayo.png"
+  bio:
+    - "Otorrinolaringólogo y Otoneurólogo (MD, PhD)."
+    - "Profesor Asistente, Departamentos de Otorrinolaringología y Neurociencia, Universidad de Chile."
+    - "Jefe Equipo de Vértigo y Equilibrio, Clínica Alemana de Santiago."
+
+- nombre: "Phoebe Ramos"
+  rol: "Investigadora LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_458ff7032e15405a8f845e9e93686cc2~mv2.jpeg/v1/fill/w_400,h_400,al_c,q_85/phoebe.jpeg"
+  bio:
+    - "Otorrinolaringóloga y Otoneuróloga (MD, PhD(c))."
+    - "Equipo de Vértigo y Equilibrio, Clínica Alemana de Santiago."
+
+- nombre: "Daniela Contreras"
+  rol: "Investigadora LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_aaf32f98d7884b339a10d6d0f02bc43e~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/daniela.jpg"
+  bio:
+    - "Otorrinolaringóloga y Otoneuróloga."
+    - "Equipo de Vértigo y Equilibrio, Clínica Alemana de Santiago."
+    - "Médico Otorrinolaringóloga, Hospital de La Florida."
+
+- nombre: "Diego Herrero"
+  rol: "Investigador LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_660d1e812a264205860df583e68de477~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/diego.jpg"
+  bio:
+    - "Neurólogo y Neuro-otólogo, con postítulo en Neurología Vascular (Clínica Alemana de Santiago) y perfeccionamiento en Neuro-sonología y Neuro-intensivo (Universidades de Giessen-Marburg y Heidelberg, Alemania)."
+    - "Equipo de Vértigo y Trastornos del Equilibrio, Clínica Alemana de Santiago."
+
+- nombre: "Paul Délano"
+  rol: "Investigador LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_4eb1e196576645718a2e1f73e734834a~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/paul.jpg"
+  bio:
+    - "Otorrinolaringólogo, Doctor en Neurociencia."
+    - "Profesor Titular, Departamento de Neurociencia, Universidad de Chile."
+    - "Director Académico, Hospital Clínico José Joaquín Aguirre."
+
+- nombre: "Pía Michael"
+  rol: "Investigadora LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_f624958472d949b48fb88314ec747c89~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/pia.jpg"
+  bio:
+    - "Otorrinolaringóloga."
+    - "Profesora Adjunta, Departamento de Otorrinolaringología, Universidad de Chile."
+    - "Médico Otorrinolaringóloga, Hospital San Juan de Dios y Clínica Indisa."
+
+- nombre: "Marcia Núñez"
+  rol: "Investigadora LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_12f382df55794930a96179cf9b2c9b44~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/marcia.jpg"
+  bio:
+    - "Fonoaudióloga, Magíster en Audiología, Magíster en Docencia en Educación Superior."
+    - "Audiología, Hospital San Juan de Dios."
+    - "Docente del área de Audiología, carrera de Fonoaudiología, Universidad Andrés Bello."
+    - "Docente del Magíster de Audiología, Universidad Andrés Bello."
+
+- nombre: "Cristián Barraza"
+  rol: "Investigador LAB ONCE"
+  foto: "https://static.wixstatic.com/media/73522c_b7c9b6fce7b3449fbbc62921ffdb5196~mv2.jpg/v1/fill/w_400,h_400,al_c,q_85/cristian.jpg"
+  bio:
+    - "Fonoaudiólogo, Magíster en Audiología."
+    - "Audiología y Otoneurología, Hospital San Juan de Dios."
+    - "Coordinador de las áreas de Audiología y Otoneurología para las carreras de Fonoaudiología, Universidad de los Andes y Universidad Mayor."

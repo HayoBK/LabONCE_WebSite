@@ -1,0 +1,35 @@
+<header class="lo-nav" id="site-header">
+  <div class="lo-nav__inner">
+    <a class="lo-nav__brand" href="{{ site.Home.RelPermalink }}">
+      {{ $logo := "https://static.wixstatic.com/media/73522c_edc6782423a7478dad14a0d54c82e43b~mv2.png/v1/fill/w_120,h_120,al_c,q_85/labonce.png" }}
+      {{ if (fileExists "static/images/labonce-logo.png") }}{{ $logo = "images/labonce-logo.png" | relURL }}{{ end }}
+      <img class="lo-nav__logo" src="{{ $logo }}" alt="LAB ONCE" onerror="this.style.display='none'">
+      <span class="lo-nav__brandtext">
+        <strong>LAB ONCE</strong>
+        <small>Otoneurología Clínica · Neurociencias del Equilibrio</small>
+      </span>
+    </a>
+
+    <button class="lo-nav__toggle" id="lo-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="lo-nav__menu" id="lo-menu">
+      <ul>
+        {{ range site.Menus.main }}
+          {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+          <li class="{{ if .HasChildren }}has-children{{ end }}{{ if $active }} is-active{{ end }}">
+            <a href="{{ .URL }}">{{ .Name }}</a>
+            {{ if .HasChildren }}
+            <ul class="lo-nav__sub">
+              {{ range .Children }}
+              <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+              {{ end }}
+            </ul>
+            {{ end }}
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>

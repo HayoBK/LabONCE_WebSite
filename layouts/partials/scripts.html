@@ -1,0 +1,51 @@
+<script>
+// --- Menú móvil ---
+(function(){
+  var t = document.getElementById('lo-toggle');
+  var m = document.getElementById('lo-menu');
+  if(t && m){
+    t.addEventListener('click', function(){
+      var open = m.classList.toggle('is-open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+
+// --- Canvas "equilibrio": nodos en órbita (motivo de canales semicirculares) ---
+(function(){
+  var c = document.getElementById('lo-hero-canvas');
+  if(!c) return;
+  var ctx = c.getContext('2d');
+  var nodes = [], W, H, raf;
+  function resize(){
+    W = c.width = c.offsetWidth; H = c.height = c.offsetHeight;
+    nodes = [];
+    var n = Math.max(28, Math.round(W/34));
+    for(var i=0;i<n;i++){
+      nodes.push({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35, r:Math.random()*1.8+.6});
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<nodes.length;i++){
+      var a=nodes[i];
+      a.x+=a.vx; a.y+=a.vy;
+      if(a.x<0||a.x>W)a.vx*=-1;
+      if(a.y<0||a.y>H)a.vy*=-1;
+      for(var j=i+1;j<nodes.length;j++){
+        var b=nodes[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<120){
+          ctx.strokeStyle='rgba(31,200,221,'+(1-d/120)*.35+')';
+          ctx.lineWidth=.6;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(143,230,241,.85)';
+      ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  resize(); draw();
+  window.addEventListener('resize', function(){ cancelAnimationFrame(raf); resize(); draw(); });
+})();
+</script>

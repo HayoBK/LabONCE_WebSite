@@ -1,0 +1,58 @@
+# ============================================================
+# LAB ONCE — Navegación principal
+# La sección "Intranet" del Wix se OMITE por decisión de Hayo (contenido interno).
+# Submenús (parent) se renderizan como dropdown en el navbar (header.html).
+# ============================================================
+
+main:
+  - name: "Inicio"
+    pageRef: "/"
+    weight: 10
+
+  - name: "Integrantes"
+    pageRef: "/integrantes"
+    weight: 20
+  - name: "Oferta de Tesis"
+    pageRef: "/oferta-tesis"
+    parent: "Integrantes"
+    weight: 21
+
+  - name: "Publicaciones"
+    pageRef: "/publicaciones"
+    weight: 30
+  - name: "Todas las publicaciones"
+    pageRef: "/publicaciones/todas"
+    parent: "Publicaciones"
+    weight: 32
+
+  - name: "Recursos Docentes"
+    pageRef: "/recursos"
+    weight: 40
+  - name: "Clases On-line"
+    pageRef: "/recursos/clases-online"
+    parent: "Recursos Docentes"
+    weight: 41
+  - name: "Maniobras y Terapias"
+    pageRef: "/recursos/maniobras-y-terapias"
+    parent: "Recursos Docentes"
+    weight: 42
+  - name: "Esenciales (Pregrado)"
+    pageRef: "/recursos/esenciales"
+    parent: "Recursos Docentes"
+    weight: 43
+  - name: "Fisiología básica"
+    pageRef: "/recursos/fisiologia-basica"
+    parent: "Recursos Docentes"
+    weight: 44
+  - name: "Seminarios de Alumnos"
+    pageRef: "/recursos/seminarios-alumnos"
+    parent: "Recursos Docentes"
+    weight: 45
+
+  - name: "Proyectos"
+    pageRef: "/proyectos"
+    weight: 50
+
+  - name: "Blog"
+    pageRef: "/blog"
+    weight: 60

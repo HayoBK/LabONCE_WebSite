@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Investigación</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Una selección de nuestras publicaciones en revistas internacionales.{{ end }}</p>
+    </div>
+
+    {{ with site.Data.publicaciones_seleccionadas }}
+    <div class="lo-grid" style="gap:20px">
+      {{ range . }}
+      <article class="lo-pub">
+        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        <div class="lo-pub__body">
+          <p class="lo-pub__journal">{{ .revista }}</p>
+          <h3 class="lo-pub__title">{{ .titulo }}</h3>
+          {{ with .abstract }}<p class="lo-pub__abstract is-clamped">{{ . }}</p>
+          <button class="lo-pub__more" type="button" onclick="var p=this.previousElementSibling;p.classList.toggle('is-clamped');this.textContent=p.classList.contains('is-clamped')?'Leer más':'Leer menos';">Leer más</button>{{ end }}
+          <div style="margin-top:10px">
+            {{ with .link }}<a class="lo-pub__link" href="{{ . }}" target="_blank" rel="noopener">Texto completo disponible
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>{{ end }}
+          </div>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <div style="margin-top:32px">
+      <a class="lo-btn lo-btn--ghost" style="background:var(--lo-navy);color:#fff" href="{{ "publicaciones/todas/" | relURL }}">Ver todas las publicaciones</a>
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:32px 0 0;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+  </div>
+</section>
+{{ end }}

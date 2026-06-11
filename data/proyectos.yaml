@@ -1,0 +1,12 @@
+# ============================================================
+# LAB ONCE — Proyectos (editable por Pages CMS)
+# Pendiente de portar desde https://hayobk.wixsite.com/labonce/proyectos-activos
+# Formato de cada proyecto:
+#
+# - titulo: "Nombre del proyecto"
+#   descripcion: "Descripción breve."
+#   financiamiento: "FONDECYT Regular 1234567"
+#   estado: "Activo"
+#   link: "https://..."
+#
+# Mientras la lista esté vacía, la página /proyectos muestra un texto de marcador.

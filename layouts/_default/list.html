@@ -1,0 +1,26 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">{{ site.Title }}</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="lo-section__sub">{{ . }}</p>{{ end }}
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0">{{ . }}</div>{{ end }}
+
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ with $pages }}
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <a class="lo-card" href="{{ .RelPermalink }}" style="padding:22px;display:block">
+        <h3 style="margin:0 0 6px;font-size:1.1rem">{{ .Title }}</h3>
+        {{ with .Params.subtitle }}<p style="color:var(--lo-muted);font-size:.9rem;margin:0">{{ . }}</p>
+        {{ else }}{{ with .Summary }}<p style="color:var(--lo-muted);font-size:.9rem;margin:0">{{ . | plainify | truncate 120 }}</p>{{ end }}{{ end }}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Actualidad</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Noticias, videos y clases de LAB ONCE.{{ end }}</p>
+    </div>
+
+    {{ $posts := .Pages.ByDate.Reverse }}
+    {{ with $posts }}
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <a class="lo-post" href="{{ .RelPermalink }}">
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+        <div class="lo-post__body">
+          <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
+          <h3 class="lo-post__title">{{ .Title }}</h3>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="lo-section__sub">Aún no hay entradas publicadas.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

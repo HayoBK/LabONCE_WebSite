@@ -1,0 +1,101 @@
+{{ define "main" }}
+
+<!-- ===================== HERO ===================== -->
+<section class="lo-hero">
+  <canvas id="lo-hero-canvas" class="lo-hero__canvas" aria-hidden="true"></canvas>
+  <div class="lo-hero__inner">
+    <p class="lo-eyebrow lo-hero__eyebrow">Clínica Alemana de Santiago · Universidad de Chile</p>
+    <h1>Neurociencias del <span class="lo-accent">equilibrio</span>, de la clínica a la investigación.</h1>
+    <p class="lo-hero__lead">{{ site.Params.description }}</p>
+    <div class="lo-cta">
+      <a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Conoce al equipo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/" | relURL }}">Publicaciones</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE ===================== -->
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Quiénes somos</p>
+      <h2 class="lo-section__title">LAB ONCE</h2>
+      <p class="lo-section__sub">{{ site.Params.brand.full }}.</p>
+    </div>
+    <p style="max-width:70ch;font-size:1.05rem;color:var(--lo-text)">
+      LAB ONCE reúne a una red de investigadores de <strong>Clínica Alemana de Santiago</strong> y el
+      <strong>Departamento de Neurociencia de la Universidad de Chile</strong>, dedicados al estudio de la
+      Otoneurología Clínica y las Neurociencias del Equilibrio: vértigo, mareo, mareo funcional (PPPD),
+      tinnitus, navegación espacial y rehabilitación vestibular.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== PUBLICACIONES DESTACADAS ===================== -->
+{{ with site.Data.publicaciones_seleccionadas }}
+<section class="lo-section lo-section--mist">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Investigación</p>
+      <h2 class="lo-section__title">Publicaciones destacadas</h2>
+      <p class="lo-section__sub">Una selección de nuestro trabajo en revistas internacionales.</p>
+    </div>
+    <div class="lo-grid">
+      {{ range first 3 . }}
+      <article class="lo-pub">
+        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        <div class="lo-pub__body">
+          <p class="lo-pub__journal">{{ .revista }}</p>
+          <h3 class="lo-pub__title">{{ .titulo }}</h3>
+          {{ with .link }}<a class="lo-pub__link" href="{{ . }}" target="_blank" rel="noopener">Texto completo
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" style="background:var(--lo-navy);color:#fff" href="{{ "publicaciones/" | relURL }}">Ver todas las publicaciones</a></p>
+  </div>
+</section>
+{{ end }}
+
+<!-- ===================== INTEGRANTES PREVIEW ===================== -->
+{{ with site.Data.integrantes }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Equipo</p>
+      <h2 class="lo-section__title">Nuestros integrantes</h2>
+    </div>
+    <div class="lo-grid lo-grid--4">
+      {{ range first 4 . }}
+      <div class="lo-person">
+        {{ if .foto }}<img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
+        {{ else }}<div class="lo-person__avatar">{{ substr .nombre 0 1 }}</div>{{ end }}
+        <p class="lo-person__name">{{ .nombre }}</p>
+        <p class="lo-person__role">{{ .rol }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Ver todo el equipo</a></p>
+  </div>
+</section>
+{{ end }}
+
+<!-- ===================== AFILIACIONES ===================== -->
+<section class="lo-section lo-section--mist">
+  <div class="lo-container">
+    <div class="lo-section__head" style="text-align:center;margin-left:auto;margin-right:auto">
+      <p class="lo-eyebrow">Colaboración</p>
+      <h2 class="lo-section__title">Instituciones</h2>
+    </div>
+    <div class="lo-afil">
+      {{ range site.Params.afiliaciones }}
+      <a href="{{ .url }}" target="_blank" rel="noopener">{{ .nombre }}</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,78 @@
+# ============================================================
+# LAB ONCE — Publicaciones seleccionadas (editable por Pages CMS)
+# 'imagen': por ahora CDN de Wix. TODO: localizar a static/images/.
+# ============================================================
+
+- titulo: "Spatial navigation entropy suggests allocentric dysfunction in PPPD"
+  revista: "Frontiers in Neurology"
+  anio: 2025
+  link: "https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1599307/full"
+  imagen: "https://static.wixstatic.com/media/73522c_f8c9097b201b4b73990ba02d964096f5~mv2.jpg/v1/fill/w_300,h_300,al_c,q_85/pub1.jpg"
+  abstract: >-
+    Introduction: Persistent postural-perceptual dizziness (PPPD) is a common chronic dizziness
+    disorder with an unclear pathophysiology. It is hypothesized that PPPD may involve functional
+    dysfunction of the construction of inner cognitive maps, leading to disrupted spatial cognition.
+    Methods: Fifty-two participants (19 PPPD patients, 20 vestibular controls without PPPD, and 13
+    healthy volunteers) completed a virtual Morris Water Maze task in non-immersive and virtual
+    reality modalities. Results: PPPD patients exhibited significantly worse navigation performance
+    than both control groups, with greater impairments in predominantly allocentric tasks, and
+    increased exploratory gaze behavior. Discussion: Findings suggest PPPD involves deficits in
+    allocentric spatial navigation, likely due to predictive coding errors and impaired internal
+    model updating, rather than sensory input dysfunction.
+
+- titulo: "Functional Dizziness as a Spatial Cognitive Dysfunction"
+  revista: "Brain Sciences"
+  anio: 2024
+  link: "https://www.mdpi.com/2076-3425/14/1/16"
+  imagen: "https://static.wixstatic.com/media/73522c_581cc16ea5a24d9cb1e8f0a42d99a6cc~mv2.webp/v1/fill/w_300,h_300,al_c,q_85/pub2.webp"
+  abstract: >-
+    Background: Persistent postural-perceptual dizziness (PPPD) may involve disrupted spatial
+    cognition as a core feature. Methods: 19 PPPD patients underwent psycho-cognitive testing
+    (anxiety, depression, memory, attention, planning, executive functions) with emphasis on spatial
+    navigation via a virtual Morris water maze, compared with 12 healthy controls and 20 individuals
+    with other vestibular disorders. Results: PPPD patients demonstrated unique impairments in
+    allocentric spatial navigation and high-demand visuospatial tasks (Towers of London, Trail Making
+    B). Conclusions: PPPD may broadly impair higher cognitive functions, especially spatial cognition;
+    a disruption in the creation of enriched cognitive spatial maps is discussed as a possible
+    pathophysiology.
+
+- titulo: "Spatial Navigation Is Distinctively Impaired in Persistent Postural Perceptual Dizziness"
+  revista: "Frontiers in Neurology: Neuro-otology"
+  anio: 2019
+  link: "https://www.frontiersin.org/articles/10.3389/fneur.2019.01361/full"
+  imagen: "https://static.wixstatic.com/media/73522c_770ef41633214b80a6af584bc3e36f42~mv2.jpg/v1/fill/w_300,h_300,al_c,q_85/pub3.jpg"
+  abstract: >-
+    Objective: To determine whether performance in a virtual spatial navigational task is poorer in
+    PPPD patients than in healthy volunteers and patients with other vestibular disorders. Methods:
+    Subjects performed three virtual Morris water maze tasks, analyzed using the cumulative search
+    error index. Results: PPPD patients (n = 19) performed poorer in navigationally demanding tasks
+    than healthy (n = 18) and vestibular controls (n = 19), discriminating PPPD with an AUC of 0.83.
+    Conclusions: This distinct impairment in spatial navigation offers new insights into PPPD
+    pathophysiology and may represent a new biomarker.
+
+- titulo: "Tinnitus: una patología cerebral"
+  revista: "Revista Chilena de Otorrinolaringología y Cirugía de Cabeza y Cuello"
+  anio: 2019
+  link: "https://scielo.conicyt.cl/scielo.php?script=sci_arttext&pid=S0718-48162019000100125"
+  imagen: "https://static.wixstatic.com/media/73522c_770ef41633214b80a6af584bc3e36f42~mv2.jpg/v1/fill/w_300,h_300,al_c,q_85/pub4.jpg"
+  abstract: >-
+    El tinnitus es un síntoma caracterizado por la percepción de un sonido en ausencia de un estímulo
+    externo. Si bien su fisiopatología puede involucrar una alteración del oído interno, su percepción
+    y el grado de molestia asociado dependen de modificaciones de redes cerebrales cognitivas y
+    emocionales. Esta revisión aborda los cambios a nivel coclear, de tronco encefálico, tálamo y la
+    extensa red cerebral que dan cuenta del tinnitus, y discute cómo esta conceptualización tiene
+    importantes implicancias clínicas.
+
+- titulo: "An Abbreviated Diagnostic Maneuver for Posterior Benign Positional Paroxysmal Vertigo"
+  revista: "Frontiers in Neurology: Neuro-otology"
+  anio: 2016
+  link: "https://www.frontiersin.org/articles/10.3389/fneur.2016.00115/full"
+  imagen: "https://static.wixstatic.com/media/73522c_994aca85762e4eb2b3541620eae54314~mv2.jpg/v1/fill/w_300,h_300,al_c,q_85/pub5.jpg"
+  abstract: >-
+    Introduction: BPPV secondary to canalolithiasis of the posterior semicircular canal is perhaps the
+    most frequent cause of vertigo. Here we present an abbreviated variation of the Dix–Hallpike
+    maneuver that can be performed without an examination bed, requiring only a backed chair. Methods:
+    A diagnostic assessment study in 163 patients presenting with vertigo or dizziness. Results: The
+    abbreviated test had good sensitivity (80%) and high specificity (95%) for diagnosing posterior
+    BPPV. Discussion: It may serve as a screening procedure, especially useful in primary care or
+    overloaded otolaryngology/neurology departments.

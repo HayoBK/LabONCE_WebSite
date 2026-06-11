@@ -1,0 +1,99 @@
+# ============================================================
+# LAB ONCE — Configuración de Pages CMS (app.pagescms.org)
+# Login con GitHub → repo de LAB ONCE → editar contenido sin tocar código.
+# Recomendación: apuntar el CMS a la rama de trabajo (no a main directamente).
+# ============================================================
+
+media:
+  input: static/images
+  output: /images
+
+content:
+
+  # ── Integrantes (lista en un solo archivo de datos) ───────────────────────
+  - name: integrantes
+    label: Integrantes
+    type: file
+    path: data/integrantes.yaml
+    list: true
+    fields:
+      - { name: nombre, label: "Nombre", type: string }
+      - { name: rol,    label: "Rol / cargo", type: string }
+      - { name: foto,   label: "Foto (URL o imagen)", type: string, description: "Pega una URL o, una vez localizadas, usa images/<archivo>." }
+      - { name: bio,    label: "Biografía (una línea por punto)", type: string, list: true }
+
+  # ── Publicaciones seleccionadas ───────────────────────────────────────────
+  - name: publicaciones
+    label: Publicaciones seleccionadas
+    type: file
+    path: data/publicaciones_seleccionadas.yaml
+    list: true
+    fields:
+      - { name: titulo,   label: "Título", type: string }
+      - { name: revista,  label: "Revista", type: string }
+      - { name: anio,     label: "Año", type: number }
+      - { name: link,     label: "Enlace al texto completo", type: string }
+      - { name: imagen,   label: "Imagen (URL o imagen)", type: string }
+      - { name: abstract, label: "Resumen / abstract", type: text }
+
+  # ── Proyectos ─────────────────────────────────────────────────────────────
+  - name: proyectos
+    label: Proyectos
+    type: file
+    path: data/proyectos.yaml
+    list: true
+    fields:
+      - { name: titulo,        label: "Título", type: string }
+      - { name: descripcion,   label: "Descripción", type: text }
+      - { name: financiamiento, label: "Financiamiento (ej. FONDECYT 1234567)", type: string }
+      - { name: estado,        label: "Estado (ej. Activo)", type: string }
+      - { name: link,          label: "Enlace (opcional)", type: string }
+
+  # ── Blog / Actualidad ─────────────────────────────────────────────────────
+  - name: blog
+    label: Blog
+    type: collection
+    path: content/blog
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    exclude: ["_index.md"]
+    fields:
+      - { name: title, label: "Título", type: string }
+      - { name: date,  label: "Fecha", type: date }
+      - { name: image, label: "Imagen de portada", type: string }
+      - { name: tags,  label: "Etiquetas", type: string, list: true }
+      - { name: body,  label: "Contenido", type: rich-text }
+
+  # ── Recursos Docentes (páginas) ───────────────────────────────────────────
+  - name: recursos
+    label: Recursos Docentes
+    type: collection
+    path: content/recursos
+    filename: "{primary}.md"
+    format: yaml-frontmatter
+    exclude: ["_index.md"]
+    fields:
+      - { name: title,    label: "Título", type: string }
+      - { name: subtitle, label: "Subtítulo", type: string }
+      - { name: body,     label: "Contenido", type: rich-text }
+
+  # ── Parámetros del sitio (marca, contacto, afiliaciones) ──────────────────
+  - name: params
+    label: Ajustes del sitio
+    type: file
+    path: config/_default/params.yaml
+    fields:
+      - name: brand
+        label: "Marca"
+        type: object
+        fields:
+          - { name: name,  label: "Nombre corto", type: string }
+          - { name: full,  label: "Nombre completo", type: string }
+          - { name: short, label: "Bajada", type: string }
+      - { name: description, label: "Descripción del sitio", type: text }
+      - name: contacto
+        label: "Contacto"
+        type: object
+        fields:
+          - { name: email,  label: "Email", type: string }
+          - { name: ciudad, label: "Ciudad", type: string }

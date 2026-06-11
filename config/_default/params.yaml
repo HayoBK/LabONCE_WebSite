@@ -1,0 +1,37 @@
+# ============================================================
+# LAB ONCE — Parámetros del sitio (editables, varios por CMS)
+# ============================================================
+
+# Marca
+brand:
+  name: "LAB ONCE"
+  full: "Laboratorio Oto-neurología Clínica y Neurociencias del Equilibrio"
+  short: "Otoneurología Clínica y Neurociencias del Equilibrio"
+
+description: >-
+  LAB ONCE reúne a una red de investigadores de Clínica Alemana de Santiago y el
+  Departamento de Neurociencia de la Universidad de Chile, dedicados al estudio de la
+  Otoneurología Clínica y las Neurociencias del Equilibrio.
+
+# Afiliaciones principales
+afiliaciones:
+  - nombre: "Clínica Alemana de Santiago"
+    url: "https://www.clinicaalemana.cl/"
+  - nombre: "Departamento de Neurociencia · Universidad de Chile"
+    url: "https://openneurocienciauchile.github.io/Web/"
+
+# Contacto / redes (rellenar con datos reales)
+contacto:
+  email: "hayo.breinbauer@uchile.cl"
+  ciudad: "Santiago, Chile"
+
+redes:
+  youtube: "https://www.youtube.com/results?search_query=lab+once+otoneurologia"
+  # Agregar X / Instagram si LAB ONCE tiene cuentas propias.
+
+# Dominio final previsto (hoy caído): labonce.cl
+dominio_objetivo: "labonce.cl"
+
+# Pie de página
+footer:
+  copyright: "LAB ONCE — Hayo Breinbauer"

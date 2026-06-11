@@ -1,0 +1,32 @@
+<footer class="lo-footer">
+  <div class="lo-footer__inner">
+    <div class="lo-footer__brand">
+      <strong>LAB ONCE</strong>
+      <p style="margin:.6rem 0 0;font-size:.9rem;max-width:34ch">{{ site.Params.brand.full }}</p>
+    </div>
+
+    <div>
+      <h4>Afiliaciones</h4>
+      <ul>
+        {{ range site.Params.afiliaciones }}
+        <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ .nombre }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+
+    <div>
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="{{ "integrantes/" | relURL }}">Integrantes</a></li>
+        <li><a href="{{ "publicaciones/" | relURL }}">Publicaciones</a></li>
+        <li><a href="{{ "proyectos/" | relURL }}">Proyectos</a></li>
+        <li><a href="{{ "blog/" | relURL }}">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lo-footer__bottom">
+    <span>© {{ now.Year }} {{ site.Params.footer.copyright }}</span>
+    <span>Hugo · GitHub Pages</span>
+  </div>
+</footer>

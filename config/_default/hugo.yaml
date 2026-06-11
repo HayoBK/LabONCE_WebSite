@@ -1,0 +1,49 @@
+# ============================================================
+# LAB ONCE — Configuración principal de Hugo
+# Sitio autocontenido (sin módulos externos). Hugo extended 0.162.1.
+# ============================================================
+
+# baseURL real para builds locales. En producción, el workflow de GitHub Actions
+# lo sobreescribe con la URL real de Pages (--baseURL "${{ steps.pages.outputs.base_url }}/").
+baseURL: "https://hayobk.github.io/LabONCE_WebSite/"
+
+title: "LAB ONCE"
+languageCode: "es-CL"
+defaultContentLanguage: "es"
+hasCJKLanguage: false
+
+enableEmoji: true
+enableRobotsTXT: true
+summaryLength: 30
+buildFuture: true
+
+# Acentos en slugs (importante para títulos en español)
+removePathAccents: true
+disableAliases: false
+
+pagination:
+  pagerSize: 9
+
+# Markdown: permitimos HTML embebido (igual que el sitio de Neurociencia, que usa
+# bloques HTML dentro del markdown).
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    style: github
+
+imaging:
+  resampleFilter: lanczos
+  quality: 88
+  anchor: smart
+
+taxonomies:
+  tag: tags
+  categoria: categorias
+
+# Salidas: el Home agrega RSS.
+outputs:
+  home: [HTML, RSS]
+  section: [HTML, RSS]

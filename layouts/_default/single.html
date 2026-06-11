@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="lo-prose">
+  <p class="lo-eyebrow">{{ with .Parent }}{{ .Title }}{{ end }}</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Params.subtitle }}<p class="lo-section__sub" style="font-size:1.1rem">{{ . }}</p>{{ end }}
+  {{ with .Params.image }}<img src="{{ . }}" alt="{{ $.Title }}">{{ end }}
+  {{ .Content }}
+</article>
+{{ end }}

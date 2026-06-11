@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Investigación</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Proyectos de investigación activos del laboratorio.{{ end }}</p>
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+
+    {{ with site.Data.proyectos }}
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <article class="lo-card" style="padding:24px">
+        {{ with .estado }}<p class="lo-eyebrow" style="color:var(--lo-aqua);background:var(--lo-navy);display:inline-block;padding:3px 10px;border-radius:999px;font-size:.66rem">{{ . }}</p>{{ end }}
+        <h3 style="font-size:1.12rem;margin:.5rem 0 .4rem">{{ .titulo }}</h3>
+        {{ with .descripcion }}<p style="color:var(--lo-muted);font-size:.92rem;margin:0 0 8px">{{ . }}</p>{{ end }}
+        {{ with .financiamiento }}<p style="font-size:.82rem;color:var(--lo-teal);font-weight:600;margin:0">{{ . }}</p>{{ end }}
+        {{ with .link }}<p style="margin:.6rem 0 0"><a class="lo-pub__link" href="{{ . }}" target="_blank" rel="noopener">Más información →</a></p>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="lo-section__sub">Proyectos en preparación. Pronto publicaremos el detalle.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Equipo</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Lab ONCE reúne investigadores de Clínica Alemana de Santiago y el Departamento de Neurociencia de la Universidad de Chile.{{ end }}</p>
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+
+    {{ with site.Data.integrantes }}
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <article class="lo-person">
+        {{ if .foto }}
+          <img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
+        {{ else }}
+          <div class="lo-person__avatar">{{ substr (upper .nombre) 0 1 }}</div>
+        {{ end }}
+        <p class="lo-person__name">{{ .nombre }}</p>
+        <p class="lo-person__role">{{ .rol }}</p>
+        <div class="lo-person__bio">
+          {{- /* bio puede venir como lista (preferido) o como string (CMS aplana) */ -}}
+          {{ $b := .bio }}
+          {{ if reflect.IsSlice $b }}
+            <ul>{{ range $b }}<li>{{ . }}</li>{{ end }}</ul>
+          {{ else }}{{ with $b }}<p>{{ . }}</p>{{ end }}{{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="lo-section__sub">Aún no hay integrantes cargados.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
