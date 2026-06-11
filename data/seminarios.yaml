@@ -1,0 +1,24 @@
+# ============================================================
+# LAB ONCE — Seminarios de alumnos (Pages CMS)
+# 'video': ID de YouTube (completar por CMS cuando estén migrados).
+# ============================================================
+
+- titulo: "RNM en Schwannoma vestibular"
+  etiqueta: "Seminario por Daphne Segall"
+  descripcion: "En contexto de pasantías observacionales en Clínica Alemana."
+
+- titulo: "Hipoacusia súbita y COVID"
+  etiqueta: "Seminario por Daphne Segall"
+  descripcion: "En contexto de pasantías observacionales en Clínica Alemana."
+
+- titulo: "Seminario de Vértigo para internos UDD"
+  etiqueta: "Seminario de resolución de dudas"
+  descripcion: "Con excelentes preguntas, se profundizó en la otoneurología básica."
+
+- titulo: "Fisiología auditiva y métodos de exploración de la audición"
+  etiqueta: "Seminario por residente de 1º año ORL"
+  descripcion: "Excelente síntesis de fisiología y métodos de exploración."
+
+- titulo: "Vértigo agudo y VPPB: preguntas y respuestas"
+  etiqueta: "Seminario por residente de 1º año ORL"
+  descripcion: "Síntesis de los cuadros de vértigo agudo y posicional."

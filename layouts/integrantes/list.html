@@ -4,32 +4,58 @@
     <div class="lo-section__head">
       <p class="lo-eyebrow">Equipo</p>
       <h1 class="lo-section__title">{{ .Title }}</h1>
-      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Lab ONCE reúne investigadores de Clínica Alemana de Santiago y el Departamento de Neurociencia de la Universidad de Chile.{{ end }}</p>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Lab-ONCE reúne investigadores de Clínica Alemana de Santiago y el Departamento de Neurociencia de la Universidad de Chile.{{ end }}</p>
     </div>
 
     {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
 
-    {{ with site.Data.integrantes }}
-    <div class="lo-grid lo-grid--3">
-      {{ range . }}
-      <article class="lo-person">
-        {{ if .foto }}
-          <img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
-        {{ else }}
-          <div class="lo-person__avatar">{{ substr (upper .nombre) 0 1 }}</div>
-        {{ end }}
-        <p class="lo-person__name">{{ .nombre }}</p>
-        <p class="lo-person__role">{{ .rol }}</p>
-        <div class="lo-person__bio">
-          {{- /* bio puede venir como lista (preferido) o como string (CMS aplana) */ -}}
-          {{ $b := .bio }}
-          {{ if reflect.IsSlice $b }}
-            <ul>{{ range $b }}<li>{{ . }}</li>{{ end }}</ul>
-          {{ else }}{{ with $b }}<p>{{ . }}</p>{{ end }}{{ end }}
-        </div>
-      </article>
+    {{ $todos := site.Data.integrantes }}
+    {{ if $todos }}
+
+    {{/* Grupos en orden, con color propio del arcoíris del logo */}}
+    {{ $grupos := slice
+      (dict "cat" "director" "titulo" "Dirección"                "color" "var(--lo-blue)"   "sub" "")
+      (dict "cat" "activo"   "titulo" "Colaboradores activos"    "color" "var(--lo-green)"  "sub" "Investigadores que participan actualmente en los proyectos del laboratorio.")
+      (dict "cat" "alumno"   "titulo" "Alumnos activos"          "color" "var(--lo-orange)" "sub" "Estudiantes desarrollando su investigación o tesis con nosotros.")
+      (dict "cat" "egresado" "titulo" "Alumnos egresados"        "color" "var(--lo-purple)" "sub" "Estudiantes que completaron su paso por el laboratorio.")
+      (dict "cat" "anterior" "titulo" "Colaboradores anteriores" "color" "var(--lo-cyan)"   "sub" "Gracias a quienes fueron parte del camino de Lab-ONCE.")
+    }}
+
+    {{ range $grupos }}
+      {{ $g := . }}
+      {{ $miembros := where $todos "categoria" $g.cat }}
+      {{/* Tolerancia CMS: si nadie tiene 'categoria', mostrar todo bajo un solo grupo */}}
+      {{ if and (eq $g.cat "director") (not (where $todos "categoria" "director")) (not (where $todos "categoria" "activo")) }}
+        {{ $miembros = $todos }}
       {{ end }}
-    </div>
+      {{ with $miembros }}
+      <div class="lo-group">
+        <h2 class="lo-group__title"><span class="lo-group__dot" style="background:{{ $g.color }}"></span>{{ $g.titulo }}</h2>
+        {{ with $g.sub }}<p class="lo-group__sub">{{ . }}</p>{{ end }}
+        <div class="lo-grid lo-grid--3">
+          {{ range . }}
+          <article class="lo-person{{ if in (slice "alumno" "egresado" "anterior") (.categoria | default "") }} lo-person--compact{{ end }}">
+            {{ if .foto }}
+              <img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
+            {{ else }}
+              <div class="lo-person__avatar">{{ substr (upper .nombre) 0 1 }}</div>
+            {{ end }}
+            <p class="lo-person__name">{{ .nombre }}</p>
+            <p class="lo-person__role" style="color:{{ $g.color }}">{{ .rol }}</p>
+            <div class="lo-person__bio">
+              {{- /* bio puede venir como lista (preferido) o como string (CMS aplana) */ -}}
+              {{ $b := .bio }}
+              {{ if reflect.IsSlice $b }}
+                <ul>{{ range $b }}<li>{{ . }}</li>{{ end }}</ul>
+              {{ else }}{{ with $b }}<p>{{ . }}</p>{{ end }}{{ end }}
+            </div>
+          </article>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    {{ end }}
+
     {{ else }}
     <p class="lo-section__sub">Aún no hay integrantes cargados.</p>
     {{ end }}

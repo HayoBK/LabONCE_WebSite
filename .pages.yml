@@ -1,7 +1,7 @@
 # ============================================================
 # LAB ONCE — Configuración de Pages CMS (app.pagescms.org)
-# Login con GitHub → repo de LAB ONCE → editar contenido sin tocar código.
-# Recomendación: apuntar el CMS a la rama de trabajo (no a main directamente).
+# Login con GitHub (cuenta HayoBK) → repo LabONCE_WebSite.
+# Recomendación: apuntar el CMS a una rama de trabajo (no a main directamente).
 # ============================================================
 
 media:
@@ -10,15 +10,25 @@ media:
 
 content:
 
-  # ── Integrantes (lista en un solo archivo de datos) ───────────────────────
+  # ── Equipo (lista en un solo archivo de datos) ────────────────────────────
   - name: integrantes
-    label: Integrantes
+    label: Equipo
     type: file
     path: data/integrantes.yaml
     list: true
     fields:
       - { name: nombre, label: "Nombre", type: string }
       - { name: rol,    label: "Rol / cargo", type: string }
+      - name: categoria
+        label: "Categoría"
+        type: select
+        options:
+          values:
+            - { value: director, label: "Dirección" }
+            - { value: activo,   label: "Colaborador activo" }
+            - { value: alumno,   label: "Alumno activo" }
+            - { value: egresado, label: "Alumno egresado" }
+            - { value: anterior, label: "Colaborador anterior" }
       - { name: foto,   label: "Foto (URL o imagen)", type: string, description: "Pega una URL o, una vez localizadas, usa images/<archivo>." }
       - { name: bio,    label: "Biografía (una línea por punto)", type: string, list: true }
 
@@ -49,6 +59,65 @@ content:
       - { name: estado,        label: "Estado (ej. Activo)", type: string }
       - { name: link,          label: "Enlace (opcional)", type: string }
 
+  # ── Docencia: catálogos de clases y videos ────────────────────────────────
+  - name: clases_online
+    label: "Docencia · Clases on-line"
+    type: file
+    path: data/clases_online.yaml
+    list: true
+    fields:
+      - { name: titulo,      label: "Título", type: string }
+      - { name: etiqueta,    label: "Etiqueta (año · duración · contexto)", type: string }
+      - { name: descripcion, label: "Descripción", type: text }
+      - { name: video,       label: "Video (ID de YouTube)", type: string }
+      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
+
+  - name: maniobras
+    label: "Docencia · Maniobras y terapias"
+    type: file
+    path: data/maniobras.yaml
+    list: true
+    fields:
+      - { name: titulo,      label: "Título", type: string }
+      - { name: etiqueta,    label: "Etiqueta", type: string }
+      - { name: descripcion, label: "Descripción", type: text }
+      - { name: video,       label: "Video (ID de YouTube)", type: string }
+
+  - name: esenciales
+    label: "Docencia · Esenciales de Vértigo"
+    type: file
+    path: data/esenciales.yaml
+    list: true
+    fields:
+      - { name: titulo,      label: "Título", type: string }
+      - { name: etiqueta,    label: "Etiqueta", type: string }
+      - { name: descripcion, label: "Descripción", type: text }
+      - { name: video,       label: "Video (ID de YouTube)", type: string }
+      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
+
+  - name: fisiologia
+    label: "Docencia · Fisiología básica"
+    type: file
+    path: data/fisiologia.yaml
+    list: true
+    fields:
+      - { name: titulo,      label: "Título", type: string }
+      - { name: etiqueta,    label: "Etiqueta", type: string }
+      - { name: descripcion, label: "Descripción", type: text }
+      - { name: video,       label: "Video (ID de YouTube)", type: string }
+      - { name: clave,       label: "¿Clase fundamental?", type: boolean }
+
+  - name: seminarios
+    label: "Docencia · Seminarios de alumnos"
+    type: file
+    path: data/seminarios.yaml
+    list: true
+    fields:
+      - { name: titulo,      label: "Título", type: string }
+      - { name: etiqueta,    label: "Etiqueta (autor / contexto)", type: string }
+      - { name: descripcion, label: "Descripción", type: text }
+      - { name: video,       label: "Video (ID de YouTube)", type: string }
+
   # ── Blog / Actualidad ─────────────────────────────────────────────────────
   - name: blog
     label: Blog
@@ -63,19 +132,6 @@ content:
       - { name: image, label: "Imagen de portada", type: string }
       - { name: tags,  label: "Etiquetas", type: string, list: true }
       - { name: body,  label: "Contenido", type: rich-text }
-
-  # ── Recursos Docentes (páginas) ───────────────────────────────────────────
-  - name: recursos
-    label: Recursos Docentes
-    type: collection
-    path: content/recursos
-    filename: "{primary}.md"
-    format: yaml-frontmatter
-    exclude: ["_index.md"]
-    fields:
-      - { name: title,    label: "Título", type: string }
-      - { name: subtitle, label: "Subtítulo", type: string }
-      - { name: body,     label: "Contenido", type: rich-text }
 
   # ── Parámetros del sitio (marca, contacto, afiliaciones) ──────────────────
   - name: params

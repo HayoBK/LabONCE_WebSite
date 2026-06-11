@@ -1,0 +1,29 @@
+# ============================================================
+# LAB ONCE — Serie "Esenciales de Vértigo" para pregrado (Pages CMS)
+# 'clave: true' = clase fundamental (contenido mínimo sugerido).
+# 'video': ID de YouTube (completar por CMS cuando estén migrados).
+# ============================================================
+
+- titulo: "Vértigo 1: Abordaje Sindromático"
+  clave: true
+  descripcion: "Clase inicial sobre el abordaje de los trastornos del vértigo y equilibrio. Este video ordena todos los siguientes de la serie."
+
+- titulo: "Vértigo 2: Vértigo Agudo"
+  clave: true
+  descripcion: "Cómo diferenciar cuadros centrales graves de la periférica neuronitis vestibular en vértigo agudo."
+
+- titulo: "Vértigo 3: Vértigo Episódico Corto — VPPB"
+  clave: true
+  descripcion: "Cómo diagnosticar y manejar la forma más frecuente de vértigo."
+
+- titulo: "Vértigo 4: Vértigo Episódico Largo — Migraña Vestibular y Ménière"
+  etiqueta: "Clase de apoyo"
+  descripcion: "No es obligatoria para nivel internado; puede leerse solo el capítulo del texto."
+
+- titulo: "Vértigo 5: Vértigo Crónico"
+  etiqueta: "Clase de apoyo"
+  descripcion: "No es obligatoria para nivel internado; puede leerse solo el capítulo del texto."
+
+- titulo: "Fisioanatomía del Vértigo y Equilibrio"
+  etiqueta: "Clase de apoyo"
+  descripcion: "No es obligatoria para nivel internado; puede leerse solo el capítulo del texto."

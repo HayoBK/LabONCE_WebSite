@@ -4,14 +4,22 @@
 <section class="lo-hero">
   <canvas id="lo-hero-canvas" class="lo-hero__canvas" aria-hidden="true"></canvas>
   <div class="lo-hero__inner">
-    <p class="lo-eyebrow lo-hero__eyebrow">Clínica Alemana de Santiago · Universidad de Chile</p>
-    <h1>Neurociencias del <span class="lo-accent">equilibrio</span>, de la clínica a la investigación.</h1>
-    <p class="lo-hero__lead">{{ site.Params.description }}</p>
-    <div class="lo-cta">
-      <a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Conoce al equipo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/" | relURL }}">Publicaciones</a>
+    <div>
+      <p class="lo-eyebrow lo-hero__eyebrow">Clínica Alemana de Santiago · Universidad de Chile</p>
+      <h1>Neurociencia del <span class="lo-accent">equilibrio</span>, de la clínica a la investigación.</h1>
+      <p class="lo-hero__lead">{{ site.Params.description }}</p>
+      <div class="lo-cta">
+        <a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Conoce al equipo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="lo-btn lo-btn--ghost" href="{{ "recursos/" | relURL }}">Docencia</a>
+        <a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/" | relURL }}">Publicaciones</a>
+      </div>
+    </div>
+    <div>
+      {{ if (fileExists "static/images/labonce-logo.png") }}
+      <img class="lo-hero__logo" src="{{ "images/labonce-logo.png" | relURL }}" alt="Lab-ONCE — Laboratorio de Otoneurología Clínica y Neurociencia del Equilibrio">
+      {{ end }}
     </div>
   </div>
 </section>
@@ -21,13 +29,13 @@
   <div class="lo-container">
     <div class="lo-section__head">
       <p class="lo-eyebrow">Quiénes somos</p>
-      <h2 class="lo-section__title">LAB ONCE</h2>
+      <h2 class="lo-section__title">Lab-ONCE</h2>
       <p class="lo-section__sub">{{ site.Params.brand.full }}.</p>
     </div>
     <p style="max-width:70ch;font-size:1.05rem;color:var(--lo-text)">
-      LAB ONCE reúne a una red de investigadores de <strong>Clínica Alemana de Santiago</strong> y el
+      Lab-ONCE reúne a una red de investigadores de <strong>Clínica Alemana de Santiago</strong> y el
       <strong>Departamento de Neurociencia de la Universidad de Chile</strong>, dedicados al estudio de la
-      Otoneurología Clínica y las Neurociencias del Equilibrio: vértigo, mareo, mareo funcional (PPPD),
+      Otoneurología Clínica y la Neurociencia del Equilibrio: vértigo, mareo, mareo funcional (PPPD),
       tinnitus, navegación espacial y rehabilitación vestibular.
     </p>
   </div>
@@ -55,22 +63,24 @@
       </article>
       {{ end }}
     </div>
-    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" style="background:var(--lo-navy);color:#fff" href="{{ "publicaciones/" | relURL }}">Ver todas las publicaciones</a></p>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/todas/" | relURL }}">Ver todas las publicaciones</a></p>
   </div>
 </section>
 {{ end }}
 
-<!-- ===================== INTEGRANTES PREVIEW ===================== -->
+<!-- ===================== EQUIPO PREVIEW ===================== -->
 {{ with site.Data.integrantes }}
 <section class="lo-section">
   <div class="lo-container">
     <div class="lo-section__head">
       <p class="lo-eyebrow">Equipo</p>
-      <h2 class="lo-section__title">Nuestros integrantes</h2>
+      <h2 class="lo-section__title">Nuestro equipo</h2>
     </div>
     <div class="lo-grid lo-grid--4">
-      {{ range first 4 . }}
-      <div class="lo-person">
+      {{ $destacados := where . "categoria" "in" (slice "director" "activo") }}
+      {{ if not $destacados }}{{ $destacados = . }}{{ end }}
+      {{ range first 4 $destacados }}
+      <div class="lo-person lo-person--compact">
         {{ if .foto }}<img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
         {{ else }}<div class="lo-person__avatar">{{ substr .nombre 0 1 }}</div>{{ end }}
         <p class="lo-person__name">{{ .nombre }}</p>
@@ -83,12 +93,63 @@
 </section>
 {{ end }}
 
+<!-- ===================== DOCENCIA ===================== -->
+<section class="lo-section lo-section--mist">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Docencia</p>
+      <h2 class="lo-section__title">Recursos docentes</h2>
+      <p class="lo-section__sub">Clases en video, maniobras y terapias, fisiología y seminarios — material abierto para estudiantes y profesionales.</p>
+    </div>
+    <div class="lo-grid lo-grid--3">
+      <a class="lo-card" href="{{ "recursos/esenciales/" | relURL }}" style="padding:22px;display:block">
+        <h3 style="margin:0 0 6px;font-size:1.1rem">Esenciales de Vértigo</h3>
+        <p style="color:var(--lo-muted);font-size:.9rem;margin:0">La serie fundamental para pregrado: abordaje sindromático, vértigo agudo, VPPB y más.</p>
+      </a>
+      <a class="lo-card" href="{{ "recursos/clases-online/" | relURL }}" style="padding:22px;display:block">
+        <h3 style="margin:0 0 6px;font-size:1.1rem">Clases on-line</h3>
+        <p style="color:var(--lo-muted);font-size:.9rem;margin:0">El catálogo completo de clases y charlas grabadas desde 2016.</p>
+      </a>
+      <a class="lo-card" href="{{ "recursos/maniobras-y-terapias/" | relURL }}" style="padding:22px;display:block">
+        <h3 style="margin:0 0 6px;font-size:1.1rem">Maniobras y terapias</h3>
+        <p style="color:var(--lo-muted);font-size:.9rem;margin:0">Videos instructivos para pacientes y clínicos: Epley, Zuma, Gufoni, rehabilitación vestibular.</p>
+      </a>
+    </div>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "recursos/" | relURL }}">Ver toda la docencia</a></p>
+  </div>
+</section>
+
+<!-- ===================== BLOG RECIENTE ===================== -->
+{{ $posts := where site.RegularPages "Section" "blog" }}
+{{ with first 3 $posts.ByDate.Reverse }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Actualidad</p>
+      <h2 class="lo-section__title">Últimas entradas</h2>
+    </div>
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <a class="lo-post" href="{{ .RelPermalink }}">
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        <div class="lo-post__body">
+          <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
+          <h3 class="lo-post__title">{{ .Title }}</h3>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "blog/" | relURL }}">Ver el blog</a></p>
+  </div>
+</section>
+{{ end }}
+
 <!-- ===================== AFILIACIONES ===================== -->
 <section class="lo-section lo-section--mist">
   <div class="lo-container">
     <div class="lo-section__head" style="text-align:center;margin-left:auto;margin-right:auto">
       <p class="lo-eyebrow">Colaboración</p>
-      <h2 class="lo-section__title">Instituciones</h2>
+      <h2 class="lo-section__title" style="display:inline-block">Instituciones</h2>
     </div>
     <div class="lo-afil">
       {{ range site.Params.afiliaciones }}

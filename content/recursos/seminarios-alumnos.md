@@ -1,7 +1,9 @@
 ---
-title: "Seminarios de Alumnos"
-subtitle: "Seminarios y presentaciones de estudiantes de LAB ONCE."
+title: "Seminarios de alumnos"
+subtitle: "Seminarios presentados por alumnos, internos y residentes."
+layout: "recurso"
+data_src: "seminarios"
 ---
 
-> **Pendiente de portar** desde `https://hayobk.wixsite.com/labonce/seminarios-alumnos`.
-> Ver `CONTINUACION-LABONCE.md`.
+Seminarios desarrollados por estudiantes en pasantías observacionales, internados y
+residencias vinculadas a Lab-ONCE.

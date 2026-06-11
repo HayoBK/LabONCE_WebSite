@@ -1,12 +1,18 @@
 # ============================================================
 # LAB ONCE — Proyectos (editable por Pages CMS)
-# Pendiente de portar desde https://hayobk.wixsite.com/labonce/proyectos-activos
-# Formato de cada proyecto:
-#
-# - titulo: "Nombre del proyecto"
-#   descripcion: "Descripción breve."
-#   financiamiento: "FONDECYT Regular 1234567"
-#   estado: "Activo"
-#   link: "https://..."
-#
-# Mientras la lista esté vacía, la página /proyectos muestra un texto de marcador.
+# Formato:
+# - titulo / descripcion / financiamiento / estado / link
+# ============================================================
+
+- titulo: "¿Es el Mareo Crónico un problema de Navegación Espacial?"
+  descripcion: >-
+    El Mareo Perceptual Postural Persistente (MPPP/PPPD) es la forma más frecuente de mareo
+    crónico. Este proyecto evaluó los procesos de navegación espacial a nivel conductual
+    (Morris Water Maze virtual e inmersivo), electrofisiológico (EEG durante navegación) y
+    estructural (RNM), comparando pacientes con MPPP, controles sanos y otras causas de
+    vértigo. Sus resultados dieron origen a las publicaciones en Brain Sciences 2024 y
+    Frontiers in Neurology 2025, y a la propuesta del MPPP como una disfunción cognitiva
+    viso-vestibular superior.
+  financiamiento: "FONDECYT de Iniciación 11200469 — ANID"
+  estado: "Investigación completada"
+  link: "https://3b96894b-e70e-4741-b08f-10666bddb33a.filesusr.com/ugd/73522c_a4ae0d67c5f641b4b92bfc83fe451fd8.pdf"

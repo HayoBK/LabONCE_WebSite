@@ -16,6 +16,10 @@
         <div class="lo-post__body">
           <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
           <h3 class="lo-post__title">{{ .Title }}</h3>
+          {{ $tags := .Params.tags }}
+          {{ if reflect.IsSlice $tags }}
+          <p style="margin:10px 0 0">{{ range first 3 $tags }}<span class="lo-chip">{{ . }}</span>{{ end }}</p>
+          {{ end }}
         </div>
       </a>
       {{ end }}

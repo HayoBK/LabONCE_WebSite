@@ -1,0 +1,53 @@
+# ============================================================
+# LAB ONCE — Maniobras y terapias (editable por Pages CMS)
+# 'video': ID de YouTube. Los IDs marcados provienen de los videos publicados
+# en el sitio personal de Hayo y el blog; el resto se completa por CMS.
+# ============================================================
+
+- titulo: "Terapia básica de reentrenamiento auditivo con música"
+  etiqueta: "Tinnitus · para pacientes"
+  descripcion: "Video detallado, pensado para el paciente, del primer nivel de terapia para tinnitus."
+  video: "r1ZZ57jz_B8"
+
+- titulo: "Maniobra de Epley (detallada)"
+  etiqueta: "VPPB canal posterior · para pacientes"
+  descripcion: "Video detallado, pensado para el paciente, con modificaciones para aumentar la tasa de éxito."
+  video: "3oKt028hWyk"
+
+- titulo: "Maniobra de Epley básica"
+  etiqueta: "VPPB canal posterior"
+  descripcion: "Video rápido de la versión no modificada."
+
+- titulo: "Rehabilitación vestibular — estabilidad de la mirada"
+  etiqueta: "Rehabilitación · para pacientes"
+  descripcion: "Algunos de los ejercicios fundamentales para rehabilitación vestibular."
+  video: "6WDXnLouGh4"
+
+- titulo: "Rehabilitación vestibular — estabilidad de la postura"
+  etiqueta: "Rehabilitación · para pacientes"
+  descripcion: "Algunos de los ejercicios fundamentales para rehabilitación vestibular."
+
+- titulo: "Videos de apoyo VORx2"
+  etiqueta: "Rehabilitación · para pacientes y terapeutas"
+  descripcion: "Serie de videos para apoyar la rehabilitación vestibular con paradigma VORx2."
+  video: "qpWq3qQpQA4"
+
+- titulo: "Maniobra de Zuma a izquierda (detallada)"
+  etiqueta: "VPPB · para pacientes"
+  descripcion: "Video con gran detalle, pensado para pacientes."
+
+- titulo: "Maniobra de Zuma a derecha"
+  etiqueta: "VPPB"
+  descripcion: "Versión breve."
+
+- titulo: "Maniobra de Zuma a izquierda"
+  etiqueta: "VPPB"
+  descripcion: "Versión breve."
+
+- titulo: "Maniobra de Gufoni a derecha"
+  etiqueta: "VPPB canal horizontal"
+  descripcion: "Versión breve."
+
+- titulo: "Maniobra de Gufoni a izquierda"
+  etiqueta: "VPPB canal horizontal"
+  descripcion: "Versión breve."

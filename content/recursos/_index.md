@@ -1,13 +1,15 @@
 ---
-title: "Recursos Docentes"
-subtitle: "Material educativo de LAB ONCE: clases, maniobras y terapias, fisiología y seminarios."
+title: "Docencia"
+subtitle: "Material educativo abierto de Lab-ONCE: clases, maniobras y terapias, fisiología y seminarios."
 ---
 
-LAB ONCE comparte material docente en otoneurología y neurociencias del equilibrio.
+Lab-ONCE comparte material docente en otoneurología y neurociencia del equilibrio.
 Explora las distintas secciones:
 
-- [Clases On-line](clases-online/)
-- [Maniobras y Terapias](maniobras-y-terapias/)
-- [Esenciales (Pregrado)](esenciales/)
-- [Fisiología básica](fisiologia-basica/)
-- [Seminarios de Alumnos](seminarios-alumnos/)
+- **[Esenciales de Vértigo (Pregrado)](esenciales/)** — el contenido mínimo: texto guía + clases fundamentales.
+- **[Fisiología básica](fisiologia-basica/)** — las bases de la audición y el equilibrio.
+- **[Clases on-line](clases-online/)** — el catálogo completo de clases y charlas desde 2016.
+- **[Maniobras y Terapias](maniobras-y-terapias/)** — videos instructivos para pacientes y clínicos.
+- **[Seminarios de alumnos](seminarios-alumnos/)** — presentaciones de estudiantes y residentes.
+
+Las clases nuevas se publican también en el [Blog](../blog/).

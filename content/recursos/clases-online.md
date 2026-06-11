@@ -1,7 +1,10 @@
 ---
-title: "Clases On-line"
-subtitle: "Clases y charlas en video de LAB ONCE."
+title: "Clases on-line"
+subtitle: "El catálogo completo de clases y charlas grabadas por Lab-ONCE desde 2016."
+layout: "recurso"
+data_src: "clases_online"
 ---
 
-> **Pendiente de portar** desde `https://hayobk.wixsite.com/labonce/clases-on-line`.
-> Sugerencia: embeber los videos de YouTube del laboratorio. Ver `CONTINUACION-LABONCE.md`.
+Clases y charlas en video sobre otoneurología, vértigo, equilibrio, audición y tinnitus,
+para estudiantes, residentes y profesionales. Los videos se están migrando desde la
+plataforma anterior: los que aún no tienen reproductor estarán disponibles pronto.

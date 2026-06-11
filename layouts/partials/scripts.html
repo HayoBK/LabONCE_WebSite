@@ -11,37 +11,47 @@
   }
 })();
 
-// --- Canvas "equilibrio": nodos en órbita (motivo de canales semicirculares) ---
+// --- Canvas "equilibrio": red de nodos multicolor (motivo del cerebro arcoíris del logo) ---
 (function(){
   var c = document.getElementById('lo-hero-canvas');
   if(!c) return;
   var ctx = c.getContext('2d');
+  var COLORS = ['#E94B3C','#F58220','#F4C20D','#3BA55C','#19A8C4','#1D6FE0','#8E4FD0'];
   var nodes = [], W, H, raf;
   function resize(){
     W = c.width = c.offsetWidth; H = c.height = c.offsetHeight;
     nodes = [];
-    var n = Math.max(28, Math.round(W/34));
+    var n = Math.max(26, Math.round(W/40));
     for(var i=0;i<n;i++){
-      nodes.push({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.35, vy:(Math.random()-.5)*.35, r:Math.random()*1.8+.6});
+      nodes.push({
+        x:Math.random()*W, y:Math.random()*H,
+        vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3,
+        r:Math.random()*2+1,
+        col:COLORS[i % COLORS.length]
+      });
     }
+  }
+  function hex2rgba(hex,a){
+    var v=parseInt(hex.slice(1),16);
+    return 'rgba('+((v>>16)&255)+','+((v>>8)&255)+','+(v&255)+','+a+')';
   }
   function draw(){
     ctx.clearRect(0,0,W,H);
     for(var i=0;i<nodes.length;i++){
-      var a=nodes[i];
-      a.x+=a.vx; a.y+=a.vy;
-      if(a.x<0||a.x>W)a.vx*=-1;
-      if(a.y<0||a.y>H)a.vy*=-1;
+      var p=nodes[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
       for(var j=i+1;j<nodes.length;j++){
-        var b=nodes[j], dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
-        if(d<120){
-          ctx.strokeStyle='rgba(31,200,221,'+(1-d/120)*.35+')';
-          ctx.lineWidth=.6;
-          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        var q=nodes[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<130){
+          ctx.strokeStyle='rgba(94,110,130,'+((1-d/130)*.22)+')';
+          ctx.lineWidth=.7;
+          ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();
         }
       }
-      ctx.fillStyle='rgba(143,230,241,.85)';
-      ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill();
+      ctx.fillStyle=hex2rgba(p.col,.8);
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
     }
     raf=requestAnimationFrame(draw);
   }
