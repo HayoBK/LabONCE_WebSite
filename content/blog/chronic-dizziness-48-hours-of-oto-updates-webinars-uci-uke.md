@@ -11,5 +11,5 @@ tags: ["clases-on-line"]
 Webinar internacional sobre mareo crónico.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/vDdKgEL37F0" title="Chronic Dizziness (48 hours of Oto Updates Webinars) — UCI/UKE" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/vDdKgEL37F0" title="Chronic Dizziness (48 hours of Oto Updates Webinars) — UCI/UKE" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

@@ -14,5 +14,5 @@ Lo presentamos en el CEPE del Hospital San Juan de Dios, este 29 de abril de 202
 Un abrazo.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/ZLg8TwxjmR8" title="VPPB de difícil manejo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/ZLg8TwxjmR8" title="VPPB de difícil manejo" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

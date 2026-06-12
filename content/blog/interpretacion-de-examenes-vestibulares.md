@@ -11,5 +11,5 @@ tags: ["clases-on-line"]
 Cómo interpretar el estudio vestibular contemporáneo.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/zUKo-N7sPEs" title="Interpretación de Exámenes Vestibulares" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/zUKo-N7sPEs" title="Interpretación de Exámenes Vestibulares" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

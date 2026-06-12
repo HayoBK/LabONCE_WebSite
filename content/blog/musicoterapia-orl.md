@@ -9,5 +9,5 @@ tags: ["clase", "musicoterapia", "clases-on-line"]
 Como parte de mi participación en el curso pre-congreso del **Congreso Chileno de ORL 2021**.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/c3SPu-qoPE4" title="Musicoterapia en ORL" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/c3SPu-qoPE4" title="Musicoterapia en ORL" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

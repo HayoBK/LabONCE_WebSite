@@ -9,4 +9,4 @@ tags: ["seminarios-de-alumnos"]
 
 Excelente síntesis de fisiología y métodos de exploración.
 
-> El video está en proceso de migración desde la plataforma anterior.
+> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).

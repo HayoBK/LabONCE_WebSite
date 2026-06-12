@@ -59,11 +59,20 @@ correctas; NS deben pasar de wixdns a Cloudflare (TTL viejo 6 h).
 (`E:\Git_Use_HayoPersonalWeb/config/_default/params.yaml`) a `https://labonce.cl/` + push
 de ese repo; (3) opcional: verified domain en GitHub.
 
+## Nota técnica videos (2026-06-11 noche): Error 153 de YouTube RESUELTO
+Los embeds fallaban con "Error 153 — configuración del reproductor": YouTube ahora EXIGE
+que el iframe envíe referrer. Fix aplicado a TODOS los iframes (32 posts LAB ONCE + 3 del
+sitio personal): atributos oficiales `referrerpolicy="strict-origin-when-cross-origin"` +
+`allow="...web-share"`. Verificado vía oEmbed que los videos del canal SÍ permiten
+inserción. Si un embed vuelve a fallar, revisar ese patrón.
+
 ## Otros pendientes (en orden)
-1. **38 posts de clases sin video** (el Wix no exponía las URLs; muestran nota "en
-   migración"). Se completan por Pages CMS o pegando al chat los links/IDs que falten.
-   Posibles matches dudosos ya anotados: "Fisiología de la Audición PRO" (Wix 2019) vs
-   "Fisiología Auditiva 1-2 de 2" (canal) — Hayo decide si fusionar.
+1. **38 posts de clases sin video** (nota "en migración" + link al canal). Los videos
+   antiguos NO están públicos en YouTube: casi seguro están **NO LISTADOS** en el canal
+   (patrón confirmado: -VrOzj-Wda8 e irUXJJ5huqk son unlisted). **ACCIÓN HAYO:** abrir
+   YouTube Studio → Contenido → filtro Visibilidad "No listado", y pegar al chat la lista
+   título+link; el chat los conecta todos de una vez. Matches dudosos anotados:
+   "Fisiología de la Audición PRO" (Wix 2019) vs "Fisiología Auditiva 1-2 de 2" (canal).
 2. **Localizar imágenes** del CDN de Wix (fotos integrantes, portadas pubs/posts) y los
    PDFs de filesusr (texto guía "Vértigo y Equilibrio", "Detalles del estudio") a static/.
 3. **Fichas incompletas**: foto+bio de Asunción Ruiz; bios de Pablo Pozo y Andrés

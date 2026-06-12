@@ -9,4 +9,4 @@ tags: ["clases-on-line", "fisiologia-basica"]
 
 Sistema vestibular central y oculomotor, pensada inicialmente para residentes de ORL.
 
-> El video de esta clase está en proceso de migración desde la plataforma anterior.
+> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).

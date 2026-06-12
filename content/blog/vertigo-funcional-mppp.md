@@ -13,5 +13,5 @@ Fantástica la mirada que ofreció este curso, con una lógica de los trastornos
 como una disfunción del cerebro predictivo — ¡percepción activa!
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/-VrOzj-Wda8" title="Vértigo Funcional: Mareo Perceptual Postural Persistente" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/-VrOzj-Wda8" title="Vértigo Funcional: Mareo Perceptual Postural Persistente" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

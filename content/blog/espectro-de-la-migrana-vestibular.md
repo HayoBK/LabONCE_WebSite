@@ -11,5 +11,5 @@ tags: ["clases-on-line"]
 Fisiopatología de la migraña vestibular.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/nPUXsLauzwk" title="Espectro de la Migraña Vestibular" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/nPUXsLauzwk" title="Espectro de la Migraña Vestibular" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

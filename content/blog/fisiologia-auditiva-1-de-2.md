@@ -9,5 +9,5 @@ tags: ["clases-on-line", "fisiologia-basica"]
 Primera parte de la clase de fisiología auditiva.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/vTRe7eS0QFY" title="Fisiología Auditiva (1 de 2)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/vTRe7eS0QFY" title="Fisiología Auditiva (1 de 2)" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

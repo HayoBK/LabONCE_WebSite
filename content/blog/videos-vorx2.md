@@ -10,5 +10,5 @@ Compartimos videos de apoyo a la **rehabilitación vestibular**, incluyendo ejer
 de ganancia del reflejo vestíbulo-ocular (VORx2), para uso de pacientes y terapeutas.
 
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.2em 0">
-  <iframe src="https://www.youtube.com/embed/qpWq3qQpQA4" title="Rehabilitación vestibular VORx2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
+  <iframe src="https://www.youtube.com/embed/qpWq3qQpQA4" title="Rehabilitación vestibular VORx2" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

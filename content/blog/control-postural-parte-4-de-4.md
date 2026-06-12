@@ -11,5 +11,5 @@ tags: ["clases-on-line"]
 Cuarta parte de la serie de control postural.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/mQCuAFLiYxQ" title="Control Postural (parte 4 de 4)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/mQCuAFLiYxQ" title="Control Postural (parte 4 de 4)" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

@@ -9,5 +9,5 @@ tags: ["clases-on-line", "fisiologia-basica"]
 Clase de neuroanatomía del sistema auditivo y vestibular.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/qYj1x52T0hE" title="Neuroanatomía del sistema Auditivo y Vestibular" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/qYj1x52T0hE" title="Neuroanatomía del sistema Auditivo y Vestibular" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

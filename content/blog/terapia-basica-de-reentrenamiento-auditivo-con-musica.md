@@ -13,5 +13,5 @@ Video detallado, pensado para el paciente, del primer nivel de terapia para tinn
 **Importante:** este material no reemplaza una evaluación médica. Consulte con un médico por sus problemas de vértigo, mareo, tinnitus o trastornos del equilibrio.
 
 <div class="lo-video">
-  <iframe src="https://www.youtube.com/embed/r1ZZ57jz_B8" title="Terapia básica de reentrenamiento auditivo con música" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/r1ZZ57jz_B8" title="Terapia básica de reentrenamiento auditivo con música" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
