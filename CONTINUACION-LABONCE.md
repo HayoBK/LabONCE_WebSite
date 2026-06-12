@@ -1,104 +1,99 @@
 # CONTINUACIÓN — Sitio LAB ONCE
 
 Carpeta de trabajo: `E:\Git_Use_LabOnce`.
-Sitio Hugo **autocontenido** que reemplaza el Wix `https://hayobk.wixsite.com/labonce`.
-**EN VIVO:** `https://hayobk.github.io/LabONCE_WebSite/` (repo `github.com/HayoBK/LabONCE_WebSite`).
-Última actualización: 2026-06-11 (rediseño logo arcoíris + porteo completo del Wix).
+Sitio Hugo **autocontenido**. Repo: `github.com/HayoBK/LabONCE_WebSite` (cuenta HayoBK).
+URL GitHub Pages: `https://hayobk.github.io/LabONCE_WebSite/` · Dominio en corte: `labonce.cl`.
+Última actualización: 2026-06-11 (noche) — V2 publicada (commit `fb407f0`).
 
 ---
 
 ## ⚠️ CÓMO TRABAJAMOS — MODO DUAL
-1. **El chat (Cowork / Fable 5)** = cerebro. Planifica, hace fetch web, edita archivos del repo
-   directamente cuando Hayo lo autoriza, y entrega bloques para Claude Code. NO corre hugo ni git.
-2. **Claude Code (terminal sobre `E:\Git_Use_LabOnce`)** = manos. Corre hugo y git, valida el
-   build, commitea y **pushea a main** (cada push redeploya el sitio vía Actions).
-   Default **Sonnet**; Opus solo para arquitectura delicada.
-**Política:** cada etapa termina con build verde + commit + push (Hayo lo pidió explícito).
+1. **El chat (Cowork / Fable 5)** = cerebro. Planifica, hace fetch web, **edita archivos del
+   repo directamente** (Hayo lo autorizó para este repo), usa Chrome para páginas con JS.
+   NO corre hugo ni git.
+2. **Claude Code (terminal sobre `E:\Git_Use_LabOnce`)** = manos: hugo + git. Default
+   **Sonnet**. Política: cada etapa cierra con build verde + commit + push (deploy automático).
+3. Conectar también `E:\Git_Use_WebUchile` (solo lectura) como referencia si hace falta.
 
-## ⚡ ACTUALIZACIÓN 2026-06-11 (tarde) — V2: blog unificado + ORCID + ajustes de logo
-Tras publicar el rediseño, Hayo pidió por audio una segunda ronda (ya implementada por el chat,
-PENDIENTE de build + push):
-1. **Landing:** "equilibrio" ahora con degradé de azules (no arcoíris); logo del hero más
-   grande y con fondo transparente (`static/images/labonce-hero.png`); navbar SOLO con la
-   cabeza del logo (`labonce-head.png`, generada recortando el PNG); kicker invertido
-   (U. de Chile primero); botón "Recursos Docentes".
-2. **Blog unificado (cambio estructural):** se ELIMINARON `content/recursos/`,
-   `layouts/recursos/` y los data files de docencia. TODO el material vive ahora en
-   `content/blog/` (71 posts) con taxonomías: `categorias` = noticias | clases, y `tags` de
-   área (esenciales-de-vertigo, fisiologia-basica, clases-on-line, maniobras-y-terapias,
-   seminarios-de-alumnos). Menú: "Recursos Docentes" → /categorias/clases (con dropdown por
-   tag) y "Actualidad" → /categorias/noticias. Plantilla nueva `layouts/_default/term.html`.
-3. **YouTube:** se recolectaron los 30 videos del canal `@VertigoyEquilibrio-HayoBre6046`
-   (vía Chrome). 32 posts tienen video embebido; 38 siguen sin ID (el Wix no los expone) y
-   muestran nota "en migración" — completables por CMS.
-4. **ORCID:** `publicaciones/todas` carga en vivo las publicaciones desde
-   `pub.orcid.org/v3.0/0000-0002-3278-065X/works` (JS client-side, con el listado curado
-   como respaldo si falla). iD verificado contra la ficha del sitio de Neurociencia.
-5. `.pages.yml` actualizado (blog con categorías; colecciones de docencia eliminadas).
-**Riesgos del build v2:** pageRef del menú hacia páginas de taxonomía
-(`/categorias/clases`, `/tags/...`) y el `where ... "Params.categorias" "intersect"` del
-index. Si `pageRef` a taxonomía falla, cambiar esas entradas de menú a `url:` relativas.
-**DNS labonce.cl:** en proceso (Cloudflare + NIC); baseURL se cambia tras el corte.
+## Estado: V2 EN PRODUCCIÓN (commit fb407f0, deploy verde)
+El sitio completo está publicado: rediseño con el logo arcoíris 2026 + arquitectura de
+**blog unificado**. 134 páginas, build verde.
 
-## Estado anterior: REDISEÑO 2026 COMPLETO — publicado (commit 5d5c925)
-El 2026-06-11 el chat rediseñó todo el sitio en torno al **nuevo logo**
-(`static/images/labonce-logo.png`, copia de "LabONCE v2026.png": fondo blanco, navy,
-línea arcoíris, cerebro multicolor) y portó TODO el contenido restante del Wix.
-**Falta:** que Claude Code corra el build, se corrija lo que falle, y se haga push.
+### Lo que ya está hecho y funcionando
+- **Identidad**: fondo claro, navy + azul `#1D6FE0`, arcoíris del logo como firma (filete
+  navbar, títulos, hovers, footer). "equilibrio" del hero en degradé de azules.
+  Navbar = solo la cabeza del logo (`static/images/labonce-head.png`); hero con
+  `labonce-hero.png` (fondo transparente). Generados con PIL desde "LabONCE v2026.png".
+- **Arquitectura**: Inicio / Equipo / Investigación (Proyectos · Pub. destacadas · Todas ·
+  Oferta Tesis) / **Recursos Docentes** (= `/categorias/clases`, dropdown por tags) /
+  **Actualidad** (= `/categorias/noticias`).
+- **Blog unificado**: TODO el material vive en `content/blog/` (70 posts + _index).
+  Front matter: `categorias: ["noticias"|"clases"]` + `tags` de área
+  (esenciales-de-vertigo, fisiologia-basica, clases-on-line, maniobras-y-terapias,
+  seminarios-de-alumnos). Plantilla término: `layouts/_default/term.html`.
+  YA NO existen `content/recursos/` ni data files de docencia.
+- **Equipo** (`data/integrantes.yaml`, campo `categoria`): director / activos (Délano,
+  Ramos, D. Contreras, A. Ruiz, Herrero) / alumnos (Pozo, A. Contreras) / egresados
+  (Garrido, Faúndez) / anteriores (Michael, Núñez, Barraza).
+- **ORCID**: `publicaciones/todas` carga en vivo `pub.orcid.org/v3.0/0000-0002-3278-065X/works`
+  (JS client-side; listado curado de 45 refs como respaldo en la misma página).
+- **YouTube**: canal `@VertigoyEquilibrio-HayoBre6046` (channel ID `UCRgbxmT-Pzw78ZdB_7If-fw`),
+  30 videos recolectados; 32 posts con video embebido.
+- Deploy: Actions Node 24, Pages activo, `.pages.yml` al día (blog con categorías).
 
-### Identidad visual nueva (labonce.css reescrito)
-- Fondo blanco/claro; texto navy `--lo-ink #16233B`; azul principal `--lo-blue #1D6FE0`.
-- **Arcoíris del logo** como firma: `--lo-rainbow` (filete bajo navbar, subrayado de títulos
-  de sección, borde superior de tarjetas al hover, filete sobre el footer).
-- Hero claro con el logo grande a la derecha + canvas de nodos multicolor (scripts.html).
-- Tipografías sin cambio: Space Grotesk / Inter / Roboto Condensed. Prefijo `lo-`.
+## 🔴 PENDIENTE INMEDIATO: DNS labonce.cl (¡con errores de tipeo detectados!)
+Hayo ya hizo: Cloudflare (Free) + nameservers en NIC + custom domain `labonce.cl` en
+GitHub Pages. **PERO los registros en Cloudflare quedaron MAL TIPEADOS** (verificado por
+DNS 2026-06-11 noche):
+- CNAME www → `hayobk_github.io` (guión bajo) — debe ser **`hayobk.github.io`** (punto).
+- Las 4 A apuntan a IPs erróneas (185.199.188.153 / 185.100.111.153 / 185.199.118.153 /
+  185.199.189.153). Deben ser EXACTAMENTE: **185.199.108.153, 185.199.109.153,
+  185.199.110.153, 185.199.111.153** (todas DNS only / nube gris).
+Consecuencia actual: github.io redirige a labonce.cl (custom domain ya seteado) y
+labonce.cl no responde → **el sitio está inaccesible hasta corregir los registros**.
+Tras corregir: GitHub emite el certificado (minutos a horas) → marcar "Enforce HTTPS".
+Verificación: `https://dns.google/resolve?name=labonce.cl&type=A` debe devolver las 4 IPs
+correctas; NS deben pasar de wixdns a Cloudflare (TTL viejo 6 h).
+**Después del corte:** (1) `baseURL: "https://labonce.cl/"` en `config/_default/hugo.yaml`
+(solo afecta builds locales); (2) actualizar el botón LAB ONCE del sitio personal
+(`E:\Git_Use_HayoPersonalWeb/config/_default/params.yaml`) a `https://labonce.cl/` + push
+de ese repo; (3) opcional: verified domain en GitHub.
 
-### Arquitectura de contenido nueva (menús reorganizados)
-Menú: **Inicio / Equipo / Investigación / Docencia / Blog**
-- **Equipo** (`/integrantes`, título "Equipo"): agrupado por `categoria` en data/integrantes.yaml:
-  director (Hayo) → activos (Délano, Ramos, D. Contreras, **Asunción Ruiz** (nueva, sin foto/bio),
-  Herrero) → alumnos activos (**Pablo Pozo, Andrés Contreras**) → egresados (**Rosario Garrido,
-  Felipe Faúndez**) → anteriores (Michael, Núñez, Barraza). Plantilla `integrantes/list.html`
-  agrupa con `where` + color de grupo; tolera falta de categoria.
-- **Investigación** (dropdown): Proyectos (`data/proyectos.yaml`, ya con el proyecto FONDECYT
-  11200469 completado), Publicaciones destacadas, **Todas las publicaciones** (45 refs portadas
-  del Wix a `content/publicaciones/todas.md`), **Oferta de Tesis** (texto completo del Wix).
-- **Docencia** (`/recursos`, dropdown): plantilla genérica `layouts/recursos/recurso.html`
-  (lee `data_src` del front matter) + 5 data files CMS-editables:
-  `clases_online.yaml` (35 clases), `maniobras.yaml` (11), `esenciales.yaml` (6),
-  `fisiologia.yaml` (5), `seminarios.yaml` (5). Campo `video` = ID de YouTube.
-- **Blog**: 8 posts (3 previos + 5 portados: curso otoneurología 2025, vértigo funcional MPPP,
-  clase balance 2022, VPPB difícil manejo, musicoterapia ORL). Chips de tags en la lista.
+## Otros pendientes (en orden)
+1. **38 posts de clases sin video** (el Wix no exponía las URLs; muestran nota "en
+   migración"). Se completan por Pages CMS o pegando al chat los links/IDs que falten.
+   Posibles matches dudosos ya anotados: "Fisiología de la Audición PRO" (Wix 2019) vs
+   "Fisiología Auditiva 1-2 de 2" (canal) — Hayo decide si fusionar.
+2. **Localizar imágenes** del CDN de Wix (fotos integrantes, portadas pubs/posts) y los
+   PDFs de filesusr (texto guía "Vértigo y Equilibrio", "Detalles del estudio") a static/.
+3. **Fichas incompletas**: foto+bio de Asunción Ruiz; bios de Pablo Pozo y Andrés
+   Contreras; fotos de egresados.
+4. Revisar visualmente la V2 (Hayo aún no la ve) y ajustar detalles de estética.
+5. Limpiar warnings de deprecación de Hugo (languageCode, .Site.Data — no fatales).
+6. Pages CMS: probar flujo de edición con la nueva estructura de blog.
 
-### ⚠️ Videos pendientes de ID (importante)
-El Wix usaba un reproductor propio y el fetch no entrega las URLs de los videos. Tienen ID
-de YouTube confirmado: las 4 clases del blog docente, y en maniobras: Epley detallado
-(3oKt028hWyk), reentrenamiento auditivo (r1ZZ57jz_B8), estabilidad de la mirada (6WDXnLouGh4),
-VORx2 (qpWq3qQpQA4) — tomados del sitio personal/blog (Hayo: verificar asignación).
-El RESTO de las clases del catálogo está sin `video:`; se completan por Pages CMS o
-pegándole al chat la lista de IDs del canal de YouTube.
+## Datos útiles
+- ORCID Hayo: `0000-0002-3278-065X` · Email académico: `hbreinbauer@uchile.cl`.
+- Canal YouTube: `https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046`.
+- El sandbox del chat NO puede: instalar Hugo, consultas DNS directas (usar
+  `dns.google/resolve?name=X&type=Y`), descargar modelos de voz (audios de WhatsApp:
+  pedir a Hayo la transcripción), ni descargar del CDN de Wix.
+- El chat SÍ puede: editar el repo, procesar imágenes (PIL), usar Chrome (con permisos
+  que Hayo aprueba en pantalla), fetch de Wix/YouTube(parcial)/ORCID.
 
-### Riesgos a vigilar en el primer build del rediseño
-- `where . "categoria" "in" (slice ...)` en index.html y los `where` de integrantes/list.html.
-- `layout: "recurso"` + `data_src` (lookup layouts/recursos/recurso.html, `index site.Data`).
-- El logo con espacio "LabONCE v2026.png" NO se usa (se usa la copia labonce-logo.png).
-
-## Pendientes
-1. **Build + push del rediseño** (bloque ya entregado a Hayo).
-2. Completar IDs de YouTube de los videos del catálogo (CMS o chat).
-3. Localizar imágenes del CDN de Wix (fotos de integrantes, portadas de pubs/posts) y el PDF
-   "Vértigo y Equilibrio" + "Detalles del estudio" (hoy en filesusr de Wix) a static/.
-4. Foto/bio de Asunción Ruiz; bios de Pozo y A. Contreras; fotos de egresados (opcional).
-5. Google Scholar IDs en publicaciones/todas.md (se quitaron los placeholders rotos).
-6. Dominio labonce.cl si se recupera (CNAME + baseURL).
-7. Limpiar warnings de deprecación de Hugo (languageCode, .Site.Data… no fatales).
-
-## Decisiones tomadas
-- Intranet y Repositorios del Wix: OMITIDOS. ✔
-- Arquitectura 4 áreas (Equipo/Investigación/Docencia/Blog) en vez de las ~12 pestañas del Wix. ✔
-- Push a main en cada etapa con build verde. ✔
-- Deploy: actions en versiones Node 24; Pages activado a mano (Settings → Pages → GitHub Actions). ✔
-
-## 🧭 MODELO DE REFERENCIA — Sitio del Depto. de Neurociencia
-Vive en `E:\Git_Use_WebUchile` (conectar solo-lectura en hilos nuevos). Stack distinto
-(Hugo Blox + Tailwind): emular nivel de diseño y patrones CMS-safe, no la mecánica.
+## 📋 MENSAJE INICIAL para el próximo hilo de Cowork (Fable 5)
+> Hola. Proyecto: **sitio LAB ONCE** (Hugo autocontenido) en `E:\Git_Use_LabOnce`, en vivo
+> vía GitHub Pages (repo HayoBK/LabONCE_WebSite) y en corte de dominio a labonce.cl.
+> Lee primero `CONTINUACION-LABONCE.md` y `CLAUDE.md` en esa carpeta: la V2 (blog
+> unificado + ORCID + logo arcoíris) ya está publicada (commit fb407f0).
+>
+> Trabajamos en **MODO DUAL**: tú (el chat) planificas, investigas y **editas los archivos
+> del repo directamente** (te autoricé), y me entregas al final UN SOLO bloque para pegar
+> en **Claude Code** (corre en paralelo sobre `E:\Git_Use_LabOnce`; hace hugo + git + push,
+> default Sonnet). Yo te pego de vuelta el diff/salida.
+>
+> Primera tarea: revisa el estado del DNS de labonce.cl (sección "PENDIENTE INMEDIATO" del
+> CONTINUACION: quedaron registros mal tipeados en Cloudflare que yo debía corregir —
+> verifica con `dns.google/resolve` si ya quedó bien y si GitHub emitió el certificado).
+> Si el dominio ya está activo, haz el post-corte (baseURL + botón del sitio personal).
+> Después seguimos con los pendientes numerados del CONTINUACION.
