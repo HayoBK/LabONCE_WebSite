@@ -12,7 +12,7 @@ equilibrio.
 
 Junto con el nuevo sitio llega un **equipo renovado** y una agenda de **nuevos proyectos**.
 Se vienen muchas contribuciones a líneas de **investigación interdisciplinaria** de la
-**Universidad de Chile** —incluido el proyecto **FONDECYT 2026**— y otros por
+**Universidad de Chile** —incluido los proyectos **Red-SENS** y **FONIS: Preguntas predictivas en Vértigo**— y otros por
 venir. Iremos compartiendo aquí cada avance.
 
 Gracias por acompañarnos en esta nueva etapa.
