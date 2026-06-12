@@ -3,7 +3,39 @@
 Carpeta de trabajo: `E:\Git_Use_LabOnce`.
 Sitio Hugo **autocontenido**. Repo: `github.com/HayoBK/LabONCE_WebSite` (cuenta HayoBK).
 URL GitHub Pages: `https://hayobk.github.io/LabONCE_WebSite/` · Dominio en corte: `labonce.cl`.
-Última actualización: 2026-06-11 (noche) — V2 publicada (commit `fb407f0`).
+Última actualización: 2026-06-12 — V3 lista (pendiente build + push).
+
+---
+
+## ⚡ V3 (2026-06-12) — videos conectados, buscador, contacto, landing. PENDIENTE build+push
+DNS labonce.cl YA RESUELTO y en vivo con HTTPS. Ronda V3 implementada por el chat:
+1. **Videos**: Hayo entregó `labonce_videos_mapeo_v2.md` (uploads) con los 63 IDs reales.
+   Se conectaron TODOS los embeds. Multi-video: balance 2022 (4 partes), NAVI/mareo crónico
+   (2). Epley básica=`3oKt028hWyk`, detallada=`CbVbmZSbzVA`. Se eliminaron los 2 posts
+   "Métodos de Evaluación". Nuevos posts: "Navegación espacial alocéntrica en PPPD — Bárány
+   2024" (`xNNK5gZtqYA`) y "Actualidad en Tinnitus" (3 partes: `0ZirE4vRMHc`, `PwCjd3qdnyk`,
+   `_pnmf6gNr1A`). Ya NO quedan notas "en migración". 71 posts (66 clases + 5 noticias).
+2. **Landing**: navbar con LOGO COMPLETO (`labonce-hero.png`, 74px). Hero con logo grande
+   (620px) y texto más chico. Kicker "Universidad de Chile · Clínica Alemana". Se eliminó
+   "Quiénes somos" → arriba van las Últimas noticias.
+3. **Noticia nueva** (hoy): "Nueva página web, nuevo equipo, nuevos proyectos" (menciona
+   investigación interdisciplinaria U. de Chile + FONDECYT 2026). Imagen Unsplash (placeholder).
+4. **Foto Asunción Ruiz** (`static/images/asuncion.jpeg`); plantillas resuelven rutas locales
+   con relURL.
+5. **Proyectos**: quitado el marcador "pendiente de portar".
+6. **Recursos Docentes** (`term.html`): 5 tags grandes + TODOS los demás tags + **buscador
+   que filtra** las tarjetas. Cada tag tiene "← Volver a todos los recursos". Menú: nuevo
+   subítem "Todos los recursos".
+7. **Buscador global**: lupa arriba a la derecha → `/buscar/` (JS sobre `index.json`, nuevo
+   output JSON del home en `layouts/index.json`).
+8. **Contacto**: ítem de menú + `/contacto` con hbreinbauer@uchile.cl.
+
+**Riesgos del build V3:** nuevo output JSON (`layouts/index.json`, usa `site.GetPage`),
+`term.html` con recolección de tags vía `range .Pages`+`append`, layouts nuevos
+`buscar.html`/`contacto.html` (lookup por `layout:` en front matter), menú con pageRef a
+`/contacto`. Si algún `pageRef`/`GetPage` falla, revisar esos puntos.
+Pendiente menor (⚠️): Esenciales 2 (Vértigo Agudo) quedó con ID `JCZZnAxosQQ` — hay 3 tomas
+en el canal; Hayo confirma cuál prefiere (ver final del mapeo_v2).
 
 ---
 

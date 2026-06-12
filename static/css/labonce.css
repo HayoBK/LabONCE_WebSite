@@ -69,7 +69,7 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-nav__inner{max-width:var(--lo-maxw);margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px}
 .lo-nav__brand{display:flex;align-items:center;gap:12px;color:var(--lo-ink);text-decoration:none}
 .lo-nav__brand:hover{text-decoration:none}
-.lo-nav__logo{height:56px;width:auto;object-fit:contain}
+.lo-nav__logo{height:74px;width:auto;object-fit:contain;max-width:78vw}
 .lo-nav__menu{margin-left:auto}
 .lo-nav__menu>ul{list-style:none;display:flex;align-items:center;gap:2px;margin:0;padding:0}
 .lo-nav__menu a{color:var(--lo-text);font-size:.92rem;font-weight:500;padding:9px 13px;border-radius:8px;display:block;transition:background .2s,color .2s}
@@ -90,12 +90,12 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-hero{position:relative;min-height:clamp(380px,62vh,560px);display:flex;align-items:center;overflow:hidden;
   background:linear-gradient(180deg,#FFFFFF 0%,#F2F6FC 100%);color:var(--lo-ink)}
 .lo-hero__canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
-.lo-hero__inner{position:relative;z-index:2;max-width:var(--lo-maxw);margin:0 auto;padding:56px 24px;width:100%;
-  display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
-.lo-hero__eyebrow{color:var(--lo-blue)}
-.lo-hero h1{color:var(--lo-ink);font-size:clamp(2rem,5vw,3.3rem);font-weight:700;max-width:18ch;margin:.5rem 0 .6rem}
-.lo-hero__lead{font-size:clamp(1rem,1.6vw,1.16rem);max-width:58ch;color:var(--lo-muted);margin:0 0 26px}
-.lo-hero__logo{width:min(460px,100%);margin:0 auto;filter:drop-shadow(0 22px 40px rgba(22,35,59,.18))}
+.lo-hero__inner{position:relative;z-index:2;max-width:var(--lo-maxw);margin:0 auto;padding:48px 24px;width:100%;
+  display:grid;grid-template-columns:1fr 1.1fr;gap:36px;align-items:center}
+.lo-hero__eyebrow{color:var(--lo-blue);font-size:.72rem}
+.lo-hero h1{color:var(--lo-ink);font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:600;max-width:20ch;margin:.4rem 0 .5rem}
+.lo-hero__lead{font-size:clamp(.92rem,1.2vw,1rem);max-width:52ch;color:var(--lo-muted);margin:0 0 22px}
+.lo-hero__logo{width:min(620px,100%);margin:0 auto;filter:drop-shadow(0 22px 40px rgba(22,35,59,.18))}
 .lo-cta{display:flex;flex-wrap:wrap;gap:12px}
 .lo-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;
   font-family:var(--lo-font-title);font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s}
@@ -195,7 +195,26 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 .lo-post__title{font-family:var(--lo-font-title);font-weight:600;font-size:1.08rem;margin:6px 0 0;color:var(--lo-ink)}
 .lo-chip{display:inline-block;font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.08em;
   font-size:.66rem;font-weight:700;color:var(--lo-blue);background:var(--lo-mist2);border-radius:999px;
-  padding:3px 10px;margin-right:6px}
+  padding:3px 10px;margin:0 6px 6px 0;text-decoration:none}
+a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
+.lo-chip--big{font-size:.74rem;padding:6px 14px;background:#fff;border:1px solid var(--lo-line)}
+.lo-chip--big:hover{background:var(--lo-blue);color:#fff;border-color:var(--lo-blue)}
+
+/* Icono de búsqueda en el navbar */
+.lo-nav__search{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+  color:var(--lo-ink);transition:background .2s,color .2s;flex:0 0 auto}
+.lo-nav__search:hover{background:var(--lo-mist2);color:var(--lo-blue);text-decoration:none}
+.lo-nav__search svg{width:19px;height:19px}
+
+/* Página de búsqueda */
+.lo-buscar__input{width:100%;max-width:600px;padding:14px 20px;border:1px solid var(--lo-line);border-radius:999px;
+  font-size:1.05rem;font-family:inherit;background:#fff;box-shadow:var(--lo-shadow-soft)}
+.lo-buscar__res{margin-top:28px;display:grid;gap:14px;max-width:820px}
+.lo-buscar__item{display:block;background:#fff;border:1px solid var(--lo-line);border-radius:var(--lo-radius-sm);
+  padding:16px 20px;box-shadow:var(--lo-shadow-soft);text-decoration:none;transition:transform .18s,box-shadow .18s}
+.lo-buscar__item:hover{transform:translateY(-2px);box-shadow:var(--lo-shadow);text-decoration:none}
+.lo-buscar__item h3{margin:0 0 3px;font-size:1.04rem;color:var(--lo-ink)}
+.lo-buscar__item p{margin:0;font-size:.86rem;color:var(--lo-muted)}
 
 /* ---------- FRANJA AFILIACIONES ---------- */
 .lo-afil{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;align-items:center}
@@ -220,9 +239,10 @@ h1,h2,h3,h4{font-family:var(--lo-font-title);color:var(--lo-ink);line-height:1.1
 /* ---------- RESPONSIVE ---------- */
 @media (max-width:920px){
   .lo-nav__toggle{display:flex}
-  .lo-nav__menu{position:fixed;inset:66px 0 auto 0;background:#fff;margin:0;
+  .lo-nav__menu{position:fixed;inset:96px 0 auto 0;background:#fff;margin:0;
     max-height:0;overflow:hidden;transition:max-height .3s ease;box-shadow:0 24px 40px -20px rgba(22,35,59,.3)}
   .lo-nav__menu.is-open{max-height:80vh;overflow:auto;border-top:1px solid var(--lo-line)}
+  .lo-nav__search{margin-left:auto}
   .lo-nav__menu>ul{flex-direction:column;align-items:stretch;gap:0;padding:8px}
   .lo-nav__menu a{padding:12px 14px}
   .lo-nav__sub{position:static;opacity:1;visibility:visible;transform:none;background:var(--lo-mist);

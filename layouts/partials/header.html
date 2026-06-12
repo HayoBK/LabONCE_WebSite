@@ -2,13 +2,9 @@
   <div class="lo-nav__inner">
     <a class="lo-nav__brand" href="{{ site.Home.RelPermalink }}" title="Lab-ONCE — Inicio">
       {{ $logo := "images/labonce-logo.png" | relURL }}
-      {{ if (fileExists "static/images/labonce-head.png") }}{{ $logo = "images/labonce-head.png" | relURL }}{{ end }}
+      {{ if (fileExists "static/images/labonce-hero.png") }}{{ $logo = "images/labonce-hero.png" | relURL }}{{ end }}
       <img class="lo-nav__logo" src="{{ $logo }}" alt="Lab-ONCE — Inicio">
     </a>
-
-    <button class="lo-nav__toggle" id="lo-toggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
 
     <nav class="lo-nav__menu" id="lo-menu">
       <ul>
@@ -27,5 +23,13 @@
         {{ end }}
       </ul>
     </nav>
+
+    <a class="lo-nav__search" href="{{ "buscar/" | relURL }}" title="Buscar en el sitio" aria-label="Buscar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </a>
+
+    <button class="lo-nav__toggle" id="lo-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>

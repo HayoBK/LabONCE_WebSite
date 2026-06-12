@@ -9,4 +9,6 @@ tags: ["clases-on-line", "fisiologia-basica"]
 
 Clase completa y detallada de fisiología auditiva. Supera en calidad (y duración) a la versión básica de 2017.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/MlEctyq5XF8" title="Fisiología de la Audición PRO" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

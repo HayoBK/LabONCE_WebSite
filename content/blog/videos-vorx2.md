@@ -12,3 +12,7 @@ de ganancia del reflejo vestíbulo-ocular (VORx2), para uso de pacientes y terap
 <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin:1.2em 0">
   <iframe src="https://www.youtube.com/embed/qpWq3qQpQA4" title="Rehabilitación vestibular VORx2" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
+
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/qpWq3qQpQA4" title="Videos para apoyar la rehabilitación vestibular (VORx2)" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

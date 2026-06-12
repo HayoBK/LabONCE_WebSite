@@ -9,4 +9,6 @@ tags: ["seminarios-de-alumnos"]
 
 Con excelentes preguntas, se profundizó en la otoneurología básica.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/-mZGC_buPqY" title="Seminario de Vértigo para internos UDD" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

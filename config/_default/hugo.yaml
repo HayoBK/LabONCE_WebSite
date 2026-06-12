@@ -43,7 +43,7 @@ taxonomies:
   tag: tags
   categoria: categorias
 
-# Salidas: el Home agrega RSS.
+# Salidas: el Home agrega RSS y JSON (índice del buscador).
 outputs:
-  home: [HTML, RSS]
+  home: [HTML, RSS, JSON]
   section: [HTML, RSS]

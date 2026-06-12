@@ -1,0 +1,28 @@
+{{- $idx := slice -}}
+{{- range where site.RegularPages "Section" "blog" -}}
+  {{- $cat := "" -}}
+  {{- with .Params.categorias -}}{{- if reflect.IsSlice . -}}{{- $cat = index . 0 -}}{{- else -}}{{- $cat = . -}}{{- end -}}{{- end -}}
+  {{- $idx = $idx | append (dict
+      "title" .Title
+      "url" .RelPermalink
+      "date" (.Date.Format "02-01-2006")
+      "cat" $cat
+      "tags" (.Params.tags)
+      "resumen" (.Summary | plainify | truncate 160)
+      "tipo" "Blog"
+  ) -}}
+{{- end -}}
+{{- range (slice (site.GetPage "/integrantes") (site.GetPage "/proyectos") (site.GetPage "/publicaciones") (site.GetPage "/publicaciones/todas") (site.GetPage "/oferta-tesis") (site.GetPage "/contacto")) -}}
+  {{- with . -}}
+  {{- $idx = $idx | append (dict
+      "title" .Title
+      "url" .RelPermalink
+      "date" ""
+      "cat" "pagina"
+      "tags" (slice)
+      "resumen" (.Summary | plainify | truncate 160)
+      "tipo" "Página"
+  ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $idx | jsonify -}}

@@ -9,4 +9,6 @@ tags: ["clases-on-line", "maniobras-y-terapias"]
 
 Comenta las técnicas APCCAM y ChARM referenciadas en Publicaciones Seleccionadas.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/VVHUMFkl6h8" title="Manejo abreviado del VPPB" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

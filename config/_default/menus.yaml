@@ -36,6 +36,10 @@ main:
   - name: "Recursos Docentes"
     pageRef: "/categorias/clases"
     weight: 40
+  - name: "Todos los recursos"
+    pageRef: "/categorias/clases"
+    parent: "Recursos Docentes"
+    weight: 40
   - name: "Esenciales de Vértigo"
     pageRef: "/tags/esenciales-de-vertigo"
     parent: "Recursos Docentes"
@@ -60,3 +64,7 @@ main:
   - name: "Actualidad"
     pageRef: "/categorias/noticias"
     weight: 50
+
+  - name: "Contacto"
+    pageRef: "/contacto"
+    weight: 60

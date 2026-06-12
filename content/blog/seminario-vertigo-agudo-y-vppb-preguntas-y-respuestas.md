@@ -9,4 +9,6 @@ tags: ["seminarios-de-alumnos"]
 
 Síntesis de los cuadros de vértigo agudo y posicional.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/vcEcXuAXe_4" title="Vértigo agudo y VPPB: preguntas y respuestas" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

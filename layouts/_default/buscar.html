@@ -1,0 +1,59 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Buscar</p>
+      <h1 class="lo-section__title">Busca en todo el sitio</h1>
+      <p class="lo-section__sub">Clases, charlas, maniobras, noticias y páginas de Lab-ONCE.</p>
+    </div>
+    <input id="lo-q" class="lo-buscar__input" type="search" placeholder="Escribe lo que buscas…" autofocus aria-label="Buscar en el sitio">
+    <p id="lo-q-info" style="margin-top:12px;color:var(--lo-muted);font-size:.9rem"></p>
+    <div id="lo-q-res" class="lo-buscar__res"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var input = document.getElementById('lo-q');
+  var res = document.getElementById('lo-q-res');
+  var info = document.getElementById('lo-q-info');
+  var INDEX = [], ready = false;
+
+  fetch({{ "index.json" | relURL | jsonify }})
+    .then(function(r){ return r.json(); })
+    .then(function(d){ INDEX = d; ready = true; run(); })
+    .catch(function(){ info.textContent = "No se pudo cargar el índice de búsqueda."; });
+
+  function norm(s){ return (s||'').toString().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+  function run(){
+    var q = norm(input.value.trim());
+    res.innerHTML = '';
+    if(!ready){ return; }
+    if(q.length < 2){ info.textContent = 'Escribe al menos 2 letras.'; return; }
+    var hits = INDEX.filter(function(it){
+      var hay = norm(it.title) + ' ' + norm((it.tags||[]).join(' ')) + ' ' + norm(it.resumen);
+      return q.split(/\s+/).every(function(w){ return hay.indexOf(w) !== -1; });
+    });
+    info.textContent = hits.length + (hits.length === 1 ? ' resultado' : ' resultados');
+    hits.slice(0,50).forEach(function(it){
+      var a = document.createElement('a');
+      a.className = 'lo-buscar__item';
+      a.href = it.url;
+      var meta = [it.tipo, it.date].filter(Boolean).join(' · ');
+      var tags = (it.tags||[]).slice(0,4).join(', ');
+      a.innerHTML = '<h3></h3><p></p>';
+      a.querySelector('h3').textContent = it.title;
+      a.querySelector('p').textContent = meta + (tags ? ' — ' + tags : '');
+      res.appendChild(a);
+    });
+  }
+
+  input.addEventListener('input', run);
+  // soporta ?q= en la URL
+  var m = location.search.match(/[?&]q=([^&]+)/);
+  if(m){ input.value = decodeURIComponent(m[1].replace(/\+/g,' ')); }
+})();
+</script>
+{{ end }}

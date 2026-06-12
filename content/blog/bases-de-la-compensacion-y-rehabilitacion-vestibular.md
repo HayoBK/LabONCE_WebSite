@@ -9,4 +9,6 @@ tags: ["clases-on-line", "maniobras-y-terapias"]
 
 Charla para kinesiólogos (noviembre 2016). Extensa, con un "minuto filosófico-político" — si tiene paciencia y tiempo, ¡disfrute!
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/lrmtEvJsoyQ" title="Bases de la Compensación y Rehabilitación Vestibular" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

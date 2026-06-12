@@ -1,0 +1,30 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container lo-container--angosto" style="max-width:760px;margin:0 auto">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Contacto</p>
+      <h1 class="lo-section__title">Escríbenos</h1>
+      <p class="lo-section__sub">¿Interesado en investigación, tesis o docencia con Lab-ONCE? Estaremos felices de conversar.</p>
+    </div>
+
+    <div class="lo-card" style="padding:28px;display:block">
+      <p style="margin:0 0 6px;font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;font-weight:700;color:var(--lo-blue)">Correo electrónico</p>
+      <p style="margin:0 0 20px;font-size:1.25rem">
+        <a href="mailto:{{ site.Params.contacto.email }}">{{ site.Params.contacto.email }}</a>
+      </p>
+      <p style="margin:0 0 6px;font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;font-weight:700;color:var(--lo-blue)">Dr. Hayo Breinbauer</p>
+      <p style="margin:0 0 16px;color:var(--lo-muted)">Director Lab-ONCE — Otorrinolaringólogo y Otoneurólogo.<br>Clínica Alemana de Santiago · Departamento de Neurociencia, Universidad de Chile.</p>
+      <p style="margin:0"><a class="lo-btn lo-btn--primary" href="mailto:{{ site.Params.contacto.email }}">Enviar correo</a></p>
+    </div>
+
+    <div style="margin-top:28px">
+      <p class="lo-eyebrow" style="margin-bottom:14px">Instituciones</p>
+      <div class="lo-afil" style="justify-content:flex-start">
+        {{ range site.Params.afiliaciones }}
+        <a href="{{ .url }}" target="_blank" rel="noopener">{{ .nombre }}</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

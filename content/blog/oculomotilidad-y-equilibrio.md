@@ -9,4 +9,6 @@ tags: ["clases-on-line", "fisiologia-basica"]
 
 Integración de fisiología vestibular central y periférica, con énfasis en lo central.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/fnO60RpqZGU" title="Oculomotilidad y Equilibrio" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>

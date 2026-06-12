@@ -24,22 +24,30 @@
   </div>
 </section>
 
-<!-- ===================== SOBRE ===================== -->
+<!-- ===================== ACTUALIDAD (noticias, primero) ===================== -->
+{{ $noticias := where (where site.RegularPages "Section" "blog") "Params.categorias" "intersect" (slice "noticias") }}
+{{ with first 3 $noticias.ByDate.Reverse }}
 <section class="lo-section">
   <div class="lo-container">
     <div class="lo-section__head">
-      <p class="lo-eyebrow">Quiénes somos</p>
-      <h2 class="lo-section__title">Lab-ONCE</h2>
-      <p class="lo-section__sub">{{ site.Params.brand.full }}.</p>
+      <p class="lo-eyebrow">Actualidad</p>
+      <h2 class="lo-section__title">Últimas noticias</h2>
     </div>
-    <p style="max-width:70ch;font-size:1.05rem;color:var(--lo-text)">
-      Lab-ONCE reúne a una red de investigadores de <strong>Clínica Alemana de Santiago</strong> y el
-      <strong>Departamento de Neurociencia de la Universidad de Chile</strong>, dedicados al estudio de la
-      Otoneurología Clínica y la Neurociencia del Equilibrio: vértigo, mareo, mareo funcional (PPPD),
-      tinnitus, navegación espacial y rehabilitación vestibular.
-    </p>
+    <div class="lo-grid lo-grid--3">
+      {{ range . }}
+      <a class="lo-post" href="{{ .RelPermalink }}">
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        <div class="lo-post__body">
+          <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
+          <h3 class="lo-post__title">{{ .Title }}</h3>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/noticias/" | relURL }}">Ver toda la actualidad</a></p>
   </div>
 </section>
+{{ end }}
 
 <!-- ===================== PUBLICACIONES DESTACADAS ===================== -->
 {{ with site.Data.publicaciones_seleccionadas }}
@@ -81,7 +89,7 @@
       {{ if not $destacados }}{{ $destacados = . }}{{ end }}
       {{ range first 4 $destacados }}
       <div class="lo-person lo-person--compact">
-        {{ if .foto }}<img class="lo-person__photo" src="{{ .foto }}" alt="{{ .nombre }}" loading="lazy">
+        {{ if .foto }}{{ $src := .foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}<img class="lo-person__photo" src="{{ $src }}" alt="{{ .nombre }}" loading="lazy">
         {{ else }}<div class="lo-person__avatar">{{ substr .nombre 0 1 }}</div>{{ end }}
         <p class="lo-person__name">{{ .nombre }}</p>
         <p class="lo-person__role">{{ .rol }}</p>
@@ -118,31 +126,6 @@
     <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/clases/" | relURL }}">Ver todos los recursos docentes</a></p>
   </div>
 </section>
-
-<!-- ===================== ACTUALIDAD (noticias) ===================== -->
-{{ $posts := where (where site.RegularPages "Section" "blog") "Params.categorias" "intersect" (slice "noticias") }}
-{{ with first 3 $posts.ByDate.Reverse }}
-<section class="lo-section">
-  <div class="lo-container">
-    <div class="lo-section__head">
-      <p class="lo-eyebrow">Actualidad</p>
-      <h2 class="lo-section__title">Últimas noticias</h2>
-    </div>
-    <div class="lo-grid lo-grid--3">
-      {{ range . }}
-      <a class="lo-post" href="{{ .RelPermalink }}">
-        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
-        <div class="lo-post__body">
-          <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
-          <h3 class="lo-post__title">{{ .Title }}</h3>
-        </div>
-      </a>
-      {{ end }}
-    </div>
-    <p style="margin-top:26px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/noticias/" | relURL }}">Ver toda la actualidad</a></p>
-  </div>
-</section>
-{{ end }}
 
 <!-- ===================== AFILIACIONES ===================== -->
 <section class="lo-section lo-section--mist">

@@ -1,28 +1,52 @@
 {{ define "main" }}
+{{ $isClases := and (eq .Data.Plural "categorias") (eq .Data.Term "clases") }}
+{{ $isNoticias := and (eq .Data.Plural "categorias") (eq .Data.Term "noticias") }}
+{{ $isTag := eq .Data.Plural "tags" }}
 <section class="lo-section">
   <div class="lo-container">
     <div class="lo-section__head">
-      <p class="lo-eyebrow">{{ if eq .Data.Plural "categorias" }}{{ if eq .Data.Term "noticias" }}Actualidad{{ else }}Docencia{{ end }}{{ else }}Etiqueta{{ end }}</p>
-      <h1 class="lo-section__title">{{ if eq .Data.Term "noticias" }}Actualidad{{ else if eq .Data.Term "clases" }}Recursos Docentes{{ else }}{{ .Title }}{{ end }}</h1>
+      <p class="lo-eyebrow">{{ if $isNoticias }}Actualidad{{ else if $isClases }}Docencia{{ else if $isTag }}Recursos Docentes{{ else }}Etiqueta{{ end }}</p>
+      <h1 class="lo-section__title">{{ if $isNoticias }}Actualidad{{ else if $isClases }}Recursos Docentes{{ else }}{{ .Title }}{{ end }}</h1>
       <p class="lo-section__sub">
-        {{ if eq .Data.Term "noticias" }}Noticias y novedades de Lab-ONCE.
-        {{ else if eq .Data.Term "clases" }}Todas nuestras clases, charlas, maniobras y seminarios en video. Usa las etiquetas para filtrar por área.
-        {{ else }}Entradas etiquetadas con «{{ .Title }}».{{ end }}
+        {{ if $isNoticias }}Noticias y novedades de Lab-ONCE.
+        {{ else if $isClases }}Todas nuestras clases, charlas, maniobras y seminarios en video. Filtra por etiqueta o busca por palabra.
+        {{ else if $isTag }}Entradas etiquetadas con «{{ .Title }}».{{ else }}Entradas en esta categoría.{{ end }}
       </p>
-      {{ if eq .Data.Term "clases" }}
-      <p style="margin-top:14px">
-        {{ range $slug := slice "esenciales-de-vertigo" "fisiologia-basica" "clases-on-line" "maniobras-y-terapias" "seminarios-de-alumnos" }}
-        {{ with site.GetPage (printf "/tags/%s" $slug) }}<a class="lo-chip" style="margin-bottom:6px" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}
-        {{ end }}
-      </p>
+
+      {{ if $isTag }}
+      <p style="margin-top:12px"><a class="lo-btn lo-btn--ghost" href="{{ "categorias/clases/" | relURL }}">← Volver a todos los recursos</a></p>
+      {{ end }}
+
+      {{ if $isClases }}
+      {{/* Buscador que filtra las tarjetas de esta página */}}
+      <div style="margin-top:18px;max-width:520px">
+        <input id="lo-filtro" type="search" placeholder="Buscar en los recursos (título o etiqueta)…"
+          style="width:100%;padding:11px 16px;border:1px solid var(--lo-line);border-radius:999px;font-size:.95rem;font-family:inherit;background:#fff"
+          aria-label="Buscar recursos">
+      </div>
+
+      {{/* Etiquetas: las 5 grandes primero, luego el resto */}}
+      {{ $grandes := slice "esenciales-de-vertigo" "fisiologia-basica" "clases-on-line" "maniobras-y-terapias" "seminarios-de-alumnos" }}
+      {{ $todas := slice }}
+      {{ range .Pages }}{{ range .Params.tags }}{{ $todas = $todas | append . }}{{ end }}{{ end }}
+      {{ $otras := slice }}
+      {{ range ($todas | uniq) }}{{ if not (in $grandes .) }}{{ $otras = $otras | append . }}{{ end }}{{ end }}
+      <div style="margin-top:18px">
+        <p style="margin:0 0 8px">
+          {{ range $grandes }}{{ with site.GetPage (printf "/tags/%s" .) }}<a class="lo-chip lo-chip--big" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}
+        </p>
+        <p style="margin:0">
+          {{ range (sort $otras) }}{{ with site.GetPage (printf "/tags/%s" (. | urlize)) }}<a class="lo-chip" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}{{ end }}
+        </p>
+      </div>
       {{ end }}
     </div>
 
     {{ $posts := .Pages.ByDate.Reverse }}
     {{ with $posts }}
-    <div class="lo-grid lo-grid--3">
+    <div class="lo-grid lo-grid--3" id="lo-cards">
       {{ range . }}
-      <a class="lo-post" href="{{ .RelPermalink }}">
+      <a class="lo-post" href="{{ .RelPermalink }}" data-buscar="{{ .Title | lower }} {{ delimit .Params.tags " " | lower }}">
         {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
         <div class="lo-post__body">
           <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
@@ -35,9 +59,31 @@
       </a>
       {{ end }}
     </div>
+    <p id="lo-sin-resultados" style="display:none;color:var(--lo-muted)">No hay recursos que coincidan con tu búsqueda.</p>
     {{ else }}
     <p class="lo-section__sub">Aún no hay entradas en esta categoría.</p>
     {{ end }}
   </div>
 </section>
+
+{{ if $isClases }}
+<script>
+(function(){
+  var input = document.getElementById('lo-filtro');
+  var cards = [].slice.call(document.querySelectorAll('#lo-cards .lo-post'));
+  var vacio = document.getElementById('lo-sin-resultados');
+  if(!input) return;
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    var visibles = 0;
+    cards.forEach(function(c){
+      var hay = !q || (c.getAttribute('data-buscar')||'').indexOf(q) !== -1;
+      c.style.display = hay ? '' : 'none';
+      if(hay) visibles++;
+    });
+    vacio.style.display = visibles ? 'none' : 'block';
+  });
+})();
+</script>
+{{ end }}
 {{ end }}

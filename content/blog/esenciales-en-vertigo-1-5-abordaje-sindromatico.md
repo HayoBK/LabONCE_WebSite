@@ -9,4 +9,6 @@ tags: ["clases-on-line", "esenciales-de-vertigo"]
 
 Serie Esenciales en Vértigo: breve y acotada, pensada para una formación básica y actualizada.
 
-> 🎬 El video de esta entrada está en proceso de migración. Mientras tanto, puedes visitar el [canal de YouTube del laboratorio](https://www.youtube.com/@VertigoyEquilibrio-HayoBre6046).
+<div class="lo-video">
+  <iframe src="https://www.youtube.com/embed/S4ESyKWi4bY" title="Esenciales en Vértigo 1/5: Abordaje sindromático" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
