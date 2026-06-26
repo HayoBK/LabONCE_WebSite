@@ -13,7 +13,7 @@
   {{ else }}
   {{ with .Params.subtitle }}<p class="lo-section__sub" style="font-size:1.1rem">{{ . }}</p>{{ end }}
   {{ end }}
-  {{ if and .Params.image (not (in (string .Content) "lo-video")) }}<img src="{{ .Params.image }}" alt="{{ .Title }}">{{ end }}
+  {{ if and .Params.image (not (in (string .Content) "lo-video")) }}<img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">{{ end }}
   {{ .Content }}
 </article>
 {{ end }}

@@ -12,7 +12,7 @@
     <div class="lo-grid lo-grid--3">
       {{ range . }}
       <a class="lo-post" href="{{ .RelPermalink }}">
-        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
         <div class="lo-post__body">
           <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
           <h3 class="lo-post__title">{{ .Title }}</h3>

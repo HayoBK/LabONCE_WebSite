@@ -39,7 +39,7 @@
     <div class="lo-grid lo-grid--3">
       {{ range . }}
       <a class="lo-post" href="{{ .RelPermalink }}">
-        {{ with .Params.image }}<img class="lo-post__img" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        {{ with .Params.image }}<img class="lo-post__img" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
         <div class="lo-post__body">
           <span class="lo-post__date">{{ .Date.Format "02-01-2006" }}</span>
           <h3 class="lo-post__title">{{ .Title }}</h3>
@@ -64,7 +64,7 @@
     <div class="lo-grid">
       {{ range first 3 . }}
       <article class="lo-pub">
-        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
         <div class="lo-pub__body">
           <p class="lo-pub__journal">{{ .revista }}</p>
           <h3 class="lo-pub__title">{{ .titulo }}</h3>

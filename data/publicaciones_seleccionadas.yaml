@@ -3,6 +3,26 @@
 # 'imagen': por ahora CDN de Wix. TODO: localizar a static/images/.
 # ============================================================
 
+- titulo: "Personalized Music-Embedded Sound Therapy Based on Gating Modulation and Neural Decoupling Reduces Tinnitus Severity"
+  revista: "Brain Sciences"
+  anio: 2026
+  link: "https://www.mdpi.com/2076-3425/16/6/644"
+  imagen: "images/mmidst-tinnitus-fig1.png"
+  abstract: >-
+    Background: Tinnitus is associated with maladaptive cortical plasticity and aberrant neural
+    synchronization across auditory and non-auditory networks. Desynchronization-based sound
+    therapies (e.g., coordinated reset) often require prolonged daily sessions and specialized
+    formats. We developed a modified protocol embedding therapeutic tones within music (mMIDST)
+    to improve tolerability and engagement. Methods: Prospective, randomized, single-blind pilot
+    trial (Hospital Clínico Universidad de Chile, Jul 2024–Jul 2025). Adults (18–75 y) with
+    chronic non-pulsatile tinnitus received mMIDST or an active low-frequency stimulation (LFS)
+    control, both embedded in identical music tracks, 1 h/day, 5 days/week. Tinnitus severity was
+    assessed with the Tinnitus Handicap Inventory (THI) at baseline and at 1, 2, and 3 months.
+    Results: Twenty-five participants completed the study (15 mMIDST, 10 LFS). The mMIDST group
+    showed significantly greater THI reductions than LFS at two and three months (p < 0.05).
+    Conclusions: Embedding desynchronization-based tonal stimulation within music may represent a
+    promising, well-tolerated, non-invasive approach for chronic tinnitus management.
+
 - titulo: "Spatial navigation entropy suggests allocentric dysfunction in PPPD"
   revista: "Frontiers in Neurology"
   anio: 2025

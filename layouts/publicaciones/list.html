@@ -11,7 +11,7 @@
     <div class="lo-grid" style="gap:20px">
       {{ range . }}
       <article class="lo-pub">
-        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . }}" alt="" loading="lazy">{{ end }}
+        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
         <div class="lo-pub__body">
           <p class="lo-pub__journal">{{ .revista }}</p>
           <h3 class="lo-pub__title">{{ .titulo }}</h3>
