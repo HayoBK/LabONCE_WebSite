@@ -24,6 +24,9 @@
   </div>
 </section>
 
+<!-- ===================== BOLETÍN (franja slim, sobre noticias) ===================== -->
+{{ partial "suscribe-form.html" (dict "variant" "strip") }}
+
 <!-- ===================== ACTUALIDAD (noticias, primero) ===================== -->
 {{ $noticias := where (where site.RegularPages "Section" "blog") "Params.categorias" "intersect" (slice "noticias") }}
 {{ with first 3 $noticias.ByDate.Reverse }}

@@ -35,3 +35,13 @@ dominio_objetivo: "labonce.cl"
 # Pie de página
 footer:
   copyright: "LAB ONCE — Hayo Breinbauer"
+
+# Boletín / Newsletter (Brevo)
+# 'action' = endpoint del formulario de Brevo (paso Share del form builder).
+# Si se vacía, NO se renderiza ningún formulario (los partials lo toleran).
+newsletter:
+  action: "https://13716d26.sibforms.com/serve/MUIFANHOyWWaipMjTIZv15QCI1SXidIgoDT8rEQHm6zJ0LEWqMMjlcAOuPegug807b539N2p6ziBDFw7cc62HmTQmYfnyLmGUDxcbtXfznO0FDij-asX8trb0HWdvCkbmb1MMkLb6V9FBj8I75bh2ZcA5DL7S_Il7VdQ8Uw2pa1XuxeG8TIG2T6YqHzST032uzWkb0-iCsoCecCZVw=="
+  lead_strip: "Recibe las novedades de LAB ONCE en tu correo."
+  lead_footer: "Novedades, clases y publicaciones en tu correo."
+  ok_msg: "¡Gracias! Revisa tu correo para confirmar la suscripción."
+  err_msg: "Revisa el correo e inténtalo de nuevo."

@@ -26,6 +26,8 @@
         <li><a href="{{ "blog/" | relURL }}">Archivo completo del blog</a></li>
       </ul>
     </div>
+
+    {{ partial "suscribe-form.html" (dict "variant" "footer") }}
   </div>
 
   <div class="lo-footer__bottom">

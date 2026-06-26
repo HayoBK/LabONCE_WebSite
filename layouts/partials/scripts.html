@@ -58,4 +58,42 @@
   resize(); draw();
   window.addEventListener('resize', function(){ cancelAnimationFrame(raf); resize(); draw(); });
 })();
+
+// --- Boletín (Brevo): envío AJAX + mensaje inline, sin salir del sitio ---
+// Mejora progresiva: sin JS el form postea normal y abre la página de Brevo.
+(function(){
+  var forms = document.querySelectorAll('form[data-lo-suscribe]');
+  if(!forms.length) return;
+  forms.forEach(function(form){
+    var msg = form.querySelector('[data-lo-msg]');
+    var btn = form.querySelector('button[type="submit"]');
+    var hp  = form.querySelector('input[name="email_address_check"]');
+    var email = form.querySelector('input[name="EMAIL"]');
+    form.addEventListener('submit', function(e){
+      // Honeypot lleno => bot: simulamos OK y no enviamos nada.
+      if(hp && hp.value){ e.preventDefault(); return; }
+      if(!email || !email.checkValidity()){ return; } // deja que el navegador muestre el error nativo
+      e.preventDefault();
+      var data = new URLSearchParams();
+      Array.prototype.forEach.call(form.elements, function(el){
+        if(el.name && el.type !== 'submit') data.append(el.name, el.value || '');
+      });
+      if(btn){ btn.disabled = true; }
+      if(msg){ msg.className = 'lo-suscribe-form__msg'; msg.textContent = 'Enviando…'; }
+      fetch(form.action, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+        body: data.toString()
+      }).then(function(){
+        if(msg){ msg.textContent = form.getAttribute('data-ok') || '¡Listo! Revisa tu correo.'; msg.className = 'lo-suscribe-form__msg is-ok'; }
+        form.reset();
+      }).catch(function(){
+        if(msg){ msg.textContent = form.getAttribute('data-err') || 'Hubo un problema. Inténtalo de nuevo.'; msg.className = 'lo-suscribe-form__msg is-err'; }
+      }).then(function(){
+        if(btn){ btn.disabled = false; }
+      });
+    });
+  });
+})();
 </script>

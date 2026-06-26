@@ -226,7 +226,7 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
 .lo-footer{background:var(--lo-ink);color:#C7D3E4;padding:0 0 28px;margin-top:24px}
 .lo-footer::before{content:"";display:block;height:4px;background:var(--lo-rainbow);margin-bottom:48px}
 .lo-footer__inner{max-width:var(--lo-maxw);margin:0 auto;padding:0 24px;display:grid;gap:28px;
-  grid-template-columns:1.4fr 1fr 1fr}
+  grid-template-columns:1.4fr 1fr 1fr 1.2fr}
 .lo-footer h4{color:#fff;font-size:.92rem;font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px}
 .lo-footer a{color:#A9BCD8}
 .lo-footer a:hover{color:#fff}
@@ -252,4 +252,45 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
   .lo-footer__inner{grid-template-columns:1fr}
   .lo-pub{flex-direction:column}
   .lo-pub__thumb{width:100%;height:180px;flex-basis:auto}
+  .lo-suscribe-strip__inner{flex-direction:column;align-items:stretch;text-align:center;gap:12px}
+  .lo-suscribe-form--strip .lo-suscribe-form__row{flex-direction:column}
 }
+
+/* ============================================================
+   BOLETÍN / SUSCRIPCIÓN (Brevo) — franja slim + footer
+   ============================================================ */
+/* Etiqueta accesible oculta visualmente */
+.lo-vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* Honeypot anti-spam: nunca visible */
+.lo-suscribe-form__hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+
+/* ---------- Franja slim (sobre noticias) ---------- */
+.lo-suscribe-strip{background:var(--lo-ink);position:relative;overflow:hidden}
+.lo-suscribe-strip::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--lo-rainbow)}
+.lo-suscribe-strip__inner{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:18px 24px}
+.lo-suscribe-strip__text{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;min-width:0}
+.lo-suscribe-strip__eyebrow{font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.16em;
+  font-size:.74rem;font-weight:700;color:#fff;opacity:.85}
+.lo-suscribe-strip__lead{color:#D7E2F2;font-size:.98rem}
+
+/* ---------- Form (compartido) ---------- */
+.lo-suscribe-form{margin:0}
+.lo-suscribe-form__row{display:flex;gap:8px}
+.lo-suscribe-form__input{flex:1 1 auto;min-width:0;font-family:var(--lo-font-body);font-size:.95rem;
+  padding:11px 14px;border-radius:999px;border:1px solid var(--lo-line);background:#fff;color:var(--lo-text)}
+.lo-suscribe-form__input:focus{outline:none;border-color:var(--lo-blue);box-shadow:0 0 0 3px rgba(29,111,224,.22)}
+.lo-suscribe-form__btn{flex:0 0 auto;cursor:pointer;border:0;white-space:nowrap;
+  font-family:var(--lo-font-title);font-weight:600;font-size:.95rem;color:#fff;
+  padding:11px 22px;border-radius:999px;background:var(--lo-blue);transition:background .2s,transform .2s,opacity .2s}
+.lo-suscribe-form__btn:hover{background:var(--lo-blue-dark);transform:translateY(-1px)}
+.lo-suscribe-form__btn[disabled]{opacity:.6;cursor:default;transform:none}
+.lo-suscribe-strip .lo-suscribe-form{flex:0 0 auto;width:min(420px,46vw)}
+.lo-suscribe-form__msg{margin:8px 0 0;font-size:.85rem;min-height:1.1em}
+.lo-suscribe-form__msg.is-ok{color:#7DE0A8}
+.lo-suscribe-form__msg.is-err{color:#FF9C9C}
+
+/* ---------- Footer ---------- */
+.lo-footer__news-lead{color:#A9BCD8;font-size:.9rem;margin:0 0 14px;max-width:32ch}
+.lo-suscribe-form--footer .lo-suscribe-form__row{flex-direction:column;gap:8px}
+.lo-suscribe-form--footer .lo-suscribe-form__btn{width:100%;justify-content:center}
+.lo-suscribe-form--footer .lo-suscribe-form__msg.is-ok{color:#9BE9BE}
