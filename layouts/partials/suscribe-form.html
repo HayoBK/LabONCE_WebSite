@@ -5,12 +5,13 @@
   - Endpoint en site.Params.newsletter.action. Si está vacío, no renderiza nada.
   - Form nativo (funciona sin JS: cae a la página de Brevo en pestaña nueva).
   - scripts.html lo mejora con envío AJAX + mensaje inline (data-lo-suscribe).
+  - El honeypot se oculta INLINE (no depende del CSS): nunca aparece como casilla.
 */ -}}
 {{- $n := site.Params.newsletter -}}
 {{- $action := $n.action -}}
 {{- if $action -}}
 {{- $variant := .variant | default "strip" -}}
-{{- $uid := printf "lo-sub-%s" $variant -}}
+{{- $hp := "position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden;opacity:0" -}}
 {{- if eq $variant "footer" -}}
 <div class="lo-footer__news">
   <h4>Boletín</h4>
@@ -19,9 +20,8 @@
         data-ok="{{ $n.ok_msg | default "¡Gracias! Revisa tu correo para confirmar." }}"
         data-err="{{ $n.err_msg | default "Hubo un problema. Inténtalo de nuevo." }}">
     <div class="lo-suscribe-form__row">
-      <label class="lo-vh" for="{{ $uid }}-email">Correo electrónico</label>
-      <input id="{{ $uid }}-email" class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" placeholder="tu@correo.com">
-      <input class="lo-suscribe-form__hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" aria-label="Correo electrónico" placeholder="tu@correo.com">
+      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp }}">
       <input type="hidden" name="locale" value="es">
       <input type="hidden" name="html_type" value="simple">
       <button class="lo-suscribe-form__btn" type="submit">Suscribirme</button>
@@ -32,17 +32,16 @@
 {{- else -}}
 <aside class="lo-suscribe-strip" aria-label="Suscripción al boletín">
   <div class="lo-container lo-suscribe-strip__inner">
-    <div class="lo-suscribe-strip__text">
+    <p class="lo-suscribe-strip__text">
       <span class="lo-suscribe-strip__eyebrow">Boletín</span>
       <span class="lo-suscribe-strip__lead">{{ $n.lead_strip | default "Recibe las novedades de LAB ONCE en tu correo." }}</span>
-    </div>
+    </p>
     <form class="lo-suscribe-form lo-suscribe-form--strip" data-lo-suscribe method="POST" action="{{ $action }}" target="_blank" rel="noopener"
-        data-ok="{{ $n.ok_msg | default "¡Gracias! Revisa tu correo para confirmar." }}"
-        data-err="{{ $n.err_msg | default "Hubo un problema. Inténtalo de nuevo." }}">
+          data-ok="{{ $n.ok_msg | default "¡Gracias! Revisa tu correo para confirmar." }}"
+          data-err="{{ $n.err_msg | default "Hubo un problema. Inténtalo de nuevo." }}">
       <div class="lo-suscribe-form__row">
-        <label class="lo-vh" for="{{ $uid }}-email">Correo electrónico</label>
-        <input id="{{ $uid }}-email" class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" placeholder="tu@correo.com">
-        <input class="lo-suscribe-form__hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" aria-label="Correo electrónico" placeholder="tu@correo.com">
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp }}">
         <input type="hidden" name="locale" value="es">
         <input type="hidden" name="html_type" value="simple">
         <button class="lo-suscribe-form__btn" type="submit">Suscribirme</button>

@@ -265,13 +265,15 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
 .lo-suscribe-form__hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
 
 /* ---------- Franja slim (sobre noticias) ---------- */
-.lo-suscribe-strip{background:var(--lo-ink);position:relative;overflow:hidden}
-.lo-suscribe-strip::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--lo-rainbow)}
-.lo-suscribe-strip__inner{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:18px 24px}
-.lo-suscribe-strip__text{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;min-width:0}
-.lo-suscribe-strip__eyebrow{font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.16em;
-  font-size:.74rem;font-weight:700;color:#fff;opacity:.85}
-.lo-suscribe-strip__lead{color:#D7E2F2;font-size:.98rem}
+.lo-suscribe-strip{background:var(--lo-mist);position:relative;border-bottom:1px solid var(--lo-line)}
+.lo-suscribe-strip::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--lo-rainbow);opacity:.9}
+.lo-suscribe-strip__inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 24px}
+.lo-suscribe-strip__text{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0;min-width:0}
+.lo-suscribe-strip__eyebrow{font-family:var(--lo-font-label);text-transform:uppercase;letter-spacing:.14em;
+  font-size:.74rem;font-weight:700;color:var(--lo-blue);flex:0 0 auto}
+.lo-suscribe-strip__lead{color:var(--lo-text);font-size:.96rem}
+/* Menos aire entre la franja y la sección que sigue (Últimas noticias) */
+.lo-suscribe-strip + .lo-section{padding-top:42px}
 
 /* ---------- Form (compartido) ---------- */
 .lo-suscribe-form{margin:0}
@@ -284,8 +286,9 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
   padding:11px 22px;border-radius:999px;background:var(--lo-blue);transition:background .2s,transform .2s,opacity .2s}
 .lo-suscribe-form__btn:hover{background:var(--lo-blue-dark);transform:translateY(-1px)}
 .lo-suscribe-form__btn[disabled]{opacity:.6;cursor:default;transform:none}
-.lo-suscribe-strip .lo-suscribe-form{flex:0 0 auto;width:min(420px,46vw)}
-.lo-suscribe-form__msg{margin:8px 0 0;font-size:.85rem;min-height:1.1em}
+.lo-suscribe-strip .lo-suscribe-form{flex:0 0 auto;width:min(400px,44vw)}
+.lo-suscribe-form__msg{margin:7px 0 0;font-size:.85rem}
+.lo-suscribe-form__msg:empty{display:none;margin:0}
 .lo-suscribe-form__msg.is-ok{color:#7DE0A8}
 .lo-suscribe-form__msg.is-err{color:#FF9C9C}
 

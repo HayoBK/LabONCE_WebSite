@@ -16,7 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@500;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ "css/labonce.css" | relURL }}">
+{{ $cssVer := substr (crypto.SHA256 (readFile "static/css/labonce.css")) 0 10 }}
+<link rel="stylesheet" href="{{ "css/labonce.css" | relURL }}?v={{ $cssVer }}">
 {{ with .OutputFormats.Get "RSS" }}
 <link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}" title="{{ site.Title }}">
 {{ end }}
