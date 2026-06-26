@@ -21,7 +21,7 @@
         data-err="{{ $n.err_msg | default "Hubo un problema. Inténtalo de nuevo." }}">
     <div class="lo-suscribe-form__row">
       <input class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" aria-label="Correo electrónico" placeholder="tu@correo.com">
-      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp }}">
+      <input class="lo-suscribe-form__hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp | safeCSS }}">
       <input type="hidden" name="locale" value="es">
       <input type="hidden" name="html_type" value="simple">
       <button class="lo-suscribe-form__btn" type="submit">Suscribirme</button>
@@ -41,7 +41,7 @@
           data-err="{{ $n.err_msg | default "Hubo un problema. Inténtalo de nuevo." }}">
       <div class="lo-suscribe-form__row">
         <input class="lo-suscribe-form__input" type="email" name="EMAIL" required autocomplete="email" aria-label="Correo electrónico" placeholder="tu@correo.com">
-        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp }}">
+        <input class="lo-suscribe-form__hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="{{ $hp | safeCSS }}">
         <input type="hidden" name="locale" value="es">
         <input type="hidden" name="html_type" value="simple">
         <button class="lo-suscribe-form__btn" type="submit">Suscribirme</button>
