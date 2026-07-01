@@ -1,6 +1,6 @@
 ---
 title: "Nueva publicación en Brain Sciences: una terapia sonora personalizada integrada en música (mMIDST) reduce la severidad del tinnitus"
-date: 2026-06-17
+date: 2026-07-01T10:00:00-04:00
 categorias: ["noticias"]
 image: "images/mmidst-tinnitus-fig1.png"
 tags: ["publicación", "tinnitus", "terapia sonora"]
