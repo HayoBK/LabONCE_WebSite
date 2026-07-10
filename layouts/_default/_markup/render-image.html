@@ -1,0 +1,8 @@
+{{- /* Render hook para imágenes en Markdown.
+       Rutas relativas (sin http ni "/" inicial) pasan por relURL para respetar
+       el baseURL/subpath de GitHub Pages. URLs absolutas se dejan intactas. */ -}}
+{{- $src := .Destination -}}
+{{- if not (or (hasPrefix $src "http") (hasPrefix $src "//") (hasPrefix $src "/")) -}}
+  {{- $src = $src | relURL -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
