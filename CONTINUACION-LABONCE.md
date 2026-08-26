@@ -1,9 +1,73 @@
 # CONTINUACIÓN — Sitio LAB ONCE
 
-Carpeta de trabajo: `E:\Git_Use_LabOnce`.
+Carpeta de trabajo: `E:\Git_Use_LabOnce` (en el Mac de Hayo: `~/Git_Web/LabONCE`).
 Sitio Hugo **autocontenido**. Repo: `github.com/HayoBK/LabONCE_WebSite` (cuenta HayoBK).
-URL GitHub Pages: `https://hayobk.github.io/LabONCE_WebSite/` · Dominio en corte: `labonce.cl`.
-Última actualización: 2026-06-12 — V3 lista (pendiente build + push).
+En vivo: **https://labonce.cl/** (HTTPS OK) · GitHub Pages: `https://hayobk.github.io/LabONCE_WebSite/`.
+Última actualización: 2026-08-26 — V4 (ORCID + fichas individuales) **EN PRODUCCIÓN**.
+
+---
+
+## ✅ V4 (2026-08-26) — ORCID automático + fichas individuales de equipo. EN PRODUCCIÓN
+Commit `121db17`, deploy verde, 163 páginas. Implementado desde `ENCARGO-CLAUDE-CODE.md`
+(escrito por Cowork) y compilado/corregido por Claude Code.
+
+1. **Equipo migrado a páginas individuales.** Cada persona es ahora
+   `content/integrantes/<slug>.md` con URL propia (13 fichas) + `layouts/integrantes/single.html`.
+   `data/integrantes.yaml` quedó como **referencia histórica sin uso** — NO borrar sin que Hayo
+   lo confirme. `/integrantes/` agrupa en 5 categorías (director / activo / alumno / egresado /
+   anterior) leyendo `.Pages`, ya no el data file.
+2. **Sincronización ORCID diaria.** `.github/workflows/orcid.yml` (08:10 UTC ≈ 05:10 Chile,
+   + `workflow_dispatch`) corre `scripts/orcid_sync.py`, que lee `data/orcid.yaml`, consulta la
+   API pública de ORCID, enriquece con Crossref y escribe `data/publicaciones_orcid.json`.
+   **Solo se sincroniza el ORCID del director** (decisión deliberada, documentada en
+   `data/orcid.yaml` e `INFORME-ORCID-LABONCE.md`). El campo `orcid` de cada ficha personal es
+   independiente: solo pinta un chip con link al perfil, no dispara sincronización.
+3. **Publicaciones.** `/publicaciones/` = las 6 destacadas, ahora con año y `factor_impacto`
+   (campo nuevo, vacío por ahora). `/publicaciones/todas/` ya NO usa fetch en JavaScript: se
+   genera en el build fusionando ORCID + `data/publicaciones_historicas.yaml` (45 refs curadas),
+   agrupado por año, con buscador. Hoy son **52 entradas** (45 históricas + 7 de ORCID).
+   La portada cambió "Publicaciones destacadas" por "Publicaciones de los últimos años" con
+   contadores automáticos (últimos 5 / 10 años / total).
+4. **GitHub Actions:** `Settings → Actions → Workflow permissions` se subió a **Read and write**
+   (estaba en `read`, lo que habría hecho fallar el `git push` de `orcid.yml` en silencio).
+   `deploy.yml` no se ve afectado porque declara su propio bloque `permissions:` restrictivo.
+
+### 🐛 Bugs encontrados al compilar de verdad (el encargo nunca se había compilado)
+Los cuatro venían en el material entregado por Cowork y quedaron corregidos en `121db17`:
+- **`layouts/integrantes/list.html`** — los colores de cada grupo se emitían como
+  `style="background:ZgotmplZ"` (Go/Hugo bloquea interpolar un string en contexto CSS): 18
+  estilos inline rotos. Fix: `| safeCSS` en las 2 líneas (los valores son literales de la
+  plantilla, no datos de usuario).
+- **`scripts/orcid_sync.py`** — el dedup contra el histórico normalizaba `cita[:90]`; en estilo
+  Vancouver esos 90 caracteres son casi todo el listado de autores, así que el título quedaba
+  decapitado y el match por título **nunca** podía ocurrir. Resultado: 8 publicaciones duplicadas
+  (entre ellas el preprint bioRxiv `10.1101/2025.06.08.658513` del paper de ganglios basales, que
+  esquivaba el filtro por DOI porque el histórico tiene el DOI publicado de Sci Rep). Fix: no
+  truncar la cita. Pasó de 15 a 7 publicaciones ORCID, las 8 eliminadas verificadas una por una.
+  ⚠️ **El mismo bug existe en `~/Git_Web/Neurosistemas/scripts/orcid_sync.py`** (es la copia
+  original) — conviene portar el fix allá.
+- **`scripts/test_orcid_sync.py`** — respaldaba `orcid.yaml` pero no `publicaciones_orcid.json`,
+  y al terminar reescribía el JSON con la semilla vacía, **borrando el resultado real** de
+  `orcid_sync.py`. Como el encargo mandaba correr el test justo después del sync y antes del
+  commit, habría publicado el sitio sin publicaciones ORCID. Fix: respalda y restaura ambos.
+- **`scripts/verify_static.py`** — parseaba `layouts/index.json` (plantilla Hugo del buscador
+  global, empieza con `{{`) como si fuera un JSON de datos → 1 error falso. Fix: saltar `layouts/`.
+
+### Pendientes que deja la V4
+1. **ORCID del resto del equipo** — ver `INFORME-ORCID-LABONCE.md`. Falta confirmar si el
+   "Andrés Contreras" de Neurosistemas (`0009-0009-8317-106X`) es el mismo alumno de LAB ONCE, y
+   buscar a mano los de Phoebe Ramos, Daniela Contreras, Diego Herrero, Rosario Garrido, Felipe
+   Faúndez y Cristián Barraza (identidad y afiliación ya confirmadas en el informe).
+2. **`factor_impacto`** en `data/publicaciones_seleccionadas.yaml`: las 6 entradas lo tienen
+   vacío. Cuando Hayo tenga los datos, se rellena y aparece el chip "IF x.x" en `/publicaciones/`.
+3. **Republicación francesa 2022** — ORCID trae dos veces el mismo trabajo con DOIs distintos:
+   "Central nystagmus and alterations in vestibular tests…" (European Annals) y su
+   "Republication de : …" (Annales françaises d'ORL). El primero ya está en el histórico, así que
+   hoy en `/publicaciones/todas/` se ve solo la versión francesa. Decisión editorial de Hayo:
+   si molesta, se agrega la republicación al histórico o se filtra por título.
+4. **Títulos bilingües de Scopus** — las 2 entradas de 2009 traen desde ORCID el título en inglés
+   y español concatenados con coma ("Original and abbreviated Zarit… ,Validación en Chile de la
+   Escala…"). Se arregla mejor en el propio registro ORCID de Hayo que en el script.
 
 ---
 
@@ -73,7 +137,7 @@ El sitio completo está publicado: rediseño con el logo arcoíris 2026 + arquit
   30 videos recolectados; 32 posts con video embebido.
 - Deploy: Actions Node 24, Pages activo, `.pages.yml` al día (blog con categorías).
 
-## 🔴 PENDIENTE INMEDIATO: DNS labonce.cl (¡con errores de tipeo detectados!)
+## ✅ RESUELTO: DNS labonce.cl (histórico — el sitio responde en https://labonce.cl/)
 Hayo ya hizo: Cloudflare (Free) + nameservers en NIC + custom domain `labonce.cl` en
 GitHub Pages. **PERO los registros en Cloudflare quedaron MAL TIPEADOS** (verificado por
 DNS 2026-06-11 noche):
