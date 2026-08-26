@@ -4,16 +4,22 @@
     <div class="lo-section__head">
       <p class="lo-eyebrow">Investigación</p>
       <h1 class="lo-section__title">{{ .Title }}</h1>
-      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Una selección de nuestras publicaciones en revistas internacionales.{{ end }}</p>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ else }}Una selección de nuestras publicaciones en revistas internacionales, con detalle de cada trabajo.{{ end }}</p>
     </div>
 
-    {{ with site.Data.publicaciones_seleccionadas }}
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+
+    {{ $todas := sort site.Data.publicaciones_seleccionadas "anio" "desc" }}
+    {{ with $todas }}
     <div class="lo-grid" style="gap:20px">
       {{ range . }}
       <article class="lo-pub">
         {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
         <div class="lo-pub__body">
-          <p class="lo-pub__journal">{{ .revista }}</p>
+          <p class="lo-pub__journal">
+            {{ .revista }}{{ with .anio }} · {{ . }}{{ end }}
+            {{ with .factor_impacto }}<span class="lo-chip" style="margin-left:8px">IF {{ . }}</span>{{ end }}
+          </p>
           <h3 class="lo-pub__title">{{ .titulo }}</h3>
           {{ with .abstract }}<p class="lo-pub__abstract is-clamped">{{ . }}</p>
           <button class="lo-pub__more" type="button" onclick="var p=this.previousElementSibling;p.classList.toggle('is-clamped');this.textContent=p.classList.contains('is-clamped')?'Leer más':'Leer menos';">Leer más</button>{{ end }}
@@ -25,13 +31,13 @@
       </article>
       {{ end }}
     </div>
+    {{ else }}
+    <p class="lo-section__sub">Aún no hay publicaciones destacadas cargadas.</p>
     {{ end }}
 
     <div style="margin-top:32px">
       <a class="lo-btn lo-btn--ghost" style="background:var(--lo-navy);color:#fff" href="{{ "publicaciones/todas/" | relURL }}">Ver todas las publicaciones</a>
     </div>
-
-    {{ with .Content }}<div class="lo-prose" style="padding:32px 0 0;margin:0;max-width:780px">{{ . }}</div>{{ end }}
   </div>
 </section>
 {{ end }}

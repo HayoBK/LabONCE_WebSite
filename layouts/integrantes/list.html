@@ -9,7 +9,13 @@
 
     {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
 
-    {{ $todos := site.Data.integrantes }}
+    {{- /*
+      Cada integrante es una página en content/integrantes/*.md (antes vivían
+      como filas en data/integrantes.yaml). Se ordenan por 'weight' dentro de
+      cada categoría, igual que el roster de Neurosistemas.
+    */ -}}
+    {{ $todos := sort (where site.RegularPages "Section" "integrantes") "Params.weight" }}
+
     {{ if $todos }}
 
     {{/* Grupos en orden, con color propio del arcoíris del logo */}}
@@ -23,34 +29,34 @@
 
     {{ range $grupos }}
       {{ $g := . }}
-      {{ $miembros := where $todos "categoria" $g.cat }}
+      {{ $miembros := where $todos "Params.categoria" $g.cat }}
       {{/* Tolerancia CMS: si nadie tiene 'categoria', mostrar todo bajo un solo grupo */}}
-      {{ if and (eq $g.cat "director") (not (where $todos "categoria" "director")) (not (where $todos "categoria" "activo")) }}
+      {{ if and (eq $g.cat "director") (not (where $todos "Params.categoria" "director")) (not (where $todos "Params.categoria" "activo")) }}
         {{ $miembros = $todos }}
       {{ end }}
       {{ with $miembros }}
       <div class="lo-group">
-        <h2 class="lo-group__title"><span class="lo-group__dot" style="background:{{ $g.color }}"></span>{{ $g.titulo }}</h2>
+        <h2 class="lo-group__title"><span class="lo-group__dot" style="background:{{ $g.color | safeCSS }}"></span>{{ $g.titulo }}</h2>
         {{ with $g.sub }}<p class="lo-group__sub">{{ . }}</p>{{ end }}
         <div class="lo-grid lo-grid--3">
           {{ range . }}
-          <article class="lo-person{{ if in (slice "alumno" "egresado" "anterior") (.categoria | default "") }} lo-person--compact{{ end }}">
-            {{ if .foto }}
-              {{ $src := .foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}
-              <img class="lo-person__photo" src="{{ $src }}" alt="{{ .nombre }}" loading="lazy">
+          <a class="lo-person{{ if in (slice "alumno" "egresado" "anterior") (.Params.categoria | default "") }} lo-person--compact{{ end }}" href="{{ .RelPermalink }}">
+            {{ if .Params.foto }}
+              {{ $src := .Params.foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}
+              <img class="lo-person__photo" src="{{ $src }}" alt="{{ .Title }}" loading="lazy">
             {{ else }}
-              <div class="lo-person__avatar">{{ substr (upper .nombre) 0 1 }}</div>
+              <div class="lo-person__avatar">{{ substr (upper .Title) 0 1 }}</div>
             {{ end }}
-            <p class="lo-person__name">{{ .nombre }}</p>
-            <p class="lo-person__role" style="color:{{ $g.color }}">{{ .rol }}</p>
+            <p class="lo-person__name">{{ .Title }}</p>
+            <p class="lo-person__role" style="color:{{ $g.color | safeCSS }}">{{ .Params.rol }}</p>
             <div class="lo-person__bio">
               {{- /* bio puede venir como lista (preferido) o como string (CMS aplana) */ -}}
-              {{ $b := .bio }}
+              {{ $b := .Params.bio }}
               {{ if reflect.IsSlice $b }}
                 <ul>{{ range $b }}<li>{{ . }}</li>{{ end }}</ul>
               {{ else }}{{ with $b }}<p>{{ . }}</p>{{ end }}{{ end }}
             </div>
-          </article>
+          </a>
           {{ end }}
         </div>
       </div>

@@ -10,15 +10,22 @@ media:
 
 content:
 
-  # ── Equipo (lista en un solo archivo de datos) ────────────────────────────
+  # ── Equipo (una página por persona, desde 2026-08) ────────────────────────
+  # Antes vivía como lista en data/integrantes.yaml; ahora cada integrante
+  # tiene su propia página en content/integrantes/, con su propia URL —
+  # igual que "miembros" en el sitio de Neurosistemas.
   - name: integrantes
     label: Equipo
-    type: file
-    path: data/integrantes.yaml
-    list: true
+    type: collection
+    path: content/integrantes
+    filename: "{primary}.md"
+    exclude: ["_index.md"]
+    view:
+      fields: [title, categoria, rol, weight]
+      sort: [weight, title]
     fields:
-      - { name: nombre, label: "Nombre", type: string }
-      - { name: rol,    label: "Rol / cargo", type: string }
+      - { name: title, label: "Nombre", type: string }
+      - { name: rol,   label: "Rol / cargo", type: string }
       - name: categoria
         label: "Categoría"
         type: select
@@ -29,22 +36,30 @@ content:
             - { value: alumno,   label: "Alumno activo" }
             - { value: egresado, label: "Alumno egresado" }
             - { value: anterior, label: "Colaborador anterior" }
-      - { name: foto,   label: "Foto (URL o imagen)", type: string, description: "Pega una URL o, una vez localizadas, usa images/<archivo>." }
+      # Ordena dentro de cada categoría (no hay orden alfabético automático).
+      # Sugerido: 100 dirección · 200s activos · 400s alumnos · 500s egresados
+      # · 600s anteriores, dejando huecos para insertar gente después.
+      - { name: weight, label: "Orden dentro de su categoría", type: number }
+      - { name: foto,   label: "Foto (URL o imagen)", type: string, description: "Pega una URL o, una vez localizada, usa images/<archivo>." }
+      - { name: orcid,  label: "ORCID iD (solo para el link del perfil — no activa sincronización)", type: string }
       - { name: bio,    label: "Biografía (una línea por punto)", type: string, list: true }
+      - { name: draft,  label: "Borrador", type: boolean, default: false }
+      - { name: body,   label: "Texto largo opcional (además de la bio en viñetas)", type: rich-text }
 
-  # ── Publicaciones seleccionadas ───────────────────────────────────────────
+  # ── Publicaciones destacadas (vitrina con abstract, imagen, factor de impacto) ──
   - name: publicaciones
-    label: Publicaciones seleccionadas
+    label: Publicaciones destacadas
     type: file
     path: data/publicaciones_seleccionadas.yaml
     list: true
     fields:
-      - { name: titulo,   label: "Título", type: string }
-      - { name: revista,  label: "Revista", type: string }
-      - { name: anio,     label: "Año", type: number }
-      - { name: link,     label: "Enlace al texto completo", type: string }
-      - { name: imagen,   label: "Imagen (URL o imagen)", type: string }
-      - { name: abstract, label: "Resumen / abstract", type: text }
+      - { name: titulo,         label: "Título", type: string }
+      - { name: revista,        label: "Revista", type: string }
+      - { name: anio,           label: "Año", type: number }
+      - { name: factor_impacto, label: "Factor de impacto (opcional)", type: string }
+      - { name: link,           label: "Enlace al texto completo", type: string }
+      - { name: imagen,         label: "Imagen (URL o imagen)", type: string }
+      - { name: abstract,       label: "Resumen / abstract", type: text }
 
   # ── Proyectos ─────────────────────────────────────────────────────────────
   - name: proyectos
@@ -58,6 +73,44 @@ content:
       - { name: financiamiento, label: "Financiamiento (ej. FONDECYT 1234567)", type: string }
       - { name: estado,        label: "Estado (ej. Activo)", type: string }
       - { name: link,          label: "Enlace (opcional)", type: string }
+
+  # ── ORCID — fuente de sincronización automática ───────────────────────────
+  # Deliberadamente solo trae al director (ver la nota dentro del archivo).
+  - name: orcid
+    label: "ORCID — fuente de sincronización"
+    type: file
+    path: data/orcid.yaml
+    fields:
+      - name: miembros
+        label: "Perfiles ORCID sincronizados"
+        type: object
+        list: true
+        fields:
+          - { name: nombre, label: "Nombre", type: string }
+          - { name: orcid,  label: "ORCID iD (0000-0000-0000-0000)", type: string }
+          - name: apellidos
+            label: "Apellidos para resaltar en negrita"
+            type: string
+            list: true
+      - name: opciones
+        label: "Opciones"
+        type: object
+        fields:
+          - { name: anio_minimo,      label: "No traer nada anterior a (0 = sin corte)", type: number }
+          - { name: usar_crossref,    label: "Completar datos con Crossref", type: boolean }
+          - { name: correo_contacto,  label: "Correo de contacto para las APIs", type: string }
+
+  # ── Publicaciones — archivo histórico curado (no se toca por el robot) ────
+  - name: publicaciones_historicas
+    label: "Publicaciones — archivo histórico"
+    type: file
+    path: data/publicaciones_historicas.yaml
+    list: true
+    fields:
+      - { name: anio,    label: "Año", type: number }
+      - { name: cita,    label: "Cita completa (admite <b> e <i>)", type: text }
+      - { name: revista, label: "Revista / volumen / páginas", type: string }
+      - { name: doi,     label: "DOI (sin https://doi.org/)", type: string }
 
   # ── Blog unificado (noticias + clases/recursos docentes) ─────────────────
   - name: blog

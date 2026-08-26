@@ -1,0 +1,80 @@
+{{ define "main" }}
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-section__head">
+      <p class="lo-eyebrow">Investigación</p>
+      <h1 class="lo-section__title">{{ .Title }}</h1>
+      <p class="lo-section__sub">{{ with .Params.subtitle }}{{ . }}{{ end }}</p>
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+
+    {{- $todas := partial "pub-merge.html" . }}
+    {{- $actualizado := "" }}
+    {{- with hugo.Data.publicaciones_orcid }}{{ with .actualizado }}{{ $actualizado = . }}{{ end }}{{ end }}
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:28px">
+      <input type="search" id="lo-buscar-pub" class="lo-buscar__input" style="max-width:420px;margin:0"
+        placeholder="Buscar por autor, título, revista o DOI…" aria-label="Buscar publicaciones">
+      <span id="lo-contador-pub" style="color:var(--lo-muted);font-size:.9rem">{{ len $todas }} de {{ len $todas }}</span>
+      {{- with $actualizado }}
+      <span class="lo-chip">ORCID · actualizado {{ . }}</span>
+      {{- end }}
+    </div>
+
+    {{- /* Años únicos, de mayor a menor. 'group' no sirve sobre listas de
+           data/ (solo sobre colecciones de páginas), así que se arma a mano:
+           ver GUIA-REPLICAR-SITIO-ACADEMICO.md §11. */}}
+    {{- $anios := slice }}
+    {{- range $todas }}{{ $anios = $anios | append (int .anio) }}{{ end }}
+    {{- $anios = sort (uniq $anios) "value" "desc" }}
+
+    {{- range $anio := $anios }}
+      {{- $delAnio := slice }}
+      {{- range $todas }}{{ if eq (int .anio) $anio }}{{ $delAnio = $delAnio | append . }}{{ end }}{{ end }}
+      <div class="lo-anio" data-anio="{{ $anio }}" style="margin-bottom:36px">
+        <h2 style="font-size:1.15rem;margin-bottom:14px">{{ $anio }}
+          <span style="color:var(--lo-muted);font-weight:400;font-size:.85rem">— {{ len $delAnio }} {{ cond (eq (len $delAnio) 1) "publicación" "publicaciones" }}</span>
+        </h2>
+        <div class="lo-grid" style="gap:16px" data-lo-pub-year>
+          {{- range $delAnio }}{{ partial "publicacion.html" . }}{{ end }}
+        </div>
+      </div>
+    {{- end }}
+
+    <p id="lo-vacio-pub" hidden style="color:var(--lo-muted)">Sin resultados para esa búsqueda.</p>
+
+    <p style="margin-top:8px">
+      <a class="lo-btn lo-btn--ghost" href="{{ "publicaciones/" | relURL }}">← Ver publicaciones destacadas</a>
+    </p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var input = document.getElementById("lo-buscar-pub");
+  var contador = document.getElementById("lo-contador-pub");
+  var vacio = document.getElementById("lo-vacio-pub");
+  if (!input) return;
+  var items = Array.prototype.slice.call(document.querySelectorAll(".lo-anio .lo-pub"));
+  var total = items.length;
+  function filtrar(){
+    var q = input.value.trim().toLowerCase();
+    var visibles = 0;
+    document.querySelectorAll(".lo-anio").forEach(function(bloque){
+      var pubs = bloque.querySelectorAll(".lo-pub");
+      var conVisibles = 0;
+      pubs.forEach(function(pub){
+        var ok = !q || pub.textContent.toLowerCase().indexOf(q) !== -1;
+        pub.style.display = ok ? "" : "none";
+        if (ok) { conVisibles++; visibles++; }
+      });
+      bloque.style.display = conVisibles ? "" : "none";
+    });
+    contador.textContent = visibles + " de " + total;
+    vacio.hidden = visibles !== 0;
+  }
+  input.addEventListener("input", filtrar);
+})();
+</script>
+{{ end }}

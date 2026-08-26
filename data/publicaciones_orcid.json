@@ -1,0 +1,103 @@
+{
+  "actualizado": "2026-08-26",
+  "fuentes": [
+    {
+      "nombre": "Hayo Breinbauer",
+      "orcid": "0000-0002-3278-065X",
+      "trabajos": 18
+    }
+  ],
+  "publicaciones": [
+    {
+      "anio": 2026,
+      "titulo": "Personalized Music-Embedded Sound Therapy Based on Gating Modulation and Neural Decoupling Reduces Tinnitus Severity",
+      "autores": "Henriquez, P. I., Delano, P. H., Herrada, J., Guevara, C. &amp; <b>Breinbauer, H. A.</b>",
+      "revista": "Brain Sciences, 16, 644",
+      "doi": "10.3390/brainsci16060644",
+      "url": "",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2022,
+      "titulo": "Republication de : Central nystagmus and alterations in vestibular tests due to an inadvertent gentamicin administration into spinal space: A CARE case report",
+      "autores": "<b>Breinbauer, H.</b>, Eyzaguirre, M., Herrero, D. &amp; Delano, P.",
+      "revista": "Annales françaises d'Oto-rhino-laryngologie et de Pathologie Cervico-faciale, 139, 229-232",
+      "doi": "10.1016/j.aforl.2022.08.003",
+      "url": "",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2016,
+      "titulo": "EVALUACIÓN VESTIBULAR EN 2016. PUESTA AL DÍA",
+      "autores": "<b>Breinbauer, H. A.</b>",
+      "revista": "Revista Médica Clínica Las Condes, 27, 863-871",
+      "doi": "10.1016/j.rmclc.2016.09.017",
+      "url": "",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2014,
+      "titulo": "Gentherapie und Stammzellen für das Innenohr",
+      "autores": "<b>Breinbauer, H.</b> &amp; Praetorius, M.",
+      "revista": "HNO, 62, 93-99",
+      "doi": "10.1007/s00106-013-2822-0",
+      "url": "",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2011,
+      "titulo": "Encuesta de síntomas SNOT-20 para rinitis alérgica y rinosinusitis: validación en Chile",
+      "autores": "<b>Breinbauer, H.</b>, Varela, C., Núñez, M., Ugarte, S., Garfias, R. &amp; Fonseca, X.",
+      "revista": "Revista médica de Chile, 139, 886-895",
+      "doi": "10.4067/s0034-98872011000700009",
+      "url": "",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2009,
+      "titulo": "Original and abbreviated Zarit caregiver burden scales. Validation in Chile,Validación en Chile de la Escala de Sobrecarga del Cuidador de Zarit en sus versiones original y abreviada",
+      "autores": "",
+      "revista": "Revista Medica de Chile",
+      "doi": "",
+      "url": "http://www.scopus.com/inward/record.url?eid=2-s2.0-68949206273&partnerID=MN8TOARS",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    },
+    {
+      "anio": 2009,
+      "titulo": "Trends among medical students towards general practice or specialization,Tendencia en el estudiante de medicina a ejercer como médico general o especialista",
+      "autores": "",
+      "revista": "Revista Medica de Chile",
+      "doi": "",
+      "url": "http://www.scopus.com/inward/record.url?eid=2-s2.0-70350026467&partnerID=MN8TOARS",
+      "tipo": "journal-article",
+      "miembros": [
+        "Hayo Breinbauer"
+      ],
+      "fuente": "orcid"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{{- /*
+  Fusiona las dos fuentes de publicaciones y devuelve una sola lista:
+    1) data/publicaciones_orcid.json  -> automático, escrito por scripts/orcid_sync.py
+    2) data/publicaciones_historicas.yaml -> archivo curado a mano, no se toca
+
+  OJO (trampa de Hugo, ver GUIA-REPLICAR-SITIO-ACADEMICO.md): los números
+  de JSON se leen como float64 y los de YAML como int. Si no se castea todo
+  a int, agrupar/ordenar/comparar por año trata 2024 (json) y 2024 (yaml)
+  como valores distintos y el año aparece duplicado. Por eso se reconstruye
+  cada entrada con 'anio' forzado a int.
+
+  Uso: {{ $todas := partial "pub-merge.html" . }}
+*/ -}}
+{{- $todas := slice }}
+{{- with hugo.Data.publicaciones_orcid }}
+  {{- with .publicaciones }}{{ $todas = $todas | append . }}{{ end }}
+{{- end }}
+{{- with hugo.Data.publicaciones_historicas }}{{ $todas = $todas | append . }}{{ end }}
+
+{{- $normalizadas := slice }}
+{{- range $todas }}
+  {{- $p := . }}
+  {{- $normalizadas = $normalizadas | append (merge $p (dict "anio" (int $p.anio))) }}
+{{- end }}
+{{- return $normalizadas }}

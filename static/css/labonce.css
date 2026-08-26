@@ -297,3 +297,7 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
 .lo-suscribe-form--footer .lo-suscribe-form__row{flex-direction:column;gap:8px}
 .lo-suscribe-form--footer .lo-suscribe-form__btn{width:100%;justify-content:center}
 .lo-suscribe-form--footer .lo-suscribe-form__msg.is-ok{color:#9BE9BE}
+
+/* ---------- Fichas de equipo ahora son <a> (páginas individuales, 2026-08) ---------- */
+a.lo-person,a.lo-person:hover{text-decoration:none}
+.lo-person__bio a{text-decoration:underline}

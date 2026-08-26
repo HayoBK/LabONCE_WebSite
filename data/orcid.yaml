@@ -1,0 +1,48 @@
+# ============================================================
+# FUENTES ORCID PARA LA SINCRONIZACIÓN AUTOMÁTICA
+#
+# El script scripts/orcid_sync.py recorre esta lista una vez al día
+# (GitHub Action .github/workflows/orcid.yml), consulta la API pública
+# de ORCID y escribe data/publicaciones_orcid.json.
+#
+# DECISIÓN DELIBERADA (2026-08): a diferencia de Neurosistemas, aquí solo
+# se sincroniza el ORCID de Hayo Breinbauer. Hoy la producción científica
+# real de LAB ONCE es, en la práctica, la de su director — el resto del
+# equipo (colaboradores, alumnos, egresados) no tiene aún publicaciones
+# propias generadas dentro del laboratorio. Cuando eso cambie, se agrega
+# a esa persona aquí mismo, con el mismo formato.
+#
+# Esto es independiente del campo `orcid` que cada integrante puede tener
+# en su propia ficha (content/integrantes/*.md): ese campo solo muestra un
+# link a su perfil ORCID personal y no dispara ninguna sincronización.
+#
+# 'apellidos' se usa para resaltar en negrita a los miembros del
+# laboratorio dentro de la lista de autores de cada publicación.
+# ============================================================
+
+miembros:
+  - nombre: "Hayo Breinbauer"
+    orcid: "0000-0002-3278-065X"
+    apellidos: ["Breinbauer"]
+
+# ------------------------------------------------------------
+# Opciones del sincronizador
+# ------------------------------------------------------------
+opciones:
+  # Año de corte. En 0 = sin corte: trae todo el registro público de ORCID.
+  # No hay riesgo de duplicar el archivo histórico (data/publicaciones_historicas.yaml):
+  # orcid_sync.py descarta por DOI todo lo que ya está ahí, y además compara
+  # títulos normalizados para los casos sin DOI.
+  anio_minimo: 0
+  # Enriquecer cada publicación con Crossref (autores, revista, páginas).
+  usar_crossref: true
+  # Correo de contacto para el "polite pool" de Crossref.
+  correo_contacto: "hbreinbauer@uchile.cl"
+  # Tipos de obra ORCID que se aceptan.
+  tipos_aceptados:
+    - "journal-article"
+    - "book"
+    - "book-chapter"
+    - "conference-paper"
+    - "preprint"
+    - "review"

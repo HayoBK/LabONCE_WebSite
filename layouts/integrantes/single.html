@@ -1,0 +1,78 @@
+{{ define "main" }}
+{{- /*
+  Publicaciones de esta persona, desde data/publicaciones_orcid.json.
+
+  Igual que en Neurosistemas: el emparejamiento va por ORCID iD (único),
+  buscando el iD de esta ficha en data/orcid.yaml y tomando el nombre con
+  el que quedó escrito en el JSON. Hoy data/orcid.yaml solo sincroniza a
+  Hayo Breinbauer (ver la nota en ese archivo) — por diseño, el resto del
+  equipo muestra su chip de ORCID (si lo tiene) pero no una lista de
+  publicaciones propia, hasta que eso cambie.
+*/ -}}
+{{- $nombres := slice .Title }}
+{{- with .Params.orcid }}
+  {{- $oid := . }}
+  {{- with hugo.Data.orcid }}
+    {{- range .miembros }}
+      {{- if and .orcid (eq .orcid $oid) }}{{ $nombres = $nombres | append .nombre }}{{ end }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- $mias := slice }}
+{{- with hugo.Data.publicaciones_orcid }}
+  {{- range .publicaciones }}
+    {{- $pub := . }}{{ $suya := false }}
+    {{- range $pub.miembros }}{{ if in $nombres . }}{{ $suya = true }}{{ end }}{{ end }}
+    {{- if $suya }}{{ $mias = $mias | append $pub }}{{ end }}
+  {{- end }}
+{{- end }}
+
+<section class="lo-section">
+  <div class="lo-container">
+    <div class="lo-perfil__cab" style="display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin-bottom:28px">
+      {{ if .Params.foto }}
+        {{ $src := .Params.foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}
+        <img class="lo-person__photo" src="{{ $src }}" alt="{{ .Title }}" style="width:150px;height:150px">
+      {{ else }}
+        <div class="lo-person__avatar" style="width:150px;height:150px;font-size:2.6rem">{{ substr (upper .Title) 0 1 }}</div>
+      {{ end }}
+      <div>
+        <p class="lo-eyebrow">Equipo</p>
+        <h1 class="lo-section__title" style="margin-bottom:.2rem">{{ .Title }}</h1>
+        {{ with .Params.rol }}<p class="lo-section__sub" style="margin:0">{{ . }}</p>{{ end }}
+        {{ if .Params.orcid }}
+        <p style="margin:10px 0 0">
+          <a class="lo-chip lo-chip--big" href="https://orcid.org/{{ .Params.orcid }}" rel="noopener" target="_blank">ORCID {{ .Params.orcid }}</a>
+        </p>
+        {{ end }}
+      </div>
+    </div>
+
+    {{ with .Content }}<div class="lo-prose" style="padding:0 0 24px 0;margin:0;max-width:780px">{{ . }}</div>{{ end }}
+
+    {{ $b := .Params.bio }}
+    {{ if $b }}
+    <div class="lo-prose" style="padding:0 0 24px 0;margin:0;max-width:780px">
+      {{ if reflect.IsSlice $b }}
+        <ul>{{ range $b }}<li>{{ . }}</li>{{ end }}</ul>
+      {{ else }}<p>{{ $b }}</p>{{ end }}
+    </div>
+    {{ end }}
+
+    {{- /* Si no hay publicaciones sincronizadas, la sección entera no se dibuja. */ -}}
+    {{- if $mias }}
+    <div style="margin-top:12px">
+      <p class="lo-eyebrow">Producción científica</p>
+      <h2 style="margin-bottom:16px">Publicaciones</h2>
+      <div class="lo-grid" style="gap:20px">
+        {{- range sort $mias "anio" "desc" }}{{ partial "publicacion.html" . }}{{ end }}
+      </div>
+    </div>
+    {{- end }}
+
+    <p style="margin-top:32px">
+      <a class="lo-btn lo-btn--ghost" href="{{ "integrantes/" | relURL }}">← Volver al equipo</a>
+    </p>
+  </div>
+</section>
+{{ end }}

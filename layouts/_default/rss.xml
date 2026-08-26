@@ -1,0 +1,42 @@
+{{- /*
+  RSS personalizado de LAB ONCE — pensado para campañas por correo (Brevo).
+  Mejora el feed por defecto de Hugo: en <description> mete la IMAGEN del post
+  (URL absoluta, vía absURL en producción => labonce.cl), un resumen limpio y
+  un enlace "Leer en labonce.cl". También añade <enclosure> con la imagen.
+  Aplica a todos los feeds (home, secciones, tags). El que usa Brevo es /blog/index.xml.
+*/ -}}
+{{- $pages := site.RegularPages -}}
+{{- if not .IsHome -}}{{ $pages = .RegularPages -}}{{- end -}}
+{{- $pages = $pages.ByDate.Reverse -}}
+{{- $pages = $pages | first 30 -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>Contenido reciente {{ if not .IsHome }}de {{ .Title }} {{ end }}en {{ site.Title }} — Otoneurología Clínica y Neurociencia del Equilibrio.</description>
+    <generator>Hugo</generator>
+    {{- with site.LanguageCode }}<language>{{ . }}</language>{{ end }}
+    {{- if $pages }}<lastBuildDate>{{ (index $pages 0).Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    <atom:link href="{{ .Permalink }}index.xml" rel="self" type="application/rss+xml" />
+    {{- range $pages }}
+    {{- $img := "" -}}
+    {{- with .Params.image -}}
+      {{- $img = . -}}
+      {{- if not (hasPrefix $img "http") -}}{{ $img = ($img | absURL) -}}{{- end -}}
+    {{- end -}}
+    {{- $summary := .Summary | plainify | htmlUnescape | chomp | truncate 320 -}}
+    {{- $imgHtml := "" -}}
+    {{- with $img -}}{{ $imgHtml = printf "<p><img src=\"%s\" alt=\"\" style=\"max-width:100%%;height:auto;border-radius:8px\" /></p>" . -}}{{- end -}}
+    {{- $body := printf "<![CDATA[%s<p>%s</p><p><a href=\"%s\">Leer en labonce.cl &#8594;</a></p>]]>" $imgHtml $summary .Permalink -}}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      {{- with $img }}<enclosure url="{{ . }}" type="image/jpeg" length="0" />{{ end }}
+      <description>{{ $body | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

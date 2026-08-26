@@ -1,0 +1,233 @@
+# ============================================================
+# ARCHIVO HISTÓRICO DE PUBLICACIONES (curado a mano)
+#
+# Migrado desde el "Listado curado" que vivía como texto plano en
+# content/publicaciones/todas.md (45 referencias, 2003-2025). Cubre
+# toda la producción de Hayo Breinbauer hasta que ORCID retoma desde 2025.
+#
+# Las publicaciones nuevas llegan solas desde ORCID a
+# data/publicaciones_orcid.json (ver scripts/orcid_sync.py). La página
+# /publicaciones/todas/ fusiona ambas fuentes y agrupa por año.
+#
+# Campos:
+#   anio    : año (entero) - se usa para agrupar
+#   cita    : cita completa en HTML. <b> marca a Hayo Breinbauer.
+#   revista : revista / volumen / páginas (se muestra aparte)
+#   doi     : solo el identificador, SIN "https://doi.org/"
+# ============================================================
+- anio: 2025
+  cita: Martin SS, Medel V, <b>Breinbauer H</b>, Delgado C, Delano PH. Increased basal ganglia volume
+    in older adults with tinnitus.
+  revista: Sci Rep, 15(1), 41303
+  doi: 10.1038/s41598-025-25065-6
+- anio: 2025
+  cita: Faúndez F, Arévalo-Romero C, Villarroel K, Lavín C, Alarcón K, Vial G, Artus F, Billeke P, Delano
+    PH, <b>Breinbauer HA.</b> Spatial navigation entropy suggests allocentric dysfunction in PPPD.
+  revista: Front Neurol, 16, 1599307
+  doi: 10.3389/fneur.2025.1599307
+- anio: 2024
+  cita: <b>Breinbauer H</b>, Arévalo-Romero C, Villarroel K, Lavin C, Faúndez F, Garrido R, Alarcón K,
+    Stecher X, Zamorano F, Billeke P, Delano P. Functional Dizziness as a Spatial Cognitive Dysfunction.
+  revista: Brain Sci, 14(1), 16
+  doi: 10.3390/brainsci14010016
+- anio: 2021
+  cita: '<b>Breinbauer HA</b>, Eyzaguirre M, Herrero D, Delano PH. Central nystagmus and alterations in
+    vestibular tests due to an inadvertent gentamicin administration into spinal space: A CARE case report.'
+  revista: Eur Ann Otorhinolaryngol Head Neck Dis
+  doi: ''
+- anio: 2020
+  cita: <b>Breinbauer HA</b>, Contreras MD, Lira JP, et al. Spatial Navigation is distinctively impaired
+    in Persistent Postural Perceptual Dizziness.
+  revista: Front Neurol, 10:1361
+  doi: ''
+- anio: 2019
+  cita: 'Ortega A, Gauna F, Munoz D, Oberreuter G, <b>Breinbauer HA</b>, Carrasco L. Music Therapy for
+    Pain and Anxiety Management in Nasal Bone Fracture Reduction: Randomized Controlled Clinical Trial.'
+  revista: Otolaryngol Head Neck Surg
+  doi: ''
+- anio: 2019
+  cita: Michael P, Muñoz D, Tuma A, Garate M, Barraza C, Nuñez M, <b>Breinbauer HA.</b> A Chair-based
+    Abbreviated Repositioning Maneuver (ChARM) for fast treatment of posterior BPPV.
+  revista: 'Eur Arch Otorhinolaryngol, 276(8): 2191-8'
+  doi: ''
+- anio: 2017
+  cita: 'Carmona S, Zalazar G, Weisnchelbaum R, Grinstein G, <b>Breinbauer HA</b>, Asprella-Libonati G.
+    Downbeating Nystagmus in Benign Paroxysmal Positional Vertigo: an Apogeotropic Variant of Posterior
+    Semicircular Canal.'
+  revista: 'Current Opinions in Neurological Science, 1(6): 301-305'
+  doi: ''
+- anio: 2016
+  cita: Michael P, Oliva CE, Nuñez M, Barraza C, Faúndez JP, <b>Breinbauer HA.</b> An Abbreviated Diagnostic
+    Maneuver for Posterior Benign Positional Paroxysmal Vertigo.
+  revista: Front Neurol, 7:115
+  doi: ''
+- anio: 2015
+  cita: Fernandez L, <b>Breinbauer HA</b>, Delano PH. Vertigo and dizziness in the elderly.
+  revista: Front Neurol, 6:144
+  doi: ''
+- anio: 2015
+  cita: <b>Breinbauer HA</b>, Praetorius M. Variability of an ideal insertion vector for Cochlear Implantation.
+  revista: 'Otol Neurotol, 36(4): 610-7'
+  doi: ''
+- anio: 2014
+  cita: '<b>Breinbauer HA</b>, Praetorius M. Gene therapy and stem cells for the inner ear: A review.'
+  revista: 'HNO, 62(2): 93-9'
+  doi: ''
+- anio: 2012
+  cita: <b>Breinbauer HA</b>, Anabalon JL, Gutierrez D, Carcamo R, Olivares C, Caro J. Output capabilities
+    of personal music players and assessment of preferred listening levels of healthy-hearing subjects.
+  revista: Laryngoscope, 122:2549-56
+  doi: ''
+- anio: 2011
+  cita: '<b>Breinbauer H</b>, Varela C, Núñez M, Ugarte S, Garfias R, Fonseca X. Encuesta de síntomas
+    SNOT-20 para rinitis alérgica y rinosinusitis: validación en Chile.'
+  revista: 'Rev Med Chile, 139(7): 886-895'
+  doi: ''
+- anio: 2009
+  cita: <b>Breinbauer H</b>, Fromm G, Fleck D, Araya L. Tendencia en el estudiante de medicina a ejercer
+    como médico general o especialista.
+  revista: 'Rev Med Chile, 137: 865-872'
+  doi: ''
+- anio: 2009
+  cita: <b>Breinbauer H</b>, Vásquez H, Mayanz S, Guerra C, Millán T. Validación en Chile de la escala
+    de sobrecarga del cuidador de Zarit en su versión original y abreviada.
+  revista: 'Rev Méd Chile, 137: 651-659'
+  doi: ''
+- anio: 2023
+  cita: 'Alarcón P. K, Arévalo-Romero C, Villarroel K, Lavín C, Faúndez F, Garrido R, Billeke P, <b>Breinbauer
+    K. H.</b> Perfil cognitivo en el Mareo Perceptual Postural Persistente: implicancias sobre su fisiopatología
+    como disfunción cognitiva viso-vestibular superior.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 83(4): 346-358'
+  doi: ''
+- anio: 2021
+  cita: Marambio J, Castro S, Garate M, Cortes I, Corradini J, Córdova L, <b>Breinbauer H.</b> Valores
+    referenciales de posturografía basada en Nintendo Wii en población chilena.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 81: 27-32'
+  doi: ''
+- anio: 2019
+  cita: 'Marambio J, Segui G, Cortés I, <b>Breinbauer HA.</b> Mareo postural perceptual persistente: la
+    causa más frecuente de mareo crónico es fácil de tratar.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 79: 323-328'
+  doi: ''
+- anio: 2019
+  cita: 'Wimmer J, Donoso R, Leiva A, <b>Breinbauer H</b>, Delano P. Tinnitus: una patología cerebral.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 79: 125-136'
+  doi: ''
+- anio: 2017
+  cita: 'Antilao L, Contreras MD, <b>Breinbauer HA.</b> Paroxismia vestibular: reporte de un caso.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 77: 289-294'
+  doi: ''
+- anio: 2016
+  cita: 'Sotomayor D, <b>Breinbauer HA.</b> Síndrome de nistagmo vertical hacia abajo: reporte de 2 casos
+    y revisión de la literatura.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 76: 63-70'
+  doi: ''
+- anio: 2014
+  cita: 'Contreras R, Toro N, Oberreuter E, Barraza C, Faúndez JP, Nuñez M, Kuroiwa R, <b>Breinbauer R.</b>
+    Hacia un nuevo VIII par: alternativas de baja complejidad.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 74: 101-108'
+  doi: ''
+- anio: 2013
+  cita: <b>Breinbauer H</b>, Anabalón JL, Aracena K, Nazal D, Baeza MA. Experiencia en el uso video-impulso
+    cefálico (vHIT) en la evaluación del reflejo vestíbulo-ocular para el canal semicircular horizontal.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 73: 17-24'
+  doi: ''
+- anio: 2013
+  cita: '<b>Breinbauer H</b>, Aracena K, Anabalón JL, Aladro S, Baeza MA. Evaluación de la función vestibular
+    angular: prueba de impulso cefálico multiaxial a ojo desnudo.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 73: 17-24'
+  doi: ''
+- anio: 2011
+  cita: Maul X, Rivera C, Aracena K, Slater F, <b>Breinbauer H.</b> Adherencia y desempeño auditivo en
+    uso de audífonos en pacientes adultos hipoacúsicos atendidos en la Red de Salud UC.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 71: 225-30'
+  doi: ''
+- anio: 2011
+  cita: <b>Breinbauer H</b>, Anabalón JL. Prueba de impulso cefálico.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 71: 123-30'
+  doi: ''
+- anio: 2011
+  cita: <b>Breinbauer H</b>, Anabalón JL, Gutierrez D, Caro J. Estimación de riesgos y hábitos de uso
+    de reproductores de música personal en una muestra de población chilena.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 71: 31-8'
+  doi: ''
+- anio: 2011
+  cita: 'Faba G, Cornejo S, Gutierrez D, <b>Breinbauer H.</b> Injertos en rinoseptoplastía: experiencia
+    del Departamento de Otorrinolaringología de la Pontificia Universidad Católica de Chile.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 71: 14-22'
+  doi: ''
+- anio: 2010
+  cita: Cabezón R, Valdés R, <b>Breinbauer H</b>, Ramírez C, Grau C, Iñiguez R. Variantes anatómicas relevantes
+    en tomografía computarizada de cavidades perinasales.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 70: 223-230'
+  doi: ''
+- anio: 2010
+  cita: 'Ruz S, <b>Breinbauer H</b>, Corssen C. Otitis externa micótica y perforación timpánica: reporte
+    de dos casos.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 70: 245-252'
+  doi: ''
+- anio: 2010
+  cita: Ruz S, <b>Breinbauer H</b>, Torrente M. Función tiroidea postratamiento de cáncer escamoso de
+    orofaringe, hipofaringe y laringe.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 70: 133-8'
+  doi: ''
+- anio: 2010
+  cita: 'Cornejo S, Beltrán C, <b>Breinbauer H</b>, Fonseca X, Serra R. Dolor en amigdalectomía: técnica
+    fría versus electrobisturí monopolar. Estudio prospectivo randomizado.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 70: 123-8'
+  doi: ''
+- anio: 2009
+  cita: '<b>Breinbauer H</b>, Anabalón JL. Reproductores de música personal: conducta de riesgo emergente.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 69: 213-220'
+  doi: ''
+- anio: 2009
+  cita: Ruz S, <b>Breinbauer H</b>, Arancibia M. Análisis epidemiológico de la patología otorrinolaringológica
+    ambulatoria en el Hospital San Juan de Dios.
+  revista: Rev Otorrinolaringol Cir Cabeza Cuello, 227-232
+  doi: ''
+- anio: 2009
+  cita: Namoncura C, <b>Breinbauer H.</b> Utilidad y costo-efectividad de los exámenes preoperatorios
+    en cirugía otorrinolaringológica.
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 69: 117-124'
+  doi: ''
+- anio: 2008
+  cita: '<b>Breinbauer H</b>, Contreras JM, Namoncura C. Técnica de Caldwell-Luc en los últimos 16 años:
+    una revisión de sus indicaciones.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 68: 247-254'
+  doi: ''
+- anio: 2008
+  cita: 'Castillo C, Ruz S, <b>Breinbauer H</b>, Muñoz J, Corssen C. Evaluación programa quirúrgico para
+    residentes ORL: de la teoría a la práctica.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 68: 229-236'
+  doi: ''
+- anio: 2008
+  cita: 'Castillo C, Corssen C, <b>Breinbauer H</b>, Namoncura C. Evaluación adenoídea mediante nasofaringolaringoscopía:
+    validación del método.'
+  revista: 'Rev Otorrinolaringol Cir Cabeza Cuello, 68: 143-148'
+  doi: ''
+- anio: 2016
+  cita: <b>Breinbauer HA.</b> Evaluación vestibular en 2016. Puesta al día.
+  revista: 'Revista Médica Clínica Las Condes, 27(6): 863-71'
+  doi: ''
+- anio: 2014
+  cita: <b>Breinbauer H.</b> Avances en vértigo y trastornos del equilibrio.
+  revista: 'Contacto Científico, 4(3): 114-120'
+  doi: ''
+- anio: 2007
+  cita: '<b>Breinbauer H</b>, Fromm G, Araya L. Formación valórica del estudiante de medicina: de lo integral
+    a lo especializado.'
+  revista: 'Bol Hosp SJ de Dios, 54(6): 337-344'
+  doi: ''
+- anio: 2007
+  cita: <b>Breinbauer H</b>, Araya L. Pauta para la buena práctica clínica.
+  revista: 'Bol Hosp SJ de Dios, 54(6): 345-350'
+  doi: ''
+- anio: 2005
+  cita: '<b>Breinbauer H</b>, Araya L. El médico tratante: ¿concepto arcaico o necesidad imperiosa de
+    la medicina actual?.'
+  revista: 'Bol Hosp SJ de Dios, 52(4): 201-211'
+  doi: ''
+- anio: 2003
+  cita: <b>Breinbauer H</b>, Araya L. La manipulación del paciente inconsciente con fines docentes.
+  revista: 'Bol Hosp SJ de Dios, 50(4): 221-226'
+  doi: ''

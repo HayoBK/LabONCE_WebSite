@@ -1,0 +1,23 @@
+{{- /* Tarjeta de una publicación, para las listas automáticas (todas/perfil).
+       Distingue las dos formas de entrada:
+       - 'cita' (texto ya armado)  -> viene del archivo histórico curado
+       - 'titulo' + 'autores'      -> viene de la sincronización ORCID
+*/ -}}
+{{- $p := . -}}
+<article class="lo-pub" style="align-items:flex-start">
+  <div class="lo-pub__body">
+    {{- if $p.cita }}
+      <p class="lo-pub__journal">{{ with $p.revista }}{{ . }}{{ end }}{{ with $p.anio }} · {{ . }}{{ end }}</p>
+      {{/* safeHTML: cita/autores traen <b>/<i> ya escapados por orcid_sync.py o escritos a mano */}}
+      <p style="margin:0 0 8px">{{ $p.cita | safeHTML }}</p>
+    {{- else }}
+      <p class="lo-pub__journal">{{ with $p.revista }}{{ . }}{{ end }}{{ with $p.anio }} · {{ . }}{{ end }}</p>
+      <h3 class="lo-pub__title" style="font-size:1.02rem">
+        {{- if $p.url }}<a href="{{ $p.url }}" rel="noopener" target="_blank">{{ $p.titulo }}</a>{{ else }}{{ $p.titulo }}{{ end -}}
+      </h3>
+      {{- with $p.autores }}<p style="margin:0 0 8px;font-size:.9rem;color:var(--lo-muted)">{{ . | safeHTML }}</p>{{ end }}
+    {{- end }}
+    {{- with $p.doi }}<a class="lo-pub__link" href="https://doi.org/{{ . }}" rel="noopener" target="_blank">doi:{{ . }}</a>{{ end }}
+    {{- if and (not $p.doi) $p.url (not $p.cita) }}{{/* ya se linkeó el título arriba */}}{{ end }}
+  </div>
+</article>

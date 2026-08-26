@@ -52,25 +52,39 @@
 </section>
 {{ end }}
 
-<!-- ===================== PUBLICACIONES DESTACADAS ===================== -->
-{{ with site.Data.publicaciones_seleccionadas }}
+<!-- ===================== PUBLICACIONES RECIENTES (automático, ORCID + histórico) ===================== -->
+{{ $todasPub := partial "pub-merge.html" . }}
+{{ if $todasPub }}
+{{ $anioActual := now.Year }}
+{{ $ult5 := where $todasPub "anio" ">=" (sub $anioActual 5) }}
+{{ $ult10 := where $todasPub "anio" ">=" (sub $anioActual 10) }}
+{{ $recientes := first 4 (sort $todasPub "anio" "desc") }}
 <section class="lo-section lo-section--mist">
   <div class="lo-container">
     <div class="lo-section__head">
       <p class="lo-eyebrow">Investigación</p>
-      <h2 class="lo-section__title">Publicaciones destacadas</h2>
-      <p class="lo-section__sub">Una selección de nuestro trabajo en revistas internacionales.</p>
+      <h2 class="lo-section__title">Publicaciones de los últimos años</h2>
+      <p class="lo-section__sub">Listado completo, actualizado automáticamente desde ORCID cada día.</p>
     </div>
-    <div class="lo-grid">
-      {{ range first 3 . }}
-      <article class="lo-pub">
-        {{ with .imagen }}<img class="lo-pub__thumb" src="{{ . | relURL }}" alt="" loading="lazy">{{ end }}
-        <div class="lo-pub__body">
-          <p class="lo-pub__journal">{{ .revista }}</p>
-          <h3 class="lo-pub__title">{{ .titulo }}</h3>
-          {{ with .link }}<a class="lo-pub__link" href="{{ . }}" target="_blank" rel="noopener">Texto completo
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>{{ end }}
-        </div>
+    <div class="lo-grid lo-grid--3" style="margin-bottom:22px">
+      <div class="lo-card" style="padding:22px;text-align:center">
+        <p style="font-family:var(--lo-font-title);font-size:2.2rem;font-weight:700;color:var(--lo-blue);margin:0">{{ len $ult5 }}</p>
+        <p style="color:var(--lo-muted);margin:4px 0 0;font-size:.92rem">publicaciones en los últimos 5 años</p>
+      </div>
+      <div class="lo-card" style="padding:22px;text-align:center">
+        <p style="font-family:var(--lo-font-title);font-size:2.2rem;font-weight:700;color:var(--lo-blue);margin:0">{{ len $ult10 }}</p>
+        <p style="color:var(--lo-muted);margin:4px 0 0;font-size:.92rem">publicaciones en los últimos 10 años</p>
+      </div>
+      <div class="lo-card" style="padding:22px;text-align:center">
+        <p style="font-family:var(--lo-font-title);font-size:2.2rem;font-weight:700;color:var(--lo-blue);margin:0">{{ len $todasPub }}</p>
+        <p style="color:var(--lo-muted);margin:4px 0 0;font-size:.92rem">publicaciones registradas en total</p>
+      </div>
+    </div>
+    <div class="lo-grid lo-grid--3">
+      {{ range $recientes }}
+      <article class="lo-card" style="padding:20px">
+        <p class="lo-pub__journal">{{ with .revista }}{{ . }}{{ end }}{{ with .anio }} · {{ . }}{{ end }}</p>
+        <h3 style="font-size:1rem;margin:6px 0 0">{{ or .titulo (.cita | plainify) }}</h3>
       </article>
       {{ end }}
     </div>
@@ -80,7 +94,8 @@
 {{ end }}
 
 <!-- ===================== EQUIPO PREVIEW ===================== -->
-{{ with site.Data.integrantes }}
+{{ $integrantesPages := sort (where site.RegularPages "Section" "integrantes") "Params.weight" }}
+{{ with $integrantesPages }}
 <section class="lo-section">
   <div class="lo-container">
     <div class="lo-section__head">
@@ -88,15 +103,15 @@
       <h2 class="lo-section__title">Nuestro equipo</h2>
     </div>
     <div class="lo-grid lo-grid--4">
-      {{ $destacados := where . "categoria" "in" (slice "director" "activo") }}
+      {{ $destacados := where . "Params.categoria" "in" (slice "director" "activo") }}
       {{ if not $destacados }}{{ $destacados = . }}{{ end }}
       {{ range first 4 $destacados }}
-      <div class="lo-person lo-person--compact">
-        {{ if .foto }}{{ $src := .foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}<img class="lo-person__photo" src="{{ $src }}" alt="{{ .nombre }}" loading="lazy">
-        {{ else }}<div class="lo-person__avatar">{{ substr .nombre 0 1 }}</div>{{ end }}
-        <p class="lo-person__name">{{ .nombre }}</p>
-        <p class="lo-person__role">{{ .rol }}</p>
-      </div>
+      <a class="lo-person lo-person--compact" href="{{ .RelPermalink }}">
+        {{ if .Params.foto }}{{ $src := .Params.foto }}{{ if not (hasPrefix $src "http") }}{{ $src = $src | relURL }}{{ end }}<img class="lo-person__photo" src="{{ $src }}" alt="{{ .Title }}" loading="lazy">
+        {{ else }}<div class="lo-person__avatar">{{ substr (upper .Title) 0 1 }}</div>{{ end }}
+        <p class="lo-person__name">{{ .Title }}</p>
+        <p class="lo-person__role">{{ .Params.rol }}</p>
+      </a>
       {{ end }}
     </div>
     <p style="margin-top:26px"><a class="lo-btn lo-btn--primary" href="{{ "integrantes/" | relURL }}">Ver todo el equipo</a></p>
