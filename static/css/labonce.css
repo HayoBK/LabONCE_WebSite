@@ -301,3 +301,7 @@ a.lo-chip:hover{background:var(--lo-blue);color:#fff;text-decoration:none}
 /* ---------- Fichas de equipo ahora son <a> (páginas individuales, 2026-08) ---------- */
 a.lo-person,a.lo-person:hover{text-decoration:none}
 .lo-person__bio a{text-decoration:underline}
+
+/* Recuadro de aviso / indicaciones en posts */
+.lo-aviso{background:var(--lo-mist2);border-left:4px solid #0E8DA0;border-radius:12px;padding:14px 20px;margin:1.4em 0}
+.lo-aviso p:last-child,.lo-aviso ul:last-child{margin-bottom:0}
