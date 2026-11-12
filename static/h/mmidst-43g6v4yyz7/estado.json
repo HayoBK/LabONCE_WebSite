@@ -1,0 +1,9 @@
+{
+  "activo": true,
+  "mensaje": "Este generador fue desactivado por LAB ONCE. Consulte al Dr. Breinbauer.",
+  "clave": {
+    "sal": "ec919d26cd42f487e6d2b6bf47612a9b",
+    "iter": 200000,
+    "hash": "a4fade840c7338ab932a97c43b0b733722257682cd1080a9384e73ca041ee4c1"
+  }
+}
